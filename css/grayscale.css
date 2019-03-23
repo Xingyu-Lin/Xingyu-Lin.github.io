@@ -103,7 +103,7 @@ a:hover {
     transition: background 0.1s ease-in-out, padding-top 0.1s ease-in-out, padding-bottom 0.1s;
     letter-spacing: 1px;
     border-bottom: none;
-    background: transparent;
+    background: black;
   }
   #mainNav.navbar-shrink {
     padding-top: 10px;
