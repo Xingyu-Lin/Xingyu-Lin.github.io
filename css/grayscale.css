@@ -43,12 +43,12 @@ a {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  color: #0000ff;
+  color: #04349c;
 }
 
 a:hover {
   text-decoration: none;
-  color: #7031f3;
+  color: #8a049c;
 }
 
 #mainNav {
