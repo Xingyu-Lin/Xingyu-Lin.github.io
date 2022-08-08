@@ -1,0 +1,9 @@
+@ARTICLE{qi2022dough,
+author={Qi, Carl and Lin, Xingyu and Held, David},
+journal={IEEE Robotics and Automation Letters},
+title={Learning Closed-loop Dough Manipulation Using a Differentiable Reset Module},
+year={2022},
+volume={},
+number={},
+pages={1-8},
+doi={10.1109/LRA.2022.3191239}}
