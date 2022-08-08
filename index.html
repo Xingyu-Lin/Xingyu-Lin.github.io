@@ -33,7 +33,7 @@
             max-width: 1000px;
         }
     </style>
-
+    <script src="js/custom.js"></script>
 </head>
 
 <body id="page-top">
@@ -204,14 +204,16 @@
                 <h2 class="section-heading">Publication</h2>
             </div>
             <div class="col-lg-10 align-text-bottom btn-group-vertical">
-                <div style="font-size:large">
+                <div style="font-size:x-large">
                 (<a href="" id="select0" onclick="showPubs(0); return false;">show selected</a> /
                 <a href="" id="select1" onclick="showPubs(1); return false;">show all by date</a>)
                 </div>
             </div>
-
         </div>
         <hr>
+        <div id="pubs">
+            <div class="text anchor">&nbsp;</div>
+        </div>
 <!--        <div class="row">-->
 <!--            <div class="col-md-3">-->
 <!--                <img class="img-fluid img-rounded" src="" alt="">-->
@@ -240,303 +242,467 @@
 <!--            </div>-->
 <!--        </div>-->
 <!--        <hr>-->
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_carl.gif" alt="">
-            </div>
-            <div class="col-md-9">
-                <b>Learning Closed-loop Dough Manipulation using a Differentiable Reset Module</b>
-                <br>
-                Carl Qi, <b>Xingyu Lin</b>, David Held
-                <br>
-                <a target="_blank" href="https://www.ieee-ras.org/publications/ra-l">Robotics and Automation Letters (RA-L)</a> with presentation at <a target="_blank" href="https://iros2022.org/">IROS 2022</a>
-                <br>
-                <a href="https://arxiv.org/pdf/2207.04638.pdf">Paper</a> /
-                Code (coming soon) /
-                <a target="_blank" href="https://sites.google.com/view/dough-manipulation"> Project Page </a> /
-                    <a href="javascript:copy(div2022_carl, abs2022_carl)">Abstract</a> /
-                    <a href="javascript:copy(div2022_carl, bib2022_carl)">Bibtex</a>
-                <div id="abs2022_carl" style="display:none">
-                    <div><object data="bibtex/abs2022_carl.txt" type="text/plain" width="100%"> </object></div>
+        <script id="pubs_selected" language="text">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_diffskill.gif" alt="">
                 </div>
-                <div id="bib2022_carl" style="display:none">
-                        <div><object data="bibtex/bib2022_carl.txt" type="text/plain" width="100%"> </object></div>
+                <div class="col-md-9">
+                    <b> DiffSkill: Skill Abstraction from Differentiable Physics for Deformable Object Manipulations with Tools </b>
+                    <br>
+                    <b>Xingyu Lin</b>, Zhiao Huang, Yunzhu Li, Joshua B. Tenenbaum, David Held, Chuang Gan
+                    <br>
+                    <b><a target="_blank" href="https://iclr.cc/Conferences/2022"> ICLR 2022</a></b>
+                    <br>
+                    <a target="_blank" href="https://arxiv.org/abs/2203.17275">Paper</a> /
+                    <a target="_blank" href="https://xingyu-lin.github.io/diffskill/">Code</a> /
+                    <a target="_blank" href="https://github.com/Xingyu-Lin/DiffSkill">Project Page</a> /
+                    <a href="javascript:copy(div2022_diffskill, abs2022_diffskill)">Abstract</a> /
+                    <a href="javascript:copy(div2022_diffskill, bib2022_diffskill)">Bibtex</a>
+                    <div id="abs2022_diffskill" style="display:none">
+                        <div ><object data="bibtex/abs2022_diffskill.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="bib2022_diffskill" style="display:none">
+                        <div><object data="bibtex/bib2022_diffskill.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2022_diffskill" class="pubInfo"> </div>
+                    <small>Covered by</small>
+                    <a href="https://news.mit.edu/2022/robotic-deformable-object-0331" target="_blank"> <small>[MIT News]</small></a>
+                    <a href="https://techcrunch.com/2022/03/31/better-learning-through-complex-dough-manipulation/" target="_blank"> <small>[TechCrunch]</small></a>
+                    <a href="https://cosmosmagazine.com/technology/ai/robot-pizza-dough-making/" target="_blank"> <small>[COSMOS]</small></a>
+                    <a href="https://bdtechtalks.com/2022/05/09/diffskill-robotics-deformable-object-manipulation/" target="_blank"> <small>[TechTalks]</small></a>
+                    <a href="https://www.azorobotics.com/News.aspx?newsID=12865" target="_blank"> <small>[AZO Robotics]</small></a>
                 </div>
-                <div id="div2022_carl" class="pubInfo"> </div>
             </div>
-        </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_pouring.gif" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b>Transparent Liquid Segmentation for Robotic Pouring </b>
+                    <br>
+                    Gautham Narasimhan, Kai Zhang, Ben Eisner, <b>Xingyu Lin</b>, David Held
+                    <br>
+                    <b><a target="_blank" href="https://www.icra2022.org/"> ICRA 2022</a></b>
+                    <br>
+                    <a target="_blank" href="https://arxiv.org/abs/2203.01538">Paper</a> /
+                    <a target="_blank" href="https://github.com/gauthamnarayan/transparent-liquid-segmentation">Code</a> /
+                    <a target="_blank" href="https://sites.google.com/view/transparentliquidpouring">Project Page</a> /
+                    <a href="javascript:copy(div2022_pour, abs2022_pour)">Abstract</a> /
+                    <a href="javascript:copy(div2022_pour, bib2022_pour)">Bibtex</a>
+                    <div id="abs2022_pour" style="display:none">
+                        <div ><object data="bibtex/abs2022_pour.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="bib2022_pour" style="display:none">
+                        <div><object data="bibtex/bib2022_pour.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2022_pour" class="pubInfo"></div>
+                    <small>Covered by</small>
+                    <a href="https://www.cs.cmu.edu/news/2022/robots-pouring-water" target="_blank"> <small>[CMU SCS News (Pour me a Glass)]</small></a>
+                    <br>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2021_vcd.gif" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b> Learning Visible Connectivity Dynamics for Cloth Smoothing </b>
+                    <br>
+                    <b>Xingyu Lin*</b>, Yufei Wang*, Zixuan Huang, David Held
+                    <br>
+                    <b><a target="_blank" href="https://www.robot-learning.org/">CoRL 2021</a></b>
+                    <br>
+                    <a target="_blank" href="https://arxiv.org/pdf/2105.10389.pdf">Paper</a> /
+                    <a target="_blank" href="https://github.com/Xingyu-Lin/VCD">Code</a> /
+                    <a target="_blank" href="https://sites.google.com/view/vcd-cloth/home">Project Page</a> /
+                    <a target="_blank" href="https://www.youtube.com/watch?v=JUDvFYWKORY&t=1s">Video</a> /
+                    <a href="javascript:copy(div2021_vcd, abs2021_vcd)">Abstract</a> /
+                    <a href="javascript:copy(div2021_vcd, bib2021_vcd)">Bibtex</a>
+                    <div id="abs2021_vcd" style="display:none">
+                        <div ><object data="bibtex/abs2021_vcd.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="bib2021_vcd" style="display:none">
+                        <div><object data="bibtex/bib2021_vcd.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2021_vcd" class="pubInfo"></div>
+                    Abridged in ICRA 2021 workshop on Representing and Manipulating Deformable Object
+                    <a href="https://deformable-workshop.github.io/icra2021/" target="_blank"><small>[Link]</small></a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2020_softgym.png" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b> SoftGym: Benchmarking Deep Reinforcement Learning for Deformable Object Manipulation </b>
+                    <br>
+                    <b>Xingyu Lin</b>, Yufei Wang, Jake Olkin, David Held
+                    <br>
+                    <b><a target="_blank" href="https://www.robot-learning.org/">CoRL 2020</a></b>
+                    <br>
+                    <a target="_blank" href="./papers/2020_softgym.pdf">Paper</a> /
+                    <a target="_blank" href="https://github.com/Xingyu-Lin/softgym">Code</a> /
+                    <a target="_blank" href="https://sites.google.com/view/softgym/home">Project Page</a> /
+                    <a href="javascript:copy(div2020_softgym, bib2020_softgym)">Bibtex</a>
+                    <div id="bib2020_softgym" style="display:none">
+                        <div><object data="bibtex/bib2020_softgym.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2020_softgym" class="pubInfo"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2019_olaux.png" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b> Adaptive Auxiliary Task Weighting for Reinforcement Learning </b>
+                    <br>
+                    <b>Xingyu Lin*</b>, Harjatin Baweja*, George Kantor, David Held
+                    <br>
+                    <b><a href="https://nips.cc/Conferences/2019/" target="_blank"> NeurIPS 2019</a></b>
+                    <br>
+                    <a target="_blank" href="https://papers.nips.cc/paper/8724-adaptive-auxiliary-task-weighting-for-reinforcement-learning" >Paper</a> /
+                    <a target="_blank" href="https://github.com/Xingyu-Lin/auxiliary-tasks-rl">Code</a> /
+                    <a target="_blank" href="https://www.dropbox.com/s/keaby4ualrgu99z/poster.pdf?dl=0" >Poster</a> /
+                    <a target="_blank" href="https://www.dropbox.com/s/ry2wd7i8qho9cqm/NeurIPS2019_slides.pdf?dl=0" >Slides</a> /
+                    <a href="javascript:copy(div2019_olaux, bib2019_olaux)">Bibtex</a>
+                    <div id="bib2019_olaux" style="display:none">
+                        <div><object data="bibtex/bib2019_olaux.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2019_olaux" class="pubInfo"></div>
+                    Abridged in ICML 2019 workshop on Multi-Task and Lifelong Reinforcement Learning
+                    <a href="https://sites.google.com/view/mtlrl" target="_blank"><small>[Link]</small></a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2019_indicator.png" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b> Reinforcement Learning without Ground-Truth State </b>
+                    <br>
+                    <b>Xingyu Lin</b>, Harjatin Singh Baweja, David Held
+                    <br>
+                    <b><a target="_blank" href="https://icml.cc/Conferences/2019">ICML 2019</a></b>, Workshop on Multi-Task and Lifelong Reinforcement Learning
+                    <a href="https://sites.google.com/view/mtlrl" target="_blank"><small>[Link]</small></a>
+                    <br>
+                    <a target="_blank" href="./papers/2019_rl.pdf">Paper</a> /
+                    <a target="_blank" href="https://www.youtube.com/watch?v=Uxt4oK1XgTs">Video</a> /
+                    <!--                <a target="_blank" >Project Page</a> /-->
+                    <!--                <a target="_blank" >Code</a>-->
+                    <a href="javascript:copy(div2019_icra, bib2019_icra)">Bibtex</a>
+                    <div id="bib2019_icra" style="display:none">
+                        <div><object data="bibtex/bib2019_icra.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2019_icra" class="pubInfo"></div>
+                </div>
+            </div>
+            <hr>
+        </script>
+        <script id="pubs_all_by_date" language="text">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_carl.gif" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b>Learning Closed-loop Dough Manipulation using a Differentiable Reset Module</b>
+                    <br>
+                    Carl Qi, <b>Xingyu Lin</b>, David Held
+                    <br>
+                    <a target="_blank" href="https://www.ieee-ras.org/publications/ra-l">Robotics and Automation Letters (RA-L)</a> with presentation at <a target="_blank" href="https://iros2022.org/">IROS 2022</a>
+                    <br>
+                    <a href="https://arxiv.org/pdf/2207.04638.pdf">Paper</a> /
+                    Code (coming soon) /
+                    <a target="_blank" href="https://sites.google.com/view/dough-manipulation"> Project Page </a> /
+                        <a href="javascript:copy(div2022_carl, abs2022_carl)">Abstract</a> /
+                        <a href="javascript:copy(div2022_carl, bib2022_carl)">Bibtex</a>
+                    <div id="abs2022_carl" style="display:none">
+                        <div><object data="bibtex/abs2022_carl.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="bib2022_carl" style="display:none">
+                            <div><object data="bibtex/bib2022_carl.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2022_carl" class="pubInfo"> </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_rssmedor.png" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b>	Mesh-based Dynamics with Occlusion Reasoning for Cloth Manipulation</b>
+                    <br>
+                    Zixuan Huang, <b>Xingyu Lin</b>, David Held
+                    <br>
+                    <b><a target="_blank" href="https://roboticsconference.org/"> RSS 2022</a></b>
+                    <br>
+                    <a target="_blank" href="https://arxiv.org/abs/2206.02881">Paper</a> /
+                    Code (Coming soon) /
+                    <a target="_blank" href="https://sites.google.com/view/occlusion-reason/home"> Project Page </a> /
+                    <a href="javascript:copy(div2022_medor, abs2022_medor)">Abstract</a> /
+                    <a href="javascript:copy(div2022_medor, bib2022_medor)">Bibtex</a>
+                    <div id="abs2022_medor" style="display:none">
+                        <div ><object data="bibtex/abs2022_medor.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="bib2022_medor" style="display:none">
+                        <div><object data="bibtex/bib2022_medor.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2022_medor" class="pubInfo"> </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_diffskill.gif" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b> DiffSkill: Skill Abstraction from Differentiable Physics for Deformable Object Manipulations with Tools </b>
+                    <br>
+                    <b>Xingyu Lin</b>, Zhiao Huang, Yunzhu Li, Joshua B. Tenenbaum, David Held, Chuang Gan
+                    <br>
+                    <b><a target="_blank" href="https://iclr.cc/Conferences/2022"> ICLR 2022</a></b>
+                    <br>
+                    <a target="_blank" href="https://arxiv.org/abs/2203.17275">Paper</a> /
+                    <a target="_blank" href="https://xingyu-lin.github.io/diffskill/">Code</a> /
+                    <a target="_blank" href="https://github.com/Xingyu-Lin/DiffSkill">Project Page</a> /
+                    <a href="javascript:copy(div2022_diffskill, abs2022_diffskill)">Abstract</a> /
+                    <a href="javascript:copy(div2022_diffskill, bib2022_diffskill)">Bibtex</a>
+                    <div id="abs2022_diffskill" style="display:none">
+                        <div ><object data="bibtex/abs2022_diffskill.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="bib2022_diffskill" style="display:none">
+                        <div><object data="bibtex/bib2022_diffskill.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2022_diffskill" class="pubInfo"> </div>
+                    <small>Covered by</small>
+                    <a href="https://news.mit.edu/2022/robotic-deformable-object-0331" target="_blank"> <small>[MIT News]</small></a>
+                    <a href="https://techcrunch.com/2022/03/31/better-learning-through-complex-dough-manipulation/" target="_blank"> <small>[TechCrunch]</small></a>
+                    <a href="https://cosmosmagazine.com/technology/ai/robot-pizza-dough-making/" target="_blank"> <small>[COSMOS]</small></a>
+                    <a href="https://bdtechtalks.com/2022/05/09/diffskill-robotics-deformable-object-manipulation/" target="_blank"> <small>[TechTalks]</small></a>
+                    <a href="https://www.azorobotics.com/News.aspx?newsID=12865" target="_blank"> <small>[AZO Robotics]</small></a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_pouring.gif" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b>Transparent Liquid Segmentation for Robotic Pouring </b>
+                    <br>
+                    Gautham Narasimhan, Kai Zhang, Ben Eisner, <b>Xingyu Lin</b>, David Held
+                    <br>
+                    <b><a target="_blank" href="https://www.icra2022.org/"> ICRA 2022</a></b>
+                    <br>
+                    <a target="_blank" href="https://arxiv.org/abs/2203.01538">Paper</a> /
+                    <a target="_blank" href="https://github.com/gauthamnarayan/transparent-liquid-segmentation">Code</a> /
+                    <a target="_blank" href="https://sites.google.com/view/transparentliquidpouring">Project Page</a> /
+                    <a href="javascript:copy(div2022_pour, abs2022_pour)">Abstract</a> /
+                    <a href="javascript:copy(div2022_pour, bib2022_pour)">Bibtex</a>
+                    <div id="abs2022_pour" style="display:none">
+                        <div ><object data="bibtex/abs2022_pour.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="bib2022_pour" style="display:none">
+                        <div><object data="bibtex/bib2022_pour.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2022_pour" class="pubInfo"></div>
+                    <small>Covered by</small>
+                    <a href="https://www.cs.cmu.edu/news/2022/robots-pouring-water" target="_blank"> <small>[CMU SCS News (Pour me a Glass)]</small></a>
+                    <br>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2021_vcd.gif" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b> Learning Visible Connectivity Dynamics for Cloth Smoothing </b>
+                    <br>
+                    <b>Xingyu Lin*</b>, Yufei Wang*, Zixuan Huang, David Held
+                    <br>
+                    <b><a target="_blank" href="https://www.robot-learning.org/">CoRL 2021</a></b>
+                    <br>
+                    <a target="_blank" href="https://arxiv.org/pdf/2105.10389.pdf">Paper</a> /
+                    <a target="_blank" href="https://github.com/Xingyu-Lin/VCD">Code</a> /
+                    <a target="_blank" href="https://sites.google.com/view/vcd-cloth/home">Project Page</a> /
+                    <a target="_blank" href="https://www.youtube.com/watch?v=JUDvFYWKORY&t=1s">Video</a> /
+                    <a href="javascript:copy(div2021_vcd, abs2021_vcd)">Abstract</a> /
+                    <a href="javascript:copy(div2021_vcd, bib2021_vcd)">Bibtex</a>
+                    <div id="abs2021_vcd" style="display:none">
+                        <div ><object data="bibtex/abs2021_vcd.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="bib2021_vcd" style="display:none">
+                        <div><object data="bibtex/bib2021_vcd.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2021_vcd" class="pubInfo"></div>
+                    Abridged in ICRA 2021 workshop on Representing and Manipulating Deformable Object
+                    <a href="https://deformable-workshop.github.io/icra2021/" target="_blank"><small>[Link]</small></a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2020_softgym.png" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b> SoftGym: Benchmarking Deep Reinforcement Learning for Deformable Object Manipulation </b>
+                    <br>
+                    <b>Xingyu Lin</b>, Yufei Wang, Jake Olkin, David Held
+                    <br>
+                    <b><a target="_blank" href="https://www.robot-learning.org/">CoRL 2020</a></b>
+                    <br>
+                    <a target="_blank" href="./papers/2020_softgym.pdf">Paper</a> /
+                    <a target="_blank" href="https://github.com/Xingyu-Lin/softgym">Code</a> /
+                    <a target="_blank" href="https://sites.google.com/view/softgym/home">Project Page</a> /
+                    <a href="javascript:copy(div2020_softgym, bib2020_softgym)">Bibtex</a>
+                    <div id="bib2020_softgym" style="display:none">
+                        <div><object data="bibtex/bib2020_softgym.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2020_softgym" class="pubInfo"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2020_roll.png" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b> Visual Self-Supervised Reinforcement Learning with Object Reasoning </b>
+                    <br>
+                    Yufei Wang*, Gautham Narayan*, <b>Xingyu Lin</b>, Brian Okorn, David Held
+                    <br>
+                    <b><a target="_blank" href="https://www.robot-learning.org/">CoRL 2020</a></b>
+                    <br>
+                    <a target="_blank" href="./papers/2020_roll.pdf">Paper</a> /
+                    <a target="_blank" href="https://github.com/yufeiwang63/ROLL">Code</a> /
+                    <a target="_blank" href="https://sites.google.com/andrew.cmu.edu/roll/home">Project Page</a>/
+                    <a href="javascript:copy(div2020_roll, bib2020_roll)">Bibtex</a>
+                    <div id="bib2020_roll" style="display:none">
+                        <div><object data="bibtex/bib2020_roll.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2020_roll" class="pubInfo"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2019_olaux.png" alt="">
+                </div>
+                <div class="col-md-9">
+                    <b> Adaptive Auxiliary Task Weighting for Reinforcement Learning </b>
+                    <br>
+                    <b>Xingyu Lin*</b>, Harjatin Baweja*, George Kantor, David Held
+                    <br>
+                    <b><a href="https://nips.cc/Conferences/2019/" target="_blank"> NeurIPS 2019</a></b>
+                    <br>
+                    <a target="_blank" href="https://papers.nips.cc/paper/8724-adaptive-auxiliary-task-weighting-for-reinforcement-learning" >Paper</a> /
+                    <a target="_blank" href="https://github.com/Xingyu-Lin/auxiliary-tasks-rl">Code</a> /
+                    <a target="_blank" href="https://www.dropbox.com/s/keaby4ualrgu99z/poster.pdf?dl=0" >Poster</a> /
+                    <a target="_blank" href="https://www.dropbox.com/s/ry2wd7i8qho9cqm/NeurIPS2019_slides.pdf?dl=0" >Slides</a> /
+                    <a href="javascript:copy(div2019_olaux, bib2019_olaux)">Bibtex</a>
+                    <div id="bib2019_olaux" style="display:none">
+                        <div><object data="bibtex/bib2019_olaux.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2019_olaux" class="pubInfo"></div>
+                    Abridged in ICML 2019 workshop on Multi-Task and Lifelong Reinforcement Learning
+                    <a href="https://sites.google.com/view/mtlrl" target="_blank"><small>[Link]</small></a>
+                </div>
+            </div>
+            <hr>
 
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_rssmedor.png" alt="">
-            </div>
-            <div class="col-md-9">
-                <b>	Mesh-based Dynamics with Occlusion Reasoning for Cloth Manipulation</b>
-                <br>
-                Zixuan Huang, <b>Xingyu Lin</b>, David Held
-                <br>
-                <b><a target="_blank" href="https://roboticsconference.org/"> RSS 2022</a></b>
-                <br>
-                <a target="_blank" href="https://arxiv.org/abs/2206.02881">Paper</a> /
-                Code (Coming soon) /
-                <a target="_blank" href="https://sites.google.com/view/occlusion-reason/home"> Project Page </a> /
-                <a href="javascript:copy(div2022_medor, abs2022_medor)">Abstract</a> /
-                <a href="javascript:copy(div2022_medor, bib2022_medor)">Bibtex</a>
-                <div id="abs2022_medor" style="display:none">
-                    <div ><object data="bibtex/abs2022_medor.txt" type="text/plain" width="100%"> </object></div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2019_icra.png" alt="">
                 </div>
-                <div id="bib2022_medor" style="display:none">
-                    <div><object data="bibtex/bib2022_medor.txt" type="text/plain" width="100%"> </object></div>
+                <div class="col-md-9">
+                    <b>Adaptive Variance for Changing Sparse-Reward Environments</b>
+                    <br>
+                    <b>Xingyu Lin</b>, Pengsheng Guo, Carlos Florensa, David Held
+                    <br>
+                    <b><a href="https://www.icra2019.org/" target="_blank"> ICRA 2019</a></b>
+                    <br>
+                    <a target="_blank" href="https://arxiv.org/abs/1903.06309">Paper</a> /
+                    <a target="_blank" href="https://sites.google.com/andrew.cmu.edu/adaptive-variance">Project Page</a> /
+                    <a target="_blank" href="https://www.youtube.com/watch?v=SxkQGd6QhfA">Video</a> /
+                    <a href="javascript:copy(div2019_icra, bib2019_icra)">Bibtex</a>
+                    <div id="bib2019_icra" style="display:none">
+                        <div><object data="bibtex/bib2019_icra.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2019_icra" class="pubInfo"></div>
                 </div>
-                <div id="div2022_medor" class="pubInfo"> </div>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_diffskill.gif" alt="">
-            </div>
-            <div class="col-md-9">
-                <b> DiffSkill: Skill Abstraction from Differentiable Physics for Deformable Object Manipulations with Tools </b>
-                <br>
-                <b>Xingyu Lin</b>, Zhiao Huang, Yunzhu Li, Joshua B. Tenenbaum, David Held, Chuang Gan
-                <br>
-                <b><a target="_blank" href="https://iclr.cc/Conferences/2022"> ICLR 2022</a></b>
-                <br>
-                <a target="_blank" href="https://arxiv.org/abs/2203.17275">Paper</a> /
-                <a target="_blank" href="https://xingyu-lin.github.io/diffskill/">Code</a> /
-                <a target="_blank" href="https://github.com/Xingyu-Lin/DiffSkill">Project Page</a> /
-                <a href="javascript:copy(div2022_diffskill, abs2022_diffskill)">Abstract</a> /
-                <a href="javascript:copy(div2022_diffskill, bib2022_diffskill)">Bibtex</a>
-                <div id="abs2022_diffskill" style="display:none">
-                    <div ><object data="bibtex/abs2022_diffskill.txt" type="text/plain" width="100%"> </object></div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2019_indicator.png" alt="">
                 </div>
-                <div id="bib2022_diffskill" style="display:none">
-                    <div><object data="bibtex/bib2022_diffskill.txt" type="text/plain" width="100%"> </object></div>
+                <div class="col-md-9">
+                    <b> Reinforcement Learning without Ground-Truth State </b>
+                    <br>
+                    <b>Xingyu Lin</b>, Harjatin Singh Baweja, David Held
+                    <br>
+                    <b><a target="_blank" href="https://icml.cc/Conferences/2019">ICML 2019</a></b>, Workshop on Multi-Task and Lifelong Reinforcement Learning
+                    <a href="https://sites.google.com/view/mtlrl" target="_blank"><small>[Link]</small></a>
+                    <br>
+                    <a target="_blank" href="./papers/2019_rl.pdf">Paper</a> /
+                    <a target="_blank" href="https://www.youtube.com/watch?v=Uxt4oK1XgTs">Video</a> /
+                    <!--                <a target="_blank" >Project Page</a> /-->
+                    <!--                <a target="_blank" >Code</a>-->
+                    <a href="javascript:copy(div2019_icra, bib2019_icra)">Bibtex</a>
+                    <div id="bib2019_icra" style="display:none">
+                        <div><object data="bibtex/bib2019_icra.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2019_icra" class="pubInfo"></div>
                 </div>
-                <div id="div2022_diffskill" class="pubInfo"> </div>
-                <small>Covered by</small>
-                <a href="https://news.mit.edu/2022/robotic-deformable-object-0331" target="_blank"> <small>[MIT News]</small></a>
-                <a href="https://techcrunch.com/2022/03/31/better-learning-through-complex-dough-manipulation/" target="_blank"> <small>[TechCrunch]</small></a>
-                <a href="https://cosmosmagazine.com/technology/ai/robot-pizza-dough-making/" target="_blank"> <small>[COSMOS]</small></a>
-                <a href="https://bdtechtalks.com/2022/05/09/diffskill-robotics-deformable-object-manipulation/" target="_blank"> <small>[TechTalks]</small></a>
-                <a href="https://www.azorobotics.com/News.aspx?newsID=12865" target="_blank"> <small>[AZO Robotics]</small></a>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2022_pouring.gif" alt="">
-            </div>
-            <div class="col-md-9">
-                <b>Transparent Liquid Segmentation for Robotic Pouring </b>
-                <br>
-                Gautham Narasimhan, Kai Zhang, Ben Eisner, <b>Xingyu Lin</b>, David Held
-                <br>
-                <b><a target="_blank" href="https://www.icra2022.org/"> ICRA 2022</a></b>
-                <br>
-                <a target="_blank" href="https://arxiv.org/abs/2203.01538">Paper</a> /
-                <a target="_blank" href="https://github.com/gauthamnarayan/transparent-liquid-segmentation">Code</a> /
-                <a target="_blank" href="https://sites.google.com/view/transparentliquidpouring">Project Page</a> /
-                <a href="javascript:copy(div2022_pour, abs2022_pour)">Abstract</a> /
-                <a href="javascript:copy(div2022_pour, bib2022_pour)">Bibtex</a>
-                <div id="abs2022_pour" style="display:none">
-                    <div ><object data="bibtex/abs2022_pour.txt" type="text/plain" width="100%"> </object></div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2018_casa.png" alt="">
                 </div>
-                <div id="bib2022_pour" style="display:none">
-                    <div><object data="bibtex/bib2022_pour.txt" type="text/plain" width="100%"> </object></div>
+                <div class="col-md-9">
+                    <b> Time‐varying light motion in single convergence</b>
+                    <br>
+                    <b>Xingyu Lin</b>, Mingxuan Chai, Sheng Li, Guoping Wang
+                    <br>
+                    <b><a href="http://www.wikicfp.com/cfp/program?id=362&s=CASA&f=Computer%20Animation%20and%20Social%20Agents"
+                          target="_blank"> CASA 2018</a></b>
+                    <br>
+                    <a target="_blank" href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/cav.1839">Paper</a> /
+                    <a target="_blank" href="https://github.com/Xingyu-Lin/ChurchX">Code</a> /
+                    <a target="_blank" href="https://www.youtube.com/watch?v=4vK0MRDAAGA">Video</a>
                 </div>
-                <div id="div2022_pour" class="pubInfo"></div>
-                <small>Covered by</small>
-                <a href="https://www.cs.cmu.edu/news/2022/robots-pouring-water" target="_blank"> <small>[CMU SCS News (Pour me a Glass)]</small></a>
-                <br>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2021_vcd.gif" alt="">
-            </div>
-            <div class="col-md-9">
-                <b> Learning Visible Connectivity Dynamics for Cloth Smoothing </b>
-                <br>
-                <b>Xingyu Lin*</b>, Yufei Wang*, Zixuan Huang, David Held
-                <br>
-                <b><a target="_blank" href="https://www.robot-learning.org/">CoRL 2021</a></b>
-                <br>
-                <a target="_blank" href="https://arxiv.org/pdf/2105.10389.pdf">Paper</a> /
-                <a target="_blank" href="https://github.com/Xingyu-Lin/VCD">Code</a> /
-                <a target="_blank" href="https://sites.google.com/view/vcd-cloth/home">Project Page</a> /
-                <a target="_blank" href="https://www.youtube.com/watch?v=JUDvFYWKORY&t=1s">Video</a> /
-                <a href="javascript:copy(div2021_vcd, abs2021_vcd)">Abstract</a> /
-                <a href="javascript:copy(div2021_vcd, bib2021_vcd)">Bibtex</a>
-                <div id="abs2021_vcd" style="display:none">
-                    <div ><object data="bibtex/abs2021_vcd.txt" type="text/plain" width="100%"> </object></div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid img-rounded" src="img/thumbnail_pub/2017_iclr.png" alt="">
                 </div>
-                <div id="bib2021_vcd" style="display:none">
-                    <div><object data="bibtex/bib2021_vcd.txt" type="text/plain" width="100%"> </object></div>
+                <div class="col-md-9">
+                    <b>Transfer of View-manifold Learning to Similarity Perception</b>
+                    <br>
+                    <b>Xingyu Lin</b>, Hao Wang, Zhihao Li, Yimeng Zhang, Alan Yuille, Tai Sing Lee
+                    <br>
+                    <b><a href="https://iclr.cc/archive/www/doku.php%3Fid=iclr2017:main.html" target="_blank"> ICLR 2017</a></b>
+                    <br>
+                    <a target="_blank" href="https://arxiv.org/abs/1704.00033">Paper</a> /
+                    <a href="javascript:copy(div2017_iclr, bib2017_iclr)">Bibtex</a>
+                    <div id="bib2017_iclr" style="display:none">
+                        <div><object data="bibtex/bib2017_iclr.txt" type="text/plain" width="100%"> </object></div>
+                    </div>
+                    <div id="div2017_iclr" class="pubInfo"></div>
                 </div>
-                <div id="div2021_vcd" class="pubInfo"></div>
-                Abridged in ICRA 2021 workshop on Representing and Manipulating Deformable Object
-                <a href="https://deformable-workshop.github.io/icra2021/" target="_blank"><small>[Link]</small></a>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2020_softgym.png" alt="">
-            </div>
-            <div class="col-md-9">
-                <b> SoftGym: Benchmarking Deep Reinforcement Learning for Deformable Object Manipulation </b>
-                <br>
-                <b>Xingyu Lin</b>, Yufei Wang, Jake Olkin, David Held
-                <br>
-                <b><a target="_blank" href="https://www.robot-learning.org/">CoRL 2020</a></b>
-                <br>
-                <a target="_blank" href="./papers/2020_softgym.pdf">Paper</a> /
-                <a target="_blank" href="https://github.com/Xingyu-Lin/softgym">Code</a> /
-                <a target="_blank" href="https://sites.google.com/view/softgym/home">Project Page</a> /
-                <a href="javascript:copy(div2020_softgym, bib2020_softgym)">Bibtex</a>
-                <div id="bib2020_softgym" style="display:none">
-                    <div><object data="bibtex/bib2020_softgym.txt" type="text/plain" width="100%"> </object></div>
-                </div>
-                <div id="div2020_softgym" class="pubInfo"></div>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2020_roll.png" alt="">
-            </div>
-            <div class="col-md-9">
-                <b> Visual Self-Supervised Reinforcement Learning with Object Reasoning </b>
-                <br>
-                Yufei Wang*, Gautham Narayan*, <b>Xingyu Lin</b>, Brian Okorn, David Held
-                <br>
-                <b><a target="_blank" href="https://www.robot-learning.org/">CoRL 2020</a></b>
-                <br>
-                <a target="_blank" href="./papers/2020_roll.pdf">Paper</a> /
-                <a target="_blank" href="https://github.com/yufeiwang63/ROLL">Code</a> /
-                <a target="_blank" href="https://sites.google.com/andrew.cmu.edu/roll/home">Project Page</a>/
-                <a href="javascript:copy(div2020_roll, bib2020_roll)">Bibtex</a>
-                <div id="bib2020_roll" style="display:none">
-                    <div><object data="bibtex/bib2020_roll.txt" type="text/plain" width="100%"> </object></div>
-                </div>
-                <div id="div2020_roll" class="pubInfo"></div>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2019_olaux.png" alt="">
-            </div>
-            <div class="col-md-9">
-                <b> Adaptive Auxiliary Task Weighting for Reinforcement Learning </b>
-                <br>
-                <b>Xingyu Lin*</b>, Harjatin Baweja*, George Kantor, David Held
-                <br>
-                <b><a href="https://nips.cc/Conferences/2019/" target="_blank"> NeurIPS 2019</a></b>
-                <br>
-                <a target="_blank" href="https://papers.nips.cc/paper/8724-adaptive-auxiliary-task-weighting-for-reinforcement-learning" >Paper</a> /
-                <a target="_blank" href="https://github.com/Xingyu-Lin/auxiliary-tasks-rl">Code</a> /
-                <a target="_blank" href="https://www.dropbox.com/s/keaby4ualrgu99z/poster.pdf?dl=0" >Poster</a> /
-                <a target="_blank" href="https://www.dropbox.com/s/ry2wd7i8qho9cqm/NeurIPS2019_slides.pdf?dl=0" >Slides</a> /
-                <a href="javascript:copy(div2019_olaux, bib2019_olaux)">Bibtex</a>
-                <div id="bib2019_olaux" style="display:none">
-                    <div><object data="bibtex/bib2019_olaux.txt" type="text/plain" width="100%"> </object></div>
-                </div>
-                <div id="div2019_olaux" class="pubInfo"></div>
-                Abridged in ICML 2019 workshop on Multi-Task and Lifelong Reinforcement Learning
-                <a href="https://sites.google.com/view/mtlrl" target="_blank"><small>[Link]</small></a>
-            </div>
-        </div>
-        <hr>
-
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2019_icra.png" alt="">
-            </div>
-            <div class="col-md-9">
-                <b>Adaptive Variance for Changing Sparse-Reward Environments</b>
-                <br>
-                <b>Xingyu Lin</b>, Pengsheng Guo, Carlos Florensa, David Held
-                <br>
-                <b><a href="https://www.icra2019.org/" target="_blank"> ICRA 2019</a></b>
-                <br>
-                <a target="_blank" href="https://arxiv.org/abs/1903.06309">Paper</a> /
-                <a target="_blank" href="https://sites.google.com/andrew.cmu.edu/adaptive-variance">Project Page</a> /
-                <a target="_blank" href="https://www.youtube.com/watch?v=SxkQGd6QhfA">Video</a> /
-                <a href="javascript:copy(div2019_icra, bib2019_icra)">Bibtex</a>
-                <div id="bib2019_icra" style="display:none">
-                    <div><object data="bibtex/bib2019_icra.txt" type="text/plain" width="100%"> </object></div>
-                </div>
-                <div id="div2019_icra" class="pubInfo"></div>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2019_indicator.png" alt="">
-            </div>
-            <div class="col-md-9">
-                <b> Reinforcement Learning without Ground-Truth State </b>
-                <br>
-                <b>Xingyu Lin</b>, Harjatin Singh Baweja, David Held
-                <br>
-                <b><a target="_blank" href="https://icml.cc/Conferences/2019">ICML 2019</a></b>, Workshop on Multi-Task and Lifelong Reinforcement Learning
-                <a href="https://sites.google.com/view/mtlrl" target="_blank"><small>[Link]</small></a>
-                <br>
-                <a target="_blank" href="./papers/2019_rl.pdf">Paper</a> /
-                <a target="_blank" href="https://www.youtube.com/watch?v=Uxt4oK1XgTs">Video</a> /
-                <!--                <a target="_blank" >Project Page</a> /-->
-                <!--                <a target="_blank" >Code</a>-->
-                <a href="javascript:copy(div2019_icra, bib2019_icra)">Bibtex</a>
-                <div id="bib2019_icra" style="display:none">
-                    <div><object data="bibtex/bib2019_icra.txt" type="text/plain" width="100%"> </object></div>
-                </div>
-                <div id="div2019_icra" class="pubInfo"></div>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2018_casa.png" alt="">
-            </div>
-            <div class="col-md-9">
-                <b> Time‐varying light motion in single convergence</b>
-                <br>
-                <b>Xingyu Lin</b>, Mingxuan Chai, Sheng Li, Guoping Wang
-                <br>
-                <b><a href="http://www.wikicfp.com/cfp/program?id=362&s=CASA&f=Computer%20Animation%20and%20Social%20Agents"
-                      target="_blank"> CASA 2018</a></b>
-                <br>
-                <a target="_blank" href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/cav.1839">Paper</a> /
-                <a target="_blank" href="https://github.com/Xingyu-Lin/ChurchX">Code</a> /
-                <a target="_blank" href="https://www.youtube.com/watch?v=4vK0MRDAAGA">Video</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid img-rounded" src="img/thumbnail_pub/2017_iclr.png" alt="">
-            </div>
-            <div class="col-md-9">
-                <b>Transfer of View-manifold Learning to Similarity Perception</b>
-                <br>
-                <b>Xingyu Lin</b>, Hao Wang, Zhihao Li, Yimeng Zhang, Alan Yuille, Tai Sing Lee
-                <br>
-                <b><a href="https://iclr.cc/archive/www/doku.php%3Fid=iclr2017:main.html" target="_blank"> ICLR 2017</a></b>
-                <br>
-                <a target="_blank" href="https://arxiv.org/abs/1704.00033">Paper</a> /
-                <a href="javascript:copy(div2017_iclr, bib2017_iclr)">Bibtex</a>
-                <div id="bib2017_iclr" style="display:none">
-                    <div><object data="bibtex/bib2017_iclr.txt" type="text/plain" width="100%"> </object></div>
-                </div>
-                <div id="div2017_iclr" class="pubInfo"></div>
-            </div>
-        </div>
-        <br> <br>
+         </script>
+<!--        <br> <br>-->
     </div>
 </section>
 
@@ -601,8 +767,9 @@
 
 <!-- Custom scripts for this template -->
 <!--<script src="js/grayscale.js"></script>-->
-<script src="js/custom.js"></script>
 
+
+<script>showPubs(0);</script>
 </body>
 
 </html>
