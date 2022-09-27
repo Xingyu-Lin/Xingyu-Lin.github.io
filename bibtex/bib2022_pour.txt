@@ -1,5 +1,5 @@
 @inproceedings{icra2022pouring,
 title={Transparent Liquid Segmentation for Robotic Pouring},
-author={Gautham Narasimhan, Kai Zhang, Ben Eisner, Xingyu Lin, David Held},
+author={Narasimhan, Gautham and Zhang, Kai and Eisner, Ben and Lin, Xingyu and Held, David},
 booktitle={2022 International Conference on Robotics and Automation (ICRA)},
 year={2022}}
