@@ -1,0 +1,6 @@
+@inproceedings{lin2022planning,
+  title={Planning with Spatial-Temporal Abstraction from Point Clouds for Deformable Object Manipulation},
+  author={Lin, Xingyu and Qi, Carl and Zhang, Yunchu and Huang, Zhiao and Fragkiadaki, Katerina and Li, Yunzhu and Gan, Chuang and Held, David},
+  booktitle={6th Annual Conference on Robot Learning},
+  year={2022}
+}
