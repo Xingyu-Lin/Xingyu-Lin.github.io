@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpawnNet</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SpawnNet: Learning Generalizable Visuomotor Skills from Pre-trained Networks</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Anonymous Authors</a><sup>1</sup>,</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          The existing internet-scale image and video datasets cover a wide range of everyday objects and tasks,
+          which brings the potential of learning visuomotor skills that can generalize in diverse situations using
+          pre-trained representations. Prior works have explored different datasets and self-supervised objectives
+          to approach this goal, but the power of pre-training has not yet been demonstrated in the generalization
+          perspective across unseen instances and situations. In this work, we put this challenge on the table,
+          focusing on how pre-trained representations can help the generalization of the learned skills. We first
+          identify the key bottleneck in using a frozen pre-trained visual backbone for policy learning. We then
+          propose SpawnNet, a novel two-stream architecture that learns to fuse pre-trained multi-layer
+          representations into a separate network to learn a robust policy. Through extensive simulated and real
+          experiments, we demonstrate significantly better categorical generalization compared to prior approaches
+          in imitation learning settings.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <img src="./static/images/method.png" alt="teaser" class="teaser-image">
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Tasks and Performance</h2>
+        <img src="./static/images/all_tasks.png" alt="teaser" class="teaser-image">
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Sim Task Rollouts</h2>
+        <p>
+          We depict the training instances on the left and held out instances on the right.
+          A green border appears around an instance once the agent successfully completes the task.
+          Each video is a unique instance.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Open Door</h2>
+        <p>
+          We train on 20 different instances and evaluate on 8 hold out instances.
+          The policy must learn to open doors that open either leftward or rightward in varying positions.
+        </p>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/sim_door_fig_720.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Open Drawer</h2>
+        <p>
+          We train on 21 different instances and evaluate on 12 hold out instances.
+          The policy must learn to open drawers at different heights.
+        </p>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/sim_drawer_fig_720.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Real World Task Rollouts</h2>
+        <p>
+          We depict the training instances on the left and the held out instances on the right.
+          We also display both the wrist and base camera views; for each row of two stacked images,
+          the top is the wrist view and the bottom is the base view.
+          For these experiments, the policy only has access to RGB images (i.e. no depth and no proprioception).
+          Each video is a unique instance.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3">Place Bag</h3>
+        <p>
+          The bag's position, rotation, and height are varied. We train on 3 bags and evaluate on 6 hold out bags.
+          Bags vary significantly in shape, color, and geometry of the handle.
+        </p>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/bag_fig_720.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3">Hang Hat</h3>
+        <p>
+          The hat's rotation and position are slightly varied. We train on 3 bags and evaluate on 6 hold out bags.
+          Hats vary in color and shape of the brim; they also deform slightly during the task.
+        </p>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/hat_fig_720.mp4"
+                  type="video/mp4">
+        </video>
+        </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3">Tidy Tools</h3>
+        <p>
+          The tool's position and rotation are varied.
+          The drawer's position and rotation are also varied.
+          We train on 3 bags and evaluate on 6 hold out bags.
+          Here, drawers vary drastically in the geometry and color.
+        </p>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/drawer_fig_720.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3">Visualization: what features are we attending to?</h3>
+        <p>We visualize the spatial features that we extract from the pretrained network.
+          This visualization was obtained by taking the norm of the activations in the last layer of each adapter layer.
+          We display the raw RGB, along with the features extracted from layers 6, 9, and 12 of DINO ViT-S/8.
+        </p>
+        <br>
+        <p>
+          Note that the features are consistent across instances, and shift over time; when grasping all bags, the attention focuses on the handle.
+          When placing bags, the attention goes towards the table and the stand. This occurs in even bags that are unseen during training. </p>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/final_bags.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
