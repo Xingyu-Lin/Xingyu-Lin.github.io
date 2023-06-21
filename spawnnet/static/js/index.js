@@ -1,24 +1,49 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-var INTERP_BASE = "./static/interpolation/stacked";
-var NUM_INTERP_FRAMES = 240;
+var INTERP_BASE_1 = "./static/interpolation/stacked";
+var INTERP_BASE_2 = "./static/interpolation/stacked";
+var INTERP_BASE_3 = "./static/interpolation/stacked";
+var NUM_INTERP_FRAMES = 60;
 
-var interp_images = [];
+var interp_images_1 = [];
+var interp_images_2 = [];
+var interp_images_3 = [];
 function preloadInterpolationImages() {
   for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
-    interp_images[i] = new Image();
-    interp_images[i].src = path;
+    var path = INTERP_BASE_1 + '/' + String(i).padStart(6, '0') + '.png';
+    interp_images_1[i] = new Image();
+    interp_images_1[i].src = path;
+
+    path = INTERP_BASE_2 + '/' + String(i).padStart(6, '0') + '.png';
+    interp_images_2[i] = new Image();
+    interp_images_2[i].src = path;
+
+    path = INTERP_BASE_3 + '/' + String(i).padStart(6, '0') + '.png';
+    interp_images_3[i] = new Image();
+    interp_images_3[i].src = path;
   }
 }
 
-function setInterpolationImage(i) {
-  var image = interp_images[i];
+function setInterpolationImage1(i) {
+  var image = interp_images_1[i];
   image.ondragstart = function() { return false; };
   image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper').empty().append(image);
+  $('#interpolation-image-wrapper-1').empty().append(image);
 }
 
+function setInterpolationImage2(i) {
+  var image = interp_images_2[i];
+  image.ondragstart = function() { return false; };
+  image.oncontextmenu = function() { return false; };
+  $('#interpolation-image-wrapper-2').empty().append(image);
+}
+
+function setInterpolationImage3(i) {
+  var image = interp_images_3[i];
+  image.ondragstart = function() { return false; };
+  image.oncontextmenu = function() { return false; };
+  $('#interpolation-image-wrapper-3').empty().append(image);
+}
 
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
@@ -67,12 +92,37 @@ $(document).ready(function() {
     }, false);*/
     preloadInterpolationImages();
 
-    $('#interpolation-slider').on('input', function(event) {
-      setInterpolationImage(this.value);
+    $('#interpolation-slider-1').on('input', function(event) {
+      setInterpolationImage1(this.value);
     });
-    setInterpolationImage(0);
-    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
+    setInterpolationImage1(0);
+    $('#interpolation-slider-1').prop('max', NUM_INTERP_FRAMES - 1);
 
     bulmaSlider.attach();
 
+    $('#interpolation-slider-2').on('input', function(event) {
+      setInterpolationImage2(this.value);
+    });
+    setInterpolationImage2(0);
+    $('#interpolation-slider-2').prop('max', NUM_INTERP_FRAMES - 1);
+
+    bulmaSlider.attach();
+
+    $('#interpolation-slider-3').on('input', function(event) {
+      setInterpolationImage3(this.value);
+    });
+    setInterpolationImage3(0);
+    $('#interpolation-slider-3').prop('max', NUM_INTERP_FRAMES - 1);
+
+    bulmaSlider.attach();
+
+    $('.card-header-tabs li').click(function() {
+      var tab_id = $(this).index();
+
+      $('.card-header-tabs li').removeClass('is-active');
+      $(this).addClass('is-active');
+
+      $('.tab-pane').removeClass('is-active');
+      $('.tab-pane').eq(tab_id).addClass('is-active');
+    });
 })

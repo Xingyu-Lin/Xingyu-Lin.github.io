@@ -33,9 +33,77 @@
           <h1 class="title is-1 publication-title">SpawnNet: Learning Generalizable Visuomotor Skills from Pre-trained Networks</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="">Anonymous Authors</a><sup>1</sup>,</span>
+              <a href="https://keunhong.com">Xingyu Lin</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://utkarshsinha.com">John So</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://jonbarron.info">Sashwat Mahalingam</a>,
+            </span>
+            <span class="author-block">
+              <a href="http://sofienbouaziz.com">Fangchen Liu</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.danbgoldman.com">Pieter Abbeel</a>,
+            </span>
           </div>
+
           <div class="is-size-5 publication-authors">
+            <span class="author-block">UC Berkeley</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
           </div>
         </div>
       </div>
@@ -43,11 +111,31 @@
   </div>
 </section>
 
-<section class="section">
+<section class="hero">
+  <div class="container is-max-desktop">
+    <!-- Teaser; let's make this the impressive generalizations -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <video id="teaser" preload="auto" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/teaser.mp4"
+                  type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          Using <strong>SpawnNet</strong>, we train policies to manipulate a variety of unseen variations with as few as
+          30 demonstrations across 3 different instances.
+        </h2>
+      </div>
+    </div>
+  </div>
+  <br>
+</section>
+
+<section class="hero is-light">
+  <br>
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
@@ -62,138 +150,840 @@
           representations into a separate network to learn a robust policy. Through extensive simulated and real
           experiments, we demonstrate significantly better categorical generalization compared to prior approaches
           in imitation learning settings.
-          </p>
+          </p><br>
         </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
-        <img src="./static/images/method.png" alt="teaser" class="teaser-image">
-      </div>
-    </div>
-
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Tasks and Performance</h2>
-        <img src="./static/images/all_tasks.png" alt="teaser" class="teaser-image">
-      </div>
-    </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Sim Task Rollouts</h2>
-        <p>
-          We depict the training instances on the left and held out instances on the right.
-          A green border appears around an instance once the agent successfully completes the task.
-          Each video is a unique instance.
-        </p>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Open Door</h2>
-        <p>
-          We train on 20 different instances and evaluate on 8 hold out instances.
-          The policy must learn to open doors that open either leftward or rightward in varying positions.
-        </p>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/sim_door_fig_720.mp4"
-                  type="video/mp4">
-        </video>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Open Drawer</h2>
-        <p>
-          We train on 21 different instances and evaluate on 12 hold out instances.
-          The policy must learn to open drawers at different heights.
-        </p>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/sim_drawer_fig_720.mp4"
-                  type="video/mp4">
-        </video>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Real World Task Rollouts</h2>
-        <p>
-          We depict the training instances on the left and the held out instances on the right.
-          We also display both the wrist and base camera views; for each row of two stacked images,
-          the top is the wrist view and the bottom is the base view.
-          For these experiments, the policy only has access to RGB images (i.e. no depth and no proprioception).
-          Each video is a unique instance.
-        </p>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h3 class="title is-3">Place Bag</h3>
-        <p>
-          The bag's position, rotation, and height are varied. We train on 3 bags and evaluate on 6 hold out bags.
-          Bags vary significantly in shape, color, and geometry of the handle.
-        </p>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/bag_fig_720.mp4"
-                  type="video/mp4">
-        </video>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h3 class="title is-3">Hang Hat</h3>
-        <p>
-          The hat's rotation and position are slightly varied. We train on 3 bags and evaluate on 6 hold out bags.
-          Hats vary in color and shape of the brim; they also deform slightly during the task.
-        </p>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/hat_fig_720.mp4"
-                  type="video/mp4">
-        </video>
-        </div>
-    </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h3 class="title is-3">Tidy Tools</h3>
-        <p>
-          The tool's position and rotation are varied.
-          The drawer's position and rotation are also varied.
-          We train on 3 bags and evaluate on 6 hold out bags.
-          Here, drawers vary drastically in the geometry and color.
-        </p>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/drawer_fig_720.mp4"
-                  type="video/mp4">
-        </video>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h3 class="title is-3">Visualization: what features are we attending to?</h3>
-        <p>We visualize the spatial features that we extract from the pretrained network.
-          This visualization was obtained by taking the norm of the activations in the last layer of each adapter layer.
-          We display the raw RGB, along with the features extracted from layers 6, 9, and 12 of DINO ViT-S/8.
-        </p>
-        <br>
-        <p>
-          Note that the features are consistent across instances, and shift over time; when grasping all bags, the attention focuses on the handle.
-          When placing bags, the attention goes towards the table and the stand. This occurs in even bags that are unseen during training. </p>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/final_bags.mp4"
-                  type="video/mp4">
-        </video>
       </div>
     </div>
   </div>
 </section>
 
-<section class="hero teaser">
+<section class="section">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-
+    <!--/ Method. -->
+    <div class="columns is-centered has-text-left">
+      <div class="column">
+        <h2 class="title is-3">Method</h2>
+      </div>
     </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          Prior approaches extract the CLS token at the last layer as the image representation. The representation is typically frozen
+          as fine-tuning vision transformers requires large computation. However, this archtecture lacks flexibility in adapting
+          the visual features. This potentially hinders downstream policy learning for two reasons. First, the self-supervised objectives
+          in pretraining may not align with the policy learning objective. Second, datasets used for pre-training can have a different
+          distribution from downstream tasks in domains, tasks, or camera viewpoints.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-10">
+        <img src="./static/images/merged_method.png" alt="teaser" class="teaser-image">
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          To learn more flexible task-specific representations while taking advantage of the pre-trained features, Spawn-Net
+          trains a separate stream of convolutional neural networks (CNN) from scratch, taking the raw observation as input.
+          At the same time, we design adapter modules to fuse the new stream with the pre-trained features at different layers,
+          taking advantage of the robust features as needed. Additionally, this architecture allows us to incorporate different
+          modalities like depth in this separate stream, which is typically not in the pre-trained vision networks.
+        </p><br>
+        <!-- <h2 class="title is-5">Adapter Layers</h2>
+        <p>
+          We first extract spatially dense descriptors from different layers of the pre-trained networks. At the lth layer of
+          the vision transformer, we extract the key feature in MHSA from each token, forming a feature grid of φl(I) ∈ HxWxC,
+          where HxW is the number of image patches and C is the feature dimension. Extracting features from different layers
+          allows us to extract both low-level and high level visual features from the pre-trained network. We fuse the features
+          from the two streams of networks at different layers as shown using <emph>adapter layers</emph>. The adapter first maps
+          the pre-trained feature into a latent embedding of size D through a convolutional kernel of size 1 and stride 1.
+          It then resizes the feature from HcW to H_lxW_l with bi-linear interpolation and finally concatenates them in the feature
+          dimension. It is then passed through two residual blocks to be processed in the next layers.
+        </p> -->
+      </div>
+      <!-- <div class="column is-4">
+        <img src="./static/images/arch.png" alt="teaser" class="teaser-image">
+      </div> -->
+    </div>
+
+    <div class="columns is-centered has-text-left">
+      <div class="column">
+        <h2 class="title is-3">Results</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          We evaluate our policy against baselines on 2 simulated tasks and 3 real-world tasks.
+          Within these tasks, we test difficult intra-category generalization by training on several seen <i>training</i> instances,
+          and testing on several unseen <i>held-out</i> instances.
+        </p><br>
+        <p>
+          In simulation, we perform DAgger to decouple covariate shift from visual representations;
+          using RL expert policies trained using PPO, we train image-based policies. In the real world,
+          we train using behavior cloning (BC) with fewer instances seen during training.
+        </p><br>
+        <img src="./static/images/results_v3.png" alt="teaser" class="teaser-image">
+      </div>
+    </div>
+    <div class="columns is-centered has-text-left is-multiline">
+      <div class="column is-12">
+        <h2 class="title is-5">Open Door</h2>
+      </div>
+      <div class="column is-12">
+        <p>
+          We train on 20 different instances and evaluate on 8 hold out instances.
+          The policy must learn to open doors that open either leftward or rightward in varying positions.
+        </p><br>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-left">
+      <div class="column">
+        <h2 class="title is-5">Open Drawer</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          We train on 21 different instances and evaluate on 12 hold out instances.
+          The policy must learn to open drawers at different heights.
+        </p><br>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="columns is-multiline has-text-left">
+      <div class="column is-12">
+        <h3 class="title is-5">Place Bag</h3>
+      </div>
+      <div class="column is-12">
+        <p>
+          The bag's position, rotation, and height are varied. We train on 3 bags and evaluate on 6 hold out bags.
+          Bags vary significantly in shape, color, and geometry of the handle.
+        </p><br>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="columns is-multiline has-text-left">
+      <div class="column is-12">
+        <h3 class="title is-5">Hang Hat</h3>
+      </div>
+      <div class="column is-12">
+        <p>
+          The hat's rotation and position are slightly varied. We train on 3 hats and evaluate on 6 hold out hats.
+          Hats vary in color and shape of the brim; they also deform slightly during the task.
+        </p><br>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="columns has-text-left is-multiline">
+      <div class="column is-12">
+        <h3 class="title is-5">Tidy Tools</h3>
+      </div>
+      <div class="column is-12">
+        <p>
+          The tool's position and rotation are varied.
+          The drawer's position and rotation are also varied.
+          We train on 3 drawers and evaluate on 6 hold out drawers.
+          Here, drawers vary drastically in the geometry and color.
+        </p><br>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="video_grid">
+      <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+      <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="auto" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/_inst_8.mp4"
+            type="video/mp4">
+          </video>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-left">
+      <div class="column">
+        <h3 class="title is-3">Visualization: what features are we attending to?</h3>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          We visualize the spatial features extracted during the Place-Bag task.
+          These features are extracted by 3 adapters, over layers 5, 8, and 11 of the DINO-ViT S/8 pretrained network.
+        </p><br>
+        <p>
+          A single rollout's visualization is a 2x4 grid; the first stacked row is the train instances, and the bottom 2 stacked rows are the hold out instances.
+          The 4 columns are an RGB frame followed by the spatial norms of activated feature maps outputted by the 3 adapter layers.
+          Each rollout's 2x4 grid is separated from the other rollouts by the thick black border.
+        </p><br>
+        <p>
+          Note that the features are consistent across instances.
+          For example, when grasping all bags, the attention focuses on the handle.
+          This occurs in even bags that are unseen during training.
+        </p><br>
+        <p>
+          Visualizations are recorded at 5 FPS, consistent with the policy's control frequency.
+        </p><br>
+        <video id="dollyzoom" preload="auto" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/final_bags.mp4"
+          type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-left\">
+      <div class="column">
+        <h2 class="title is-5">Visualizing consistency step-by-step</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          Here, we visualize some notable consistencies.
+          Drag the sliders below to visualize the consistency per timestep.
+        </p><br>
+      </div>
+    </div>
+    <div class="columns is-centered interpolation-panel">
+      <div class="column interpolation-video-column">
+        <div id="interpolation-image-wrapper-1">
+          Loading...
+        </div>
+        <input class="slider is-fullwidth is-medium is-info"
+        id="interpolation-slider-1"
+        step="1" min="0" max="100" value="0" type="range">
+      </div>
+    </div>
+    <p>
+      The handle of the bag remains consistent despite changes in its position and geometry.
+    </p><br>
+    <div class="columns is-centered interpolation-panel">
+      <div class="column interpolation-video-column">
+        <div id="interpolation-image-wrapper-2">
+          Loading...
+        </div>
+        <input class="slider is-fullwidth is-medium is-info"
+        id="interpolation-slider-2"
+        step="1" min="0" max="100" value="0" type="range">
+      </div>
+    </div>
+    <p>
+      The screwdriver's activiation remains consistent despite significant changes in the background.
+    </p><br>
+    <div class="columns is-centered interpolation-panel">
+      <div class="column interpolation-video-column">
+        <div id="interpolation-image-wrapper-3">
+          Loading...
+        </div>
+        <input class="slider is-fullwidth is-medium is-info"
+        id="interpolation-slider-3"
+        step="1" min="0" max="100" value="0" type="range">
+      </div>
+    </div>
+    <p>
+      The policy recognizes the geometric shape of the brim, even with different colors.
+    </p><br>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="titile">BibTeX</h2>
+    <pre><code>@inproceedings{lin2023generalize,
+            title={x},
+            author={x},
+            journal={x},
+            year={x}
+          }</code></pre>
   </div>
 </section>
 
@@ -207,14 +997,10 @@
             This website is licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
+          </p><br>
           <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
+            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p><br>
         </div>
       </div>
     </div>
