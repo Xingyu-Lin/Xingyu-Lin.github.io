@@ -175,11 +175,11 @@ body {
 }
 
 .training {
-  border: 3px solid #d7dae8;
+  border: 3px solid #7d8ac8;
 }
 
 .validation {
-  border: 3px solid #ffc8c9;
+  border: 3px solid #dc787a;
 }
 
 .grid-video {
@@ -191,8 +191,8 @@ body {
 .video_grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   margin-top: 3px;
   margin-bottom: 3px;
 }
@@ -202,17 +202,17 @@ body {
   /* padding on the sides */
   margin-left: 3px;
   margin-right: 3px;
-  width: calc((100% - 36px) / 7);
+  width: calc((100% - 44px) / 8);
 }
 
 .video_grid_item_left {
   /* padding on the sides */
   margin-right: 3px;
-  width: calc((100% - 36px) / 7);
+  width: calc((100% - 44px) / 8);
 }
 
 .video_grid_item_right {
   /* padding on the sides */
   margin-left: 3px;
-  width: calc((100% - 40px) / 7);
+  width: calc((100% - 44px) / 8);
 }
