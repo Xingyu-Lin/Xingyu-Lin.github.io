@@ -107,24 +107,6 @@ body {
     height: 100%;
 }
 
-.results-carousel {
-  overflow: hidden;
-}
-
-.results-carousel .item {
-  margin: 5px;
-  overflow: hidden;
-  border: 1px solid #bbb;
-  border-radius: 10px;
-  padding: 0;
-  font-size: 0;
-}
-
-.results-carousel video {
-  margin: 0;
-}
-
-
 .interpolation-panel {
   background: #f5f5f5;
   border-radius: 10px;
@@ -215,4 +197,58 @@ body {
   /* padding on the sides */
   margin-left: 3px;
   width: calc((100% - 44px) / 8);
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.carousel .item {
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top:20px;
+  margin-bottom:25px;
+  padding-left:25px;
+  padding-right:25px;
+}
+
+.img-container {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.caption-container {
+  width: 90%;
+}
+
+.img-container img {
+  width: calc((100% - 20px) / 4);
+  height: auto;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+
+.img-container .training {
+  margin-left: 2px;
+  margin-right: 5px;
+}
+
+.img-container .validation {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.affordance-viz {
+  background-color:#f5f5f5;
+  padding: 10px;
+  border-radius: 10px;
+  width:80%
 }

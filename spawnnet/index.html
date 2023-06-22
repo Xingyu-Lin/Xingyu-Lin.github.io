@@ -32,10 +32,10 @@
           <h1 class="title is-1 publication-title">SpawnNet: Learning Generalizable Visuomotor Skills from Pre-trained Networks</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://xingyu-lin.github.io" target="_blank">Xingyu Lin*</a>,
+              <a href="https://xingyu-lin.github.io" target="_blank">Xingyu Lin</a>*,
             </span>
             <span class="author-block">
-              <a href="https://www.johnrso.xyz/" target="_blank">John So*</a>,
+              <a href="https://www.johnrso.xyz/" target="_blank">John So</a>*,
             </span>
             <span class="author-block">
               <a href="https://sashwat-mahalingam.github.io" target="_blank">Sashwat Mahalingam</a>,
@@ -223,13 +223,22 @@
           using RL expert policies trained using PPO, we train image-based policies. In the real world,
           we train using behavior cloning (BC) with fewer instances seen during training.
         </p><br>
-        <img src="./static/images/results_v3.png" alt="teaser" class="teaser-image">
+        <img src="./static/images/results_v3.png" alt="teaser" class="teaser-image"><br>
+        <p>
+          SpawnNet outperforms all baselines by a significant margin across both simulation and real tasks, including ones using
+          pretrained features and trained from scratch. Furthermore, in real-world experiments, we show that by adding
+          the additional depth information in the learned-from-scratch stream, we can further improve the performance of SpawnNet
+          by up to 15%.
+        </p>
       </div>
     </div>
-    <div class="columns">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <h2 class="title is-5">Visualizations</h2>
+      </div>
       <div class="column has-text-left">
         <p>
-          Click on each of the tabs below to visualize rollouts of learned policies.
+          Click on each of the tabs below to visualize rollouts of learned policies for each task.
           The videos with borders colored <strong><span style="color:#7d8ac8">blue</span></strong> are the training instances.
           The videos with borders colored <strong><span style="color:#dc787a">red</span></strong> are the held-out instances.
           For simulation tasks, we highlight the border of the video with green once the task is solved.
@@ -248,15 +257,13 @@
     <div id="OpenDoor" class="container tabcontent">
       <div class="columns is-centered has-text-left is-multiline">
         <div class="column is-12">
-          <h2 class="title is-5">Open Door</h2>
-        </div>
-        <div class="column is-12">
           <p>
             We train on 20 different instances and evaluate on 8 hold out instances.
             The policy must learn to open doors that open either leftward or rightward in varying positions.
           </p>
         </div>
       </div>
+      <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
             <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
@@ -383,6 +390,8 @@
             </video>
         </div>
       </div>
+      <br>
+      <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
             <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
@@ -437,15 +446,13 @@
     <div id="OpenDrawer" class="container tabcontent">
       <div class="columns has-text-left is-multiline">
         <div class="column is-12">
-          <h2 class="title is-5">Open Drawer</h2>
-        </div>
-        <div class="column is-12">
           <p>
             We train on 21 different instances and evaluate on 12 hold out instances.
             The policy must learn to open drawers at different heights.
           </p>
         </div>
       </div>
+      <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
             <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
@@ -578,6 +585,8 @@
             </video>
         </div>
       </div>
+      <br>
+      <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
             <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
@@ -658,17 +667,15 @@
     <div id="PlaceBag" class="container tabcontent">
       <div class="columns is-multiline has-text-left">
         <div class="column is-12">
-          <h3 class="title is-5">Place Bag</h3>
-        </div>
-        <div class="column is-12">
           <p>
             The bag's position, rotation, and height are varied. We train on 3 bags and evaluate on 6 hold out bags.
             Bags vary significantly in shape, color, and geometry of the handle.
           </p>
         </div>
       </div>
+      <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
-        <div class="video_grid_item">
+        <div class="video_grid_item_left">
             <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/bags/inst_0.mp4"
               type="video/mp4">
@@ -680,15 +687,17 @@
               type="video/mp4">
             </video>
         </div>
-        <div class="video_grid_item">
+        <div class="video_grid_item_right">
             <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/bags/inst_2.mp4"
               type="video/mp4">
             </video>
         </div>
       </div>
+      <br>
+      <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
-        <div class="video_grid_item">
+        <div class="video_grid_item_left">
             <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/bags/inst_3.mp4"
               type="video/mp4">
@@ -718,7 +727,7 @@
               type="video/mp4">
             </video>
         </div>
-        <div class="video_grid_item">
+        <div class="video_grid_item_right">
             <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/bags/inst_8.mp4"
               type="video/mp4">
@@ -729,17 +738,15 @@
     <div id="HangHat" class="container tabcontent">
       <div class="columns is-multiline has-text-left">
         <div class="column is-12">
-          <h3 class="title is-5">Hang Hat</h3>
-        </div>
-        <div class="column is-12">
           <p>
             The hat's rotation and position are slightly varied. We train on 3 hats and evaluate on 6 hold out hats.
             Hats vary in color and shape of the brim; they also deform slightly during the task.
           </p>
         </div>
       </div>
+      <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
-        <div class="video_grid_item">
+        <div class="video_grid_item_left">
             <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/hats/inst_0.mp4"
               type="video/mp4">
@@ -751,15 +758,17 @@
               type="video/mp4">
             </video>
         </div>
-        <div class="video_grid_item">
+        <div class="video_grid_item_right">
             <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/hats/inst_2.mp4"
               type="video/mp4">
             </video>
         </div>
       </div>
+      <br>
+      <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
-        <div class="video_grid_item">
+        <div class="video_grid_item_left">
             <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/hats/inst_3.mp4"
               type="video/mp4">
@@ -789,7 +798,7 @@
               type="video/mp4">
             </video>
         </div>
-        <div class="video_grid_item">
+        <div class="video_grid_item_right">
             <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/hats/inst_8.mp4"
               type="video/mp4">
@@ -800,9 +809,6 @@
     <div id="TidyTools" class="container tabcontent">
       <div class="columns has-text-left is-multiline">
         <div class="column is-12">
-          <h3 class="title is-5">Tidy Tools</h3>
-        </div>
-        <div class="column is-12">
           <p>
             The tool's position and rotation are varied.
             The drawer's position and rotation are also varied.
@@ -811,6 +817,7 @@
           </p>
         </div>
       </div>
+      <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
             <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
@@ -849,6 +856,8 @@
             </video>
         </div>
       </div>
+      <br>
+      <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
             <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
@@ -896,12 +905,195 @@
       </div>
     </div>
     <hr>
-    <div class="columns is-centered has-text-left">
-      <div class="column">
+    <div class="columns is-multiline is-centered has-text-left">
+      <div class="column is-12">
         <h3 class="title is-5">What features does SpawnNet attend to?</h3>
       </div>
+      <div class="column is-12">
+        <p>
+          To better understand the benefits of adapting dense pretrained features for specific tasks, we visualize the norm of each spatial activation
+          following the adapter layers. We note that activations for tasks are consistent both across different instances and across time, and relevant
+          to the task at hand. This occurs even with unseen instances.
+        </p><br>
+        <p>
+          We visualize one seen instance (highlighted <strong><span style="color:#7d8ac8">blue</span></strong>), and
+          three unseen instances (highlighted <strong><span style="color:#dc787a">red</span></strong>).
+        </p>
+      </div>
     </div>
-    <div class="columns is-centered has-text-justified">
+    <div class="container affordance-viz">
+      <div class="carousel">
+        <div class="item">
+          <div class="img-container">
+            <img class="training" src="./static/images/consistency/bag/black_seen.jpg">
+            <img class="validation" src="./static/images/consistency/bag/sg_unseen.jpg">
+            <img class="validation" src="./static/images/consistency/bag/tj_unseen.jpg">
+            <img class="validation" src="./static/images/consistency/bag/paris_unseen.jpg">
+          </div>
+          <div class="caption-container">
+            <p>
+              <strong>Place Bag</strong>: when grasping the bag, the adapter highlights the handle for even bags with differently colored handles
+              and geometrically different handles.
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="img-container">
+            <img class="training" src="./static/images/consistency/bag/black_seen2.jpg">
+            <img class="validation" src="./static/images/consistency/bag/sg_unseen2.jpg">
+            <img class="validation" src="./static/images/consistency/bag/tj_unseen2.jpg">
+            <img class="validation" src="./static/images/consistency/bag/paris_unseen2.jpg">
+          </div>
+          <div class="caption-container">
+            <p>
+              <strong>Place Bag</strong>: when placing the bag, the adapter highlights the base of the bag and the table.
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="img-container">
+            <img class="training" src="./static/images/consistency/hat/navy_seen.jpg">
+            <img class="validation" src="./static/images/consistency/hat/baby_unseen.jpg">
+            <img class="validation" src="./static/images/consistency/hat/green_unseen.jpg">
+            <img class="validation" src="./static/images/consistency/hat/pnp_unseen.jpg">
+          </div>
+          <div class="caption-container">
+            <p>
+              <strong>Hang Hat</strong>: when grasping the hat, the adapter highlights relevant parts of the hat,
+              such as the brim and front.
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="img-container">
+            <img class="training" src="./static/images/consistency/hat/navy_seen2.jpg">
+            <img class="validation" src="./static/images/consistency/hat/baby_unseen2.jpg">
+            <img class="validation" src="./static/images/consistency/hat/green_unseen2.jpg">
+            <img class="validation" src="./static/images/consistency/hat/pnp_unseen2.jpg">
+          </div>
+          <div class="caption-container">
+            <p>
+              <strong>Hang Hat</strong>: when hanging the hat, the adapter highlights relevant parts of the hat,
+              such as the back edge.
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="img-container">
+            <img class="training" src="./static/images/consistency/drawer/pink_seen.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/white_unseen_level.jpg">
+          </div>
+          <div class="caption-container">
+            <p>
+              <strong>Tidy Tools</strong>: when grasping the tool, the adapter highlights its handle,
+              even with novel drawers in the background.
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="img-container ">
+            <img class="training" src="./static/images/consistency/drawer/pink_seen2.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire2.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire2.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/white_unseen_level2.jpg">
+          </div>
+          <div class="caption-container">
+            <p>
+              <strong>Tidy Tools</strong>: when placing the tool in the drawer, the adapter highlights the drawer's
+              front edge.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <br>
+    <div class="columns is-2 is-variable is-multiline">
+      <div class="column is-6">
+        <div class="img-container">
+          <img class="training" src="./static/images/consistency/bag/black_seen.jpg">
+          <img class="validation" src="./static/images/consistency/bag/sg_unseen.jpg">
+          <img class="validation" src="./static/images/consistency/bag/tj_unseen.jpg">
+          <img class="validation" src="./static/images/consistency/bag/paris_unseen.jpg">
+        </div>
+        <div class="caption-container">
+          <p>
+            <strong>Place Bag</strong>: when grasping the bag, the adapter highlights the handle of the bag.
+          </p>
+        </div>
+      </div>
+      <div class="column is-6">
+        <div class="img-container">
+          <img class="training" src="./static/images/consistency/bag/black_seen2.jpg">
+          <img class="validation" src="./static/images/consistency/bag/sg_unseen2.jpg">
+          <img class="validation" src="./static/images/consistency/bag/tj_unseen2.jpg">
+          <img class="validation" src="./static/images/consistency/bag/paris_unseen2.jpg">
+        </div>
+        <div class="caption-container">
+          <p>
+            <strong>Place Bag</strong>: when placing the bag, the adapter highlights the base of the bag and the table.
+          </p>
+        </div>
+      </div>
+      <div class="column is-6">
+        <div class="img-container">
+          <img class="training" src="./static/images/consistency/hat/navy_seen.jpg">
+          <img class="validation" src="./static/images/consistency/hat/baby_unseen.jpg">
+          <img class="validation" src="./static/images/consistency/hat/green_unseen.jpg">
+          <img class="validation" src="./static/images/consistency/hat/pnp_unseen.jpg">
+        </div>
+        <div class="caption-container">
+          <p>
+            <strong>Hang Hat</strong>: when grasping the hat, the adapter highlights relevant parts of the hat,
+            such as the brim and front.
+          </p>
+        </div>
+      </div>
+      <div class="column is-6">
+        <div class="img-container">
+          <img class="training" src="./static/images/consistency/hat/navy_seen2.jpg">
+          <img class="validation" src="./static/images/consistency/hat/baby_unseen2.jpg">
+          <img class="validation" src="./static/images/consistency/hat/green_unseen2.jpg">
+          <img class="validation" src="./static/images/consistency/hat/pnp_unseen2.jpg">
+        </div>
+        <div class="caption-container">
+          <p>
+            <strong>Hang Hat</strong>: when hanging the hat, the adapter highlights relevant parts of the hat,
+            such as the back edge.
+          </p>
+        </div>
+      </div>
+      <div class="column is-6">
+        <div class="img-container">
+          <img class="training" src="./static/images/consistency/drawer/pink_seen.jpg">
+          <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire.jpg">
+          <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire.jpg">
+          <img class="validation" src="./static/images/consistency/drawer/white_unseen_level.jpg">
+        </div>
+        <div class="caption-container">
+          <p>
+            <strong>Tidy Tools</strong>: when grasping the tool, the adapter highlights its handle,
+            even with novel drawers in the background.
+          </p>
+        </div>
+      </div>
+      <div class="column is-6">
+        <div class="img-container ">
+          <img class="training" src="./static/images/consistency/drawer/pink_seen2.jpg">
+          <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire2.jpg">
+          <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire2.jpg">
+          <img class="validation" src="./static/images/consistency/drawer/white_unseen_level2.jpg">
+        </div>
+        <div class="caption-container">
+          <p>
+            <strong>Tidy Tools</strong>: when placing the tool in the drawer, the adapter highlights the drawer's
+            front edge.
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <!-- <div class="columns is-centered has-text-justified">
       <div class="column">
         <p>
           We visualize the spatial features extracted during the Place-Bag task.
@@ -973,9 +1165,23 @@
     <p>
       The policy recognizes the geometric shape of the brim, even with different colors.
     </p><br>
+  </div> -->
+  <br>
+  <hr>
+  <div class="columns is-multiline">
+    <div class="column is-12">
+      <h2 class="title is-5">Failure Modes</h2>
+    </div>
+    <div class="column is-12">
+      <p>
+        The features extracted from the pretrained vision model are helpful in capturing variance in the geometry and appearance within a task.
+        However, SpawnNet struggles with large positional variations. This can be improved by using a different learning pipeline (such as
+        reinforcement learning for exploration), or by increasing the distribution of training demonstations to include more positional variation.
+      </p>
+    </div>
   </div>
+  <hr>
 </section>
-
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="titile">BibTeX</h2>
@@ -987,7 +1193,6 @@
           }</code></pre>
   </div>
 </section>
-
 
 <footer class="footer">
   <div class="container">
