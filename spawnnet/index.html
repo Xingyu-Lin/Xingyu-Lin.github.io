@@ -161,17 +161,26 @@
     <!--/ Method. -->
     <div class="columns is-centered has-text-left">
       <div class="column">
-        <h2 class="title is-3">Method</h2>
+        <h2 class="title is-3">Method Overview</h2>
       </div>
     </div>
     <div class="columns is-centered has-text-justified">
       <div class="column">
         <p>
-          Prior approaches extract the CLS token at the last layer as the image representation. The representation is typically frozen
-          as fine-tuning vision transformers requires large computation. However, this archtecture lacks flexibility in adapting
-          the visual features. This potentially hinders downstream policy learning for two reasons. First, the self-supervised objectives
-          in pretraining may not align with the policy learning objective. Second, datasets used for pre-training can have a different
-          distribution from downstream tasks in domains, tasks, or camera viewpoints.
+<!--          Prior approaches extract the CLS token at the last layer as the image representation. The representation is typically frozen-->
+<!--          as fine-tuning vision transformers requires large computation. However, this archtecture lacks flexibility in adapting-->
+<!--          the visual features. This potentially hinders downstream policy learning for two reasons. First, the self-supervised objectives-->
+<!--          in pretraining may not align with the policy learning objective. Second, datasets used for pre-training can have a different-->
+<!--          distribution from downstream tasks in domains, tasks, or camera viewpoints.-->
+          Prior approaches for learning visuomotor policies either learn from scratch, as shown in (a), or learn from a pre-trained visual representation with a frozen backbone, as shown in (b). As the pre-trained vision network is typically large, it is frozen to save computation. In this way, the frozen representation might not be suited for downstream tasks due to differences in domains and the tasks.
+
+<!--          , and (c) the proposed two-stream architecture. The right figure (d) shows their performances on a real-world imitation learning task, evaluated on both seen and unseen instances in a category.-->
+        </p>
+        <p>
+          We propose SpawnNet, as shown in (c). SpawnNet trains a separate stream of convolutional neural networks (CNN) from scratch, taking the raw observation as input.
+          At the same time, we design adapter modules to fuse the new stream with the pre-trained features at different layers,
+          taking advantage of the robust features as needed. Additionally, this architecture allows us to incorporate different
+          modalities like depth in this separate stream, which is typically not in the pre-trained vision networks.
         </p>
       </div>
     </div>
@@ -180,31 +189,27 @@
         <img src="./static/images/merged_method.png" alt="teaser" class="teaser-image">
       </div>
     </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <p>
-          To learn more flexible task-specific representations while taking advantage of the pre-trained features, Spawn-Net
-          trains a separate stream of convolutional neural networks (CNN) from scratch, taking the raw observation as input.
-          At the same time, we design adapter modules to fuse the new stream with the pre-trained features at different layers,
-          taking advantage of the robust features as needed. Additionally, this architecture allows us to incorporate different
-          modalities like depth in this separate stream, which is typically not in the pre-trained vision networks.
-        </p><br>
-        <!-- <h2 class="title is-5">Adapter Layers</h2>
-        <p>
-          We first extract spatially dense descriptors from different layers of the pre-trained networks. At the lth layer of
-          the vision transformer, we extract the key feature in MHSA from each token, forming a feature grid of φl(I) ∈ HxWxC,
-          where HxW is the number of image patches and C is the feature dimension. Extracting features from different layers
-          allows us to extract both low-level and high level visual features from the pre-trained network. We fuse the features
-          from the two streams of networks at different layers as shown using <emph>adapter layers</emph>. The adapter first maps
-          the pre-trained feature into a latent embedding of size D through a convolutional kernel of size 1 and stride 1.
-          It then resizes the feature from HcW to H_lxW_l with bi-linear interpolation and finally concatenates them in the feature
-          dimension. It is then passed through two residual blocks to be processed in the next layers.
-        </p> -->
-      </div>
-      <!-- <div class="column is-4">
-        <img src="./static/images/arch.png" alt="teaser" class="teaser-image">
-      </div> -->
-    </div>
+<!--    <div class="columns is-centered has-text-justified">-->
+<!--      <div class="column">-->
+<!--        <p>-->
+<!--&lt;!&ndash;          To learn more flexible task-specific representations while taking advantage of the pre-trained features, &ndash;&gt;-->
+<!--        </p><br>-->
+<!--        &lt;!&ndash; <h2 class="title is-5">Adapter Layers</h2>-->
+<!--        <p>-->
+<!--          We first extract spatially dense descriptors from different layers of the pre-trained networks. At the lth layer of-->
+<!--          the vision transformer, we extract the key feature in MHSA from each token, forming a feature grid of φl(I) ∈ HxWxC,-->
+<!--          where HxW is the number of image patches and C is the feature dimension. Extracting features from different layers-->
+<!--          allows us to extract both low-level and high level visual features from the pre-trained network. We fuse the features-->
+<!--          from the two streams of networks at different layers as shown using <emph>adapter layers</emph>. The adapter first maps-->
+<!--          the pre-trained feature into a latent embedding of size D through a convolutional kernel of size 1 and stride 1.-->
+<!--          It then resizes the feature from HcW to H_lxW_l with bi-linear interpolation and finally concatenates them in the feature-->
+<!--          dimension. It is then passed through two residual blocks to be processed in the next layers.-->
+<!--        </p> &ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash; <div class="column is-4">-->
+<!--        <img src="./static/images/arch.png" alt="teaser" class="teaser-image">-->
+<!--      </div> &ndash;&gt;-->
+<!--    </div>-->
   </div>
 </section>
 
