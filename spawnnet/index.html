@@ -176,17 +176,21 @@
 
 <!--          , and (c) the proposed two-stream architecture. The right figure (d) shows their performances on a real-world imitation learning task, evaluated on both seen and unseen instances in a category.-->
         </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-8">
+        <img src="./static/images/method.png" alt="teaser" class="teaser-image">
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
         <p>
           We propose SpawnNet, as shown in (c). SpawnNet trains a separate stream of convolutional neural networks (CNN) from scratch, taking the raw observation as input.
           At the same time, we design adapter modules to fuse the new stream with the pre-trained features at different layers,
           taking advantage of the robust features as needed. Additionally, this architecture allows us to incorporate different
           modalities like depth in this separate stream, which is typically not in the pre-trained vision networks.
         </p>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column is-10">
-        <img src="./static/images/merged_method.png" alt="teaser" class="teaser-image">
       </div>
     </div>
 <!--    <div class="columns is-centered has-text-justified">-->
@@ -210,11 +214,7 @@
 <!--        <img src="./static/images/arch.png" alt="teaser" class="teaser-image">-->
 <!--      </div> &ndash;&gt;-->
 <!--    </div>-->
-  </div>
-</section>
 
-<section class="section">
-  <div class="container is-max-desktop">
     <div class="columns is-centered has-text-left">
       <div class="column">
         <h2 class="title is-3">Results</h2>
@@ -231,7 +231,8 @@
           In simulation, we perform DAgger to decouple covariate shift from visual representations;
           we train image-based policies by imitating from the RL expert policies trained using PPO. In the real world,
           we train using behavior cloning (BC) with fewer instances seen during training.
-        </p>
+        </p><br>
+        <img src="./static/images/results_sep.png" alt="teaser" class="teaser-image"><br>
         <p>
           SpawnNet significantly outperforms other pre-training methods (MVP and R3M) and a learning-from-scratch baseline with data augmentation when tested on held-out novel objects.
         </p>
