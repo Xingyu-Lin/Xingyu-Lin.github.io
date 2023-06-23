@@ -1017,164 +1017,6 @@
         </div>
       </div>
     </div>
-    <!-- <br>
-    <div class="columns is-2 is-variable is-multiline">
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/bag/black_seen.jpg">
-          <img class="validation" src="./static/images/consistency/bag/sg_unseen.jpg">
-          <img class="validation" src="./static/images/consistency/bag/tj_unseen.jpg">
-          <img class="validation" src="./static/images/consistency/bag/paris_unseen.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Place Bag</strong>: when grasping the bag, the adapter highlights the handle of the bag.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/bag/black_seen2.jpg">
-          <img class="validation" src="./static/images/consistency/bag/sg_unseen2.jpg">
-          <img class="validation" src="./static/images/consistency/bag/tj_unseen2.jpg">
-          <img class="validation" src="./static/images/consistency/bag/paris_unseen2.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Place Bag</strong>: when placing the bag, the adapter highlights the base of the bag and the table.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/hat/navy_seen.jpg">
-          <img class="validation" src="./static/images/consistency/hat/baby_unseen.jpg">
-          <img class="validation" src="./static/images/consistency/hat/green_unseen.jpg">
-          <img class="validation" src="./static/images/consistency/hat/pnp_unseen.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Hang Hat</strong>: when grasping the hat, the adapter highlights relevant parts of the hat,
-            such as the brim and front.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/hat/navy_seen2.jpg">
-          <img class="validation" src="./static/images/consistency/hat/baby_unseen2.jpg">
-          <img class="validation" src="./static/images/consistency/hat/green_unseen2.jpg">
-          <img class="validation" src="./static/images/consistency/hat/pnp_unseen2.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Hang Hat</strong>: when hanging the hat, the adapter highlights relevant parts of the hat,
-            such as the back edge.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/drawer/pink_seen.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/white_unseen_level.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Tidy Tools</strong>: when grasping the tool, the adapter highlights its handle,
-            even with novel drawers in the background.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container ">
-          <img class="training" src="./static/images/consistency/drawer/pink_seen2.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire2.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire2.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/white_unseen_level2.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Tidy Tools</strong>: when placing the tool in the drawer, the adapter highlights the drawer's
-            front edge.
-          </p>
-        </div>
-      </div>
-    </div> -->
-    <!-- <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <p>
-          We visualize the spatial features extracted during the Place-Bag task.
-          These features are extracted by 3 adapters, over layers 5, 8, and 11 of the DINO-ViT S/8 pretrained network.
-        </p><br>
-        <p>
-          A single rollout's visualization is a 2x4 grid; the first stacked row is the train instances, and the bottom 2 stacked rows are the hold out instances.
-          The 4 columns are an RGB frame followed by the spatial norms of activated feature maps outputted by the 3 adapter layers.
-          Each rollout's 2x4 grid is separated from the other rollouts by the thick black border.
-        </p><br>
-        <p>
-          Note that the features are consistent across instances.
-          For example, when grasping all bags, the attention focuses on the handle.
-          This occurs in even bags that are unseen during training.
-        </p><br>
-        <p>
-          Visualizations are recorded at 5 FPS, consistent with the policy's control frequency.
-        </p><br>
-        <video preload="metadata" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/final_bags.mp4"
-          type="video/mp4">
-        </video>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <p>
-          Here, we visualize some notable consistencies.
-          Drag the sliders below to visualize the consistency per timestep.
-        </p><br>
-      </div>
-    </div>
-    <div class="columns is-centered interpolation-panel">
-      <div class="column interpolation-video-column">
-        <div id="interpolation-image-wrapper-1">
-          Loading...
-        </div>
-        <input class="slider is-fullwidth is-medium is-info"
-        id="interpolation-slider-1"
-        step="1" min="0" max="100" value="0" type="range">
-      </div>
-    </div>
-    <p>
-      The handle of the bag remains consistent despite changes in its position and geometry.
-    </p><br>
-    <div class="columns is-centered interpolation-panel">
-      <div class="column interpolation-video-column">
-        <div id="interpolation-image-wrapper-2">
-          Loading...
-        </div>
-        <input class="slider is-fullwidth is-medium is-info"
-        id="interpolation-slider-2"
-        step="1" min="0" max="100" value="0" type="range">
-      </div>
-    </div>
-    <p>
-      The screwdriver's activiation remains consistent despite significant changes in the background.
-    </p><br>
-    <div class="columns is-centered interpolation-panel">
-      <div class="column interpolation-video-column">
-        <div id="interpolation-image-wrapper-3">
-          Loading...
-        </div>
-        <input class="slider is-fullwidth is-medium is-info"
-        id="interpolation-slider-3"
-        step="1" min="0" max="100" value="0" type="range">
-      </div>
-    </div>
-    <p>
-      The policy recognizes the geometric shape of the brim, even with different colors.
-    </p><br>
-  </div> -->
   <br>
   <hr>
   <div class="columns is-multiline is-centered">
@@ -1227,16 +1069,11 @@
   </div>
 </section>
 
-<footer class="footer">
+<footer class="custom_footer">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p><br>
           <p>
             Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
           </p><br>
