@@ -225,19 +225,21 @@
         <p>
           We evaluate our policy against baselines on 2 simulated tasks and 3 real-world tasks.
           Within these tasks, we test difficult intra-category generalization by training on several seen <i>training</i> instances,
-          and testing on several unseen <i>held-out</i> instances.
-        </p><br>
+          and evaluating on the unseen <i>held-out</i> instances.
+        </p>
         <p>
           In simulation, we perform DAgger to decouple covariate shift from visual representations;
-          using RL expert policies trained using PPO, we train image-based policies. In the real world,
+          we train image-based policies by imitating from the RL expert policies trained using PPO. In the real world,
           we train using behavior cloning (BC) with fewer instances seen during training.
-        </p><br>
-        <img src="./static/images/results_v3.png" alt="teaser" class="teaser-image"><br>
+        </p>
         <p>
-          SpawnNet outperforms all baselines by a significant margin across both simulation and real tasks, including ones using
-          pretrained features and trained from scratch. Furthermore, in real-world experiments, we show that by adding
-          the additional depth information in the learned-from-scratch stream, we can further improve the performance of SpawnNet
-          by up to 15%.
+          SpawnNet significantly outperforms other pre-training methods (MVP and R3M) and a learning-from-scratch baseline with data augmentation when tested on held-out novel objects.
+        </p>
+        <br>
+        <img src="./static/images/results_v3.png" alt="teaser" class="teaser-image"><br>
+        <br>
+        <p>
+
         </p>
       </div>
     </div>
@@ -247,28 +249,267 @@
       </div>
       <div class="column has-text-left">
         <p>
-          Click on each of the tabs below to visualize rollouts of learned policies for each task.
+          Below we show rollouts of our trained policies on different tasks, with one video on each of the training and held-out objects.  Click on each of the tabs below to see different tasks.
           The videos with borders colored <strong><span style="color:#7d8ac8">blue</span></strong> are the training instances.
           The videos with borders colored <strong><span style="color:#dc787a">red</span></strong> are the held-out instances.
-          For simulation tasks, we highlight the border of the video with green once the task is solved.
+          For simulation tasks, we highlight the border of the video with green once the goal is achieved.
         </p>
       </div>
     </div>
     <div class="tabs is-boxed">
       <ul>
-        <li id="clickDefault" class="tablinks is-active" onclick="openTab(event, 'OpenDrawer')"><a>Open Drawer</a></li>
-        <li class="tablinks" onclick="openTab(event, 'OpenDoor')"><a>Open Door</a></li>
-        <li class="tablinks" onclick="openTab(event, 'PlaceBag')"><a>Place Bag</a></li>
+        <li id="clickDefault" class="tablinks is-active" onclick="openTab(event, 'PlaceBag')"><a>Place Bag</a></li>
         <li class="tablinks" onclick="openTab(event, 'HangHat')"><a>Hang Hat</a></li>
         <li class="tablinks" onclick="openTab(event, 'TidyTools')"><a>Tidy Tools</a></li>
+        <li class="tablinks" onclick="openTab(event, 'OpenDrawer')"><a>Open Drawe</a></li>
+        <li class="tablinks" onclick="openTab(event, 'OpenDoor')"><a>Open Door</a></li>
+
       </ul>
+    </div>
+    <div id="PlaceBag" class="container tabcontent">
+      <div class="columns is-multiline has-text-left">
+        <div class="column is-12">
+          <p>
+            The task is to pick up different bags by the handle and to palce them on a shelf. Bags vary significantly in shape, color, and geometry of the handle.
+            The bags' position, rotation, and height are varied. We train on 3 bags and evaluate on 6 hold out bags.
+          </p>
+        </div>
+      </div>
+      <h2 class="subtitle is-5">Training</h2>
+      <div class="video_grid">
+        <div class="video_grid_item_left">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/inst_0.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/inst_1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item_right">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/inst_2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br>
+      <h2 class="subtitle is-5">Novel</h2>
+      <div class="video_grid">
+        <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/inst_3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/inst_4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/inst_5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/inst_6.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/inst_7.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bags/inst_8.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <div id="HangHat" class="container tabcontent">
+      <div class="columns is-multiline has-text-left">
+        <div class="column is-12">
+          <p>
+            The task is to pick up the hat and then hang it on a rack. Hats vary in color and shape of the brim; they also deform slightly during the task.
+            The hat's rotation and position are slightly varied. We train on 3 hats and evaluate on 6 hold out hats.
+          </p>
+        </div>
+      </div>
+      <h2 class="subtitle is-5">Training</h2>
+      <div class="video_grid">
+        <div class="video_grid_item_left">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/hats/inst_0.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/hats/inst_1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item_right">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/hats/inst_2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br>
+      <h2 class="subtitle is-5">Novel</h2>
+      <div class="video_grid">
+        <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/hats/inst_3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/hats/inst_4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/hats/inst_5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/hats/inst_6.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/hats/inst_7.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/hats/inst_8.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <div id="TidyTools" class="container tabcontent">
+      <div class="columns has-text-left is-multiline">
+        <div class="column is-12">
+          <p>
+            The task is to pick up the tool on the table, place it into an open drawer and then close the drawer. Here, different drawers vary drastically in the geometry and color.
+            The tool's position and rotation are varied. The drawer's position and rotation are also varied.  We train on 3 drawers and evaluate on 6 hold out drawers.
+          </p>
+        </div>
+      </div>
+      <h2 class="subtitle is-5">Training</h2>
+      <div class="video_grid">
+        <div class="video_grid_item_left">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_0.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br>
+      <h2 class="subtitle is-5">Novel</h2>
+      <div class="video_grid">
+        <div class="video_grid_item_left">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_6.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_7.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_8.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_9.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_10.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_11.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="video_grid_item_right">
+          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/drawers/inst_12.mp4"
+                    type="video/mp4">
+          </video>
+
+        </div>
+      </div>
     </div>
     <div id="OpenDoor" class="container tabcontent">
       <div class="columns is-centered has-text-left is-multiline">
         <div class="column is-12">
           <p>
+            The task is to open doors either leftward or rightward in varying positions. The red ball indicates which door to open.
             We train on 20 different instances and evaluate on 8 hold out instances.
-            The policy must learn to open doors that open either leftward or rightward in varying positions.
           </p>
         </div>
       </div>
@@ -456,8 +697,8 @@
       <div class="columns has-text-left is-multiline">
         <div class="column is-12">
           <p>
+            The task is to open different drawers. A red ball is placed near the drawer to be opened.
             We train on 21 different instances and evaluate on 12 hold out instances.
-            The policy must learn to open drawers at different heights.
           </p>
         </div>
       </div>
@@ -673,256 +914,15 @@
         </div>
       </div>
     </div>
-    <div id="PlaceBag" class="container tabcontent">
-      <div class="columns is-multiline has-text-left">
-        <div class="column is-12">
-          <p>
-            The bag's position, rotation, and height are varied. We train on 3 bags and evaluate on 6 hold out bags.
-            Bags vary significantly in shape, color, and geometry of the handle.
-          </p>
-        </div>
-      </div>
-      <h2 class="subtitle is-5">Training</h2>
-      <div class="video_grid">
-        <div class="video_grid_item_left">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/bags/inst_0.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/bags/inst_1.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item_right">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/bags/inst_2.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-      </div>
-      <br>
-      <h2 class="subtitle is-5">Novel</h2>
-      <div class="video_grid">
-        <div class="video_grid_item_left">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/bags/inst_3.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/bags/inst_4.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/bags/inst_5.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/bags/inst_6.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/bags/inst_7.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item_right">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/bags/inst_8.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-      </div>
-    </div>
-    <div id="HangHat" class="container tabcontent">
-      <div class="columns is-multiline has-text-left">
-        <div class="column is-12">
-          <p>
-            The hat's rotation and position are slightly varied. We train on 3 hats and evaluate on 6 hold out hats.
-            Hats vary in color and shape of the brim; they also deform slightly during the task.
-          </p>
-        </div>
-      </div>
-      <h2 class="subtitle is-5">Training</h2>
-      <div class="video_grid">
-        <div class="video_grid_item_left">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/hats/inst_0.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/hats/inst_1.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item_right">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/hats/inst_2.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-      </div>
-      <br>
-      <h2 class="subtitle is-5">Novel</h2>
-      <div class="video_grid">
-        <div class="video_grid_item_left">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/hats/inst_3.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/hats/inst_4.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/hats/inst_5.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/hats/inst_6.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/hats/inst_7.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item_right">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/hats/inst_8.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-      </div>
-    </div>
-    <div id="TidyTools" class="container tabcontent">
-      <div class="columns has-text-left is-multiline">
-        <div class="column is-12">
-          <p>
-            The tool's position and rotation are varied.
-            The drawer's position and rotation are also varied.
-            We train on 3 drawers and evaluate on 6 hold out drawers.
-            Here, drawers vary drastically in the geometry and color.
-          </p>
-        </div>
-      </div>
-      <h2 class="subtitle is-5">Training</h2>
-      <div class="video_grid">
-        <div class="video_grid_item_left">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_0.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_1.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_2.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_3.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_4.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_5.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-      </div>
-      <br>
-      <h2 class="subtitle is-5">Novel</h2>
-      <div class="video_grid">
-        <div class="video_grid_item_left">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_6.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_7.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_8.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_9.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_10.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_11.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        <div class="video_grid_item_right">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/drawers/inst_12.mp4"
-              type="video/mp4">
-            </video>
-
-        </div>
-      </div>
-    </div>
     <hr>
     <div class="columns is-multiline is-centered has-text-left">
       <div class="column is-12">
-        <h3 class="title is-5">What features does SpawnNet attend to?</h3>
+        <h3 class="title is-5">What does SpawnNet learn from the pre-trained network?</h3>
       </div>
       <div class="column is-12">
         <p>
-          To better understand the benefits of adapting dense pretrained features for specific tasks, we visualize the norm of each spatial activation
-          following the adapter layers. We note that activations for tasks are consistent both across different instances and across time, and relevant
-          to the task at hand. This occurs even with unseen instances.
+          We provide more insights into how SpawnNet's use of pre-trained features can help policy learning. To do so, we take a trained policy and visualize the norm of the features after the 1x1 convolutions and the nonlinear layers in the last layer of the adapter.
+          We can see that activations for tasks are consistent both across different instances and across time, and relevant to the task at hand. This occurs even with unseen instances. This provides insights into how pre-trained features can help with generalization.
         </p><br>
         <p>
           We visualize one seen instance (highlighted <strong><span style="color:#7d8ac8">blue</span></strong>), and
@@ -1183,9 +1183,10 @@
     </div>
     <div class="column is-12">
       <p>
-        The features extracted from the pretrained vision model are helpful in capturing variance in the geometry and appearance within a task.
-        However, SpawnNet struggles with large positional variations. This can be improved by using a different learning pipeline (such as
-        reinforcement learning for exploration), or by increasing the distribution of training demonstations to include more positional variation.
+        Our experiments mainly study policy generalization under imitation learning settings, which requires the action distributions to be similar in training and evaluation tasks.
+        For this reason, we only evaluate the policy on novel instances, without heavily extrapolating the pose of instances, as an out-of-distribution pose can cause a drastic change of motion.
+        Below we can see that our learned policies will fail when pose of the objects vary too much from training. This can potentially be addressed in an interactive learning setting. We leave the combination of SpawnNet and reinforcement learning algorithms to future work.
+
       </p>
     </div>
     <div class="column is-3">
