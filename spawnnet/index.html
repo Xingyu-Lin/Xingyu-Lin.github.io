@@ -226,22 +226,15 @@
           We evaluate our policy against baselines on 2 simulated tasks and 3 real-world tasks.
           Within these tasks, we test difficult intra-category generalization by training on several seen <i>training</i> instances,
           and evaluating on the unseen <i>held-out</i> instances.
-        </p>
-        <p>
           In simulation, we perform DAgger to decouple covariate shift from visual representations;
           we train image-based policies by imitating from the RL expert policies trained using PPO. In the real world,
           we train using behavior cloning (BC) with fewer instances seen during training.
-        </p><br>
+        </p>
+        <p>
+          From the results, we can see that SpawnNet significantly outperforms other pre-training methods (MVP and R3M) and a learning-from-scratch baseline with data augmentation when tested on held-out novel objects.
+        </p>
+        <br>
         <img src="./static/images/results_sep.png" alt="teaser" class="teaser-image"><br>
-        <p>
-          SpawnNet significantly outperforms other pre-training methods (MVP and R3M) and a learning-from-scratch baseline with data augmentation when tested on held-out novel objects.
-        </p>
-        <br>
-        <img src="./static/images/results_v3.png" alt="teaser" class="teaser-image"><br>
-        <br>
-        <p>
-
-        </p>
       </div>
     </div>
     <div class="columns is-multiline">
@@ -1215,7 +1208,6 @@
       </div>
     </div>
   </div>
-  <hr>
 </section>
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
