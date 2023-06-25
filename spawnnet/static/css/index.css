@@ -215,33 +215,33 @@ body {
   padding-right:25px;
 }
 
-.img-container {
+.item-container {
   display:flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 90%;
+  margin-bottom: 10px;
 }
 
-.caption-container {
-  width: 90%;
-}
-
-.img-container img {
-  width: calc((100% - 20px) / 4);
+.item-container img {
+  width: calc((100% - 24px) / 4);
   height: auto;
   border-radius: 2px;
+}
+
+.item-container .training {
+  margin-right: 10px;
+}
+
+.item-label {
+  width: calc((100% - 24px) / 4);
+  /* center the contents */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 5px;
-}
-
-.img-container .training {
-  margin-left: 2px;
-  margin-right: 5px;
-}
-
-.img-container .validation {
-  margin-right: 2px;
-  margin-left: 2px;
 }
 
 .affordance-viz {
