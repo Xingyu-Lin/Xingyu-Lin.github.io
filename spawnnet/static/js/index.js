@@ -78,15 +78,10 @@ $(document).ready(function() {
     var options = {
 			slidesToScroll: 1,
 			slidesToShow: 1,
-      navigation: false,
-      navigationKeys:false,
-      navigationSwipe:true,
-      pagination: false,
 			loop: true,
 			infinite: true,
-			autoplay: true,
-			autoplaySpeed: 1,
-      duration: 1000,
+			autoplay: false,
+			autoplaySpeed: 3000,
     }
 
 		// Initialize all div with carousel class
