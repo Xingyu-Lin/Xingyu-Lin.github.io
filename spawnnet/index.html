@@ -111,16 +111,16 @@
         <div class="content has-text-justified">
           <p>
           The existing internet-scale image and video datasets cover a wide range of everyday objects and tasks,
-          which brings the potential of learning visuomotor skills that can generalize in diverse situations using
-          pre-trained representations. Prior works have explored different datasets and self-supervised objectives
-          to approach this goal, but the power of pre-training has not yet been demonstrated in the generalization
-          perspective across unseen instances and situations. In this work, we put this challenge on the table,
-          focusing on how pre-trained representations can help the generalization of the learned skills. We first
-          identify the key bottleneck in using a frozen pre-trained visual backbone for policy learning. We then
-          propose SpawnNet, a novel two-stream architecture that learns to fuse pre-trained multi-layer
-          representations into a separate network to learn a robust policy. Through extensive simulated and real
-          experiments, we demonstrate significantly better categorical generalization compared to prior approaches
-          in imitation learning settings.
+          bringing the potential of learning policies that have broad generalization.
+          Prior works have explored visual pre-training with different self-supervised objectives,
+          but the generalization capabilities of the learned policies remain relatively unknown.
+          In this work, we take the first step towards this challenge,
+          focusing on how pre-trained representations can help the generalization of the learned policies.
+          We first identify the key bottleneck in using a frozen pre-trained visual backbone for policy learning.
+          We then propose SpawnNet, a novel two-stream architecture that learns to fuse pre-trained multi-layer
+          representations into a separate network to learn a robust policy.
+          Through extensive simulated and real experiments, we demonstrate significantly better categorical
+          generalization compared to prior approaches in imitation learning settings.
           </p><br>
         </div>
       </div>
@@ -177,7 +177,7 @@
           we train using behavior cloning (BC) with fewer instances seen during training.
         </p>
         <br>
-        <img src="./static/images/results.png" alt="teaser" class="teaser-image"><br>
+        <img src="./static/images/results_v2.png" alt="teaser" class="teaser-image"><br>
       </div>
     </div>
     <div class="columns is-centered has-text-justified">
@@ -186,6 +186,43 @@
           From the results, we can see that SpawnNet significantly outperforms other pre-training methods (MVP and R3M)
           and a learning-from-scratch baseline with data augmentation when tested on held-out novel objects.
         </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-left">
+      <div class="column">
+        <h2 class="title is-5">Using Different Pre-trained Backbones</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          We additionally instantiate SpawnNet with different pre-trained backbones, <b>DINO</b>, <b>R3M</b>, and <b>MVP</b>.
+          We show that SpawnNet consistently increases the performance of all pre-trained backbones, indicating that
+          SpawnNet is a general, flexible architecture that is compatible with networks regardless of the backbone's
+          pre-training objective or architecture.
+        </p>
+        <br>
+      </div>
+      <div class="column is-4">
+        <img src="./static/images/different_nets.png" alt="teaser" class="teaser-image">
+      </div>
+    </div>
+    <div class="columns is-centered has-text-left">
+      <div class="column">
+        <h2 class="title is-5">Ablations</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          We additionally ablate on the use of pre-trained features. We find that <i>not using dense features</i> <b>(-Dense)</b>
+          is as impactful to performance as not using the pre-trained features at all <b>(-Pre-trained)</b>. This indicates that the dense features
+          are important for the performance of SpawnNet.
+        </p>
+        <br>
+      </div>
+      <div class="column is-4">
+        <img src="./static/images/ablation.png" alt="teaser" class="teaser-image">
       </div>
     </div>
     <div class="columns is-multiline">
