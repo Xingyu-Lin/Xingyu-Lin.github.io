@@ -1,0 +1,6 @@
+@inproceedings{xu2023roboninja,
+	title={RoboNinja: Learning an Adaptive Cutting Policy for Multi-Material Objects},
+	author={Xu, Zhenjia and Xian, Zhou and Lin, Xingyu and Chi, Cheng and Huang, Zhiao and Gan, Chuang and Song, Shuran},
+	booktitle={Proceedings of Robotics: Science and Systems (RSS)},
+	year={2023}
+}

@@ -1,0 +1,6 @@
+@inproceedings{huang2023act,
+  title={Self-supervised Cloth Reconstruction via Action-conditioned Cloth Tracking},
+  author={Huang, Zixuan and Lin, Xingyu and Held, David},
+  booktitle={IEEE International Conference on Robotics and Automation (ICRA), 2023},
+  year={2023}
+  }

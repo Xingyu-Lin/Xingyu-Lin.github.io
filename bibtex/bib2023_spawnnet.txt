@@ -1,0 +1,8 @@
+@misc{lin2023spawnnet,
+      title={SpawnNet: Learning Generalizable Visuomotor Skills from Pre-trained Networks},
+      author={Xingyu Lin and John So and Sashwat Mahalingam and Fangchen Liu and Pieter Abbeel},
+      year={2023},
+      eprint={2307.03567},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+    }
