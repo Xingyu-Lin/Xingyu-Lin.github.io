@@ -56,16 +56,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href="https://arxiv.org/abs/2307.03567"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -75,17 +66,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href="https://github.com/johnrso/spawnnet"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -94,14 +75,6 @@
                   </a>
               </span>
               <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
             </div>
           </div>
         </div>
@@ -112,16 +85,15 @@
 
 <section class="hero">
   <div class="container is-max-desktop">
-    <!-- Teaser; let's make this the impressive generalizations -->
     <div class="columns is-centered has-text-centered">
       <div class="column">
-        <video id="teaser" preload="metadata" autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/teaser.mp4"
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/web_pull_compressed.mp4"
                   type="video/mp4">
         </video>
         <h2 class="subtitle has-text-centered">
-          Using <strong>SpawnNet</strong>, we train policies to manipulate a variety of unseen variations with as few as
-          30 demonstrations across 3 different instances.
+          Using <strong>SpawnNet</strong>, we train policies to manipulate a
+          variety of unseen categorical variations with few demonstrations across few seen instances.
         </h2>
       </div>
     </div>
@@ -139,16 +111,16 @@
         <div class="content has-text-justified">
           <p>
           The existing internet-scale image and video datasets cover a wide range of everyday objects and tasks,
-          which brings the potential of learning visuomotor skills that can generalize in diverse situations using
-          pre-trained representations. Prior works have explored different datasets and self-supervised objectives
-          to approach this goal, but the power of pre-training has not yet been demonstrated in the generalization
-          perspective across unseen instances and situations. In this work, we put this challenge on the table,
-          focusing on how pre-trained representations can help the generalization of the learned skills. We first
-          identify the key bottleneck in using a frozen pre-trained visual backbone for policy learning. We then
-          propose SpawnNet, a novel two-stream architecture that learns to fuse pre-trained multi-layer
-          representations into a separate network to learn a robust policy. Through extensive simulated and real
-          experiments, we demonstrate significantly better categorical generalization compared to prior approaches
-          in imitation learning settings.
+          bringing the potential of learning policies that have broad generalization.
+          Prior works have explored visual pre-training with different self-supervised objectives,
+          but the generalization capabilities of the learned policies remain relatively unknown.
+          In this work, we take the first step towards this challenge,
+          focusing on how pre-trained representations can help the generalization of the learned policies.
+          We first identify the key bottleneck in using a frozen pre-trained visual backbone for policy learning.
+          We then propose SpawnNet, a novel two-stream architecture that learns to fuse pre-trained multi-layer
+          representations into a separate network to learn a robust policy.
+          Through extensive simulated and real experiments, we demonstrate significantly better categorical
+          generalization compared to prior approaches in imitation learning settings.
           </p><br>
         </div>
       </div>
@@ -167,14 +139,10 @@
     <div class="columns is-centered has-text-justified">
       <div class="column">
         <p>
-<!--          Prior approaches extract the CLS token at the last layer as the image representation. The representation is typically frozen-->
-<!--          as fine-tuning vision transformers requires large computation. However, this archtecture lacks flexibility in adapting-->
-<!--          the visual features. This potentially hinders downstream policy learning for two reasons. First, the self-supervised objectives-->
-<!--          in pretraining may not align with the policy learning objective. Second, datasets used for pre-training can have a different-->
-<!--          distribution from downstream tasks in domains, tasks, or camera viewpoints.-->
-          Prior approaches for learning visuomotor policies either learn from scratch, as shown in (a), or learn from a pre-trained visual representation with a frozen backbone, as shown in (b). As the pre-trained vision network is typically large, it is frozen to save computation. In this way, the frozen representation might not be suited for downstream tasks due to differences in domains and the tasks.
-
-<!--          , and (c) the proposed two-stream architecture. The right figure (d) shows their performances on a real-world imitation learning task, evaluated on both seen and unseen instances in a category.-->
+          Prior approaches for learning visuomotor policies either learn from scratch, as shown in (a), or learn from a pre-trained
+          visual representation with a frozen backbone, as shown in (b). As the pre-trained vision network is typically large, it is
+          frozen to save computation. In this way, the frozen representation might not be suited for downstream tasks due to differences
+          in domains and the tasks.
         </p>
       </div>
     </div>
@@ -193,28 +161,6 @@
         </p>
       </div>
     </div>
-<!--    <div class="columns is-centered has-text-justified">-->
-<!--      <div class="column">-->
-<!--        <p>-->
-<!--&lt;!&ndash;          To learn more flexible task-specific representations while taking advantage of the pre-trained features, &ndash;&gt;-->
-<!--        </p><br>-->
-<!--        &lt;!&ndash; <h2 class="title is-5">Adapter Layers</h2>-->
-<!--        <p>-->
-<!--          We first extract spatially dense descriptors from different layers of the pre-trained networks. At the lth layer of-->
-<!--          the vision transformer, we extract the key feature in MHSA from each token, forming a feature grid of φl(I) ∈ HxWxC,-->
-<!--          where HxW is the number of image patches and C is the feature dimension. Extracting features from different layers-->
-<!--          allows us to extract both low-level and high level visual features from the pre-trained network. We fuse the features-->
-<!--          from the two streams of networks at different layers as shown using <emph>adapter layers</emph>. The adapter first maps-->
-<!--          the pre-trained feature into a latent embedding of size D through a convolutional kernel of size 1 and stride 1.-->
-<!--          It then resizes the feature from HcW to H_lxW_l with bi-linear interpolation and finally concatenates them in the feature-->
-<!--          dimension. It is then passed through two residual blocks to be processed in the next layers.-->
-<!--        </p> &ndash;&gt;-->
-<!--      </div>-->
-<!--      &lt;!&ndash; <div class="column is-4">-->
-<!--        <img src="./static/images/arch.png" alt="teaser" class="teaser-image">-->
-<!--      </div> &ndash;&gt;-->
-<!--    </div>-->
-
     <div class="columns is-centered has-text-left">
       <div class="column">
         <h2 class="title is-3">Results</h2>
@@ -230,11 +176,53 @@
           we train image-based policies by imitating from the RL expert policies trained using PPO. In the real world,
           we train using behavior cloning (BC) with fewer instances seen during training.
         </p>
+        <br>
+        <img src="./static/images/results_v2.png" alt="teaser" class="teaser-image"><br>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
         <p>
-          From the results, we can see that SpawnNet significantly outperforms other pre-training methods (MVP and R3M) and a learning-from-scratch baseline with data augmentation when tested on held-out novel objects.
+          From the results, we can see that SpawnNet significantly outperforms other pre-training methods (MVP and R3M)
+          and a learning-from-scratch baseline with data augmentation when tested on held-out novel objects.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-left">
+      <div class="column">
+        <h2 class="title is-5">Using Different Pre-trained Backbones</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          We additionally instantiate SpawnNet with different pre-trained backbones, <b>DINO</b>, <b>R3M</b>, and <b>MVP</b>.
+          We show that SpawnNet consistently increases the performance of all pre-trained backbones, indicating that
+          SpawnNet is a general, flexible architecture that is compatible with networks regardless of the backbone's
+          pre-training objective or architecture.
         </p>
         <br>
-        <img src="./static/images/results_sep.png" alt="teaser" class="teaser-image"><br>
+      </div>
+      <div class="column is-4">
+        <img src="./static/images/different_nets.png" alt="teaser" class="teaser-image">
+      </div>
+    </div>
+    <div class="columns is-centered has-text-left">
+      <div class="column">
+        <h2 class="title is-5">Ablations</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <p>
+          We additionally ablate on the use of pre-trained features. We find that <i>not using dense features</i> <b>(-Dense)</b>
+          is as impactful to performance as not using the pre-trained features at all <b>(-Pre-trained)</b>. This indicates that the dense features
+          are important for the performance of SpawnNet.
+        </p>
+        <br>
+      </div>
+      <div class="column is-4">
+        <img src="./static/images/ablation.png" alt="teaser" class="teaser-image">
       </div>
     </div>
     <div class="columns is-multiline">
@@ -244,8 +232,6 @@
       <div class="column has-text-left">
         <p>
           Below we show rollouts of our trained policies on different tasks, with one video on each of the training and held-out objects.  Click on each of the tabs below to see different tasks.
-          The videos with borders colored <strong><span style="color:#7d8ac8">blue</span></strong> are the training instances.
-          The videos with borders colored <strong><span style="color:#dc787a">red</span></strong> are the held-out instances.
           For simulation tasks, we highlight the border of the video with green once the goal is achieved.
         </p>
       </div>
@@ -255,7 +241,7 @@
         <li id="clickDefault" class="tablinks is-active" onclick="openTab(event, 'PlaceBag')"><a>Place Bag</a></li>
         <li class="tablinks" onclick="openTab(event, 'HangHat')"><a>Hang Hat</a></li>
         <li class="tablinks" onclick="openTab(event, 'TidyTools')"><a>Tidy Tools</a></li>
-        <li class="tablinks" onclick="openTab(event, 'OpenDrawer')"><a>Open Drawe</a></li>
+        <li class="tablinks" onclick="openTab(event, 'OpenDrawer')"><a>Open Drawer</a></li>
         <li class="tablinks" onclick="openTab(event, 'OpenDoor')"><a>Open Door</a></li>
 
       </ul>
@@ -272,19 +258,19 @@
       <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bags/inst_0.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bags/inst_1.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item_right">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bags/inst_2.mp4"
                     type="video/mp4">
           </video>
@@ -294,37 +280,37 @@
       <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bags/inst_3.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bags/inst_4.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bags/inst_5.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bags/inst_6.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bags/inst_7.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item_right">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bags/inst_8.mp4"
                     type="video/mp4">
           </video>
@@ -343,19 +329,19 @@
       <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/hats/inst_0.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/hats/inst_1.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item_right">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/hats/inst_2.mp4"
                     type="video/mp4">
           </video>
@@ -365,37 +351,37 @@
       <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/hats/inst_3.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/hats/inst_4.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/hats/inst_5.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/hats/inst_6.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/hats/inst_7.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item_right">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/hats/inst_8.mp4"
                     type="video/mp4">
           </video>
@@ -414,37 +400,37 @@
       <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_0.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_1.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_2.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_3.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_4.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video training" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_5.mp4"
                     type="video/mp4">
           </video>
@@ -454,43 +440,43 @@
       <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_6.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_7.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_8.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_9.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_10.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_11.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="video_grid_item_right">
-          <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+          <video class="grid-video validation" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/drawers/inst_12.mp4"
                     type="video/mp4">
           </video>
@@ -510,49 +496,49 @@
       <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_1-21_traj_1.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_2-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_3-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_4-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_5-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_6-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_7-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item_right">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_9-21_traj_0.mp4"
               type="video/mp4">
             </video>
@@ -560,49 +546,49 @@
       </div>
       <div class="video_grid">
         <div class="video_grid_item_left">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_10-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_11-21_traj_2.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_12-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_13-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_14-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_15-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_16-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item_right">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_17-21_traj_0.mp4"
               type="video/mp4">
             </video>
@@ -610,25 +596,25 @@
       </div>
       <div class="video_grid">
         <div class="video_grid_item_left">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_18-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_19-21_traj_1.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_20-21_traj_1.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item_right">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/train_21-21_traj_2.mp4"
               type="video/mp4">
             </video>
@@ -638,49 +624,49 @@
       <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/val_1-8_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/val_2-8_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/val_3-8_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/val_4-8_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/val_5-8_traj_2.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/val_6-8_traj_2.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/val_7-8_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item_right">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_door/val_8-8_traj_0.mp4"
               type="video/mp4">
             </video>
@@ -699,49 +685,49 @@
       <h2 class="subtitle is-5">Training</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_1-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_2-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_3-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_4-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_5-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_6-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_7-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item_right">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_8-21_traj_0.mp4"
               type="video/mp4">
             </video>
@@ -749,49 +735,49 @@
       </div>
       <div class="video_grid">
         <div class="video_grid_item_left">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_9-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_10-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_11-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_12-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_13-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_14-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_15-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item_right">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_16-21_traj_0.mp4"
               type="video/mp4">
             </video>
@@ -799,31 +785,31 @@
       </div>
       <div class="video_grid">
         <div class="video_grid_item_left">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_17-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_18-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_19-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_20-21_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item_right">
-            <video class="grid-video training" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video training" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/train_21-21_traj_0.mp4"
               type="video/mp4">
             </video>
@@ -833,49 +819,49 @@
       <h2 class="subtitle is-5">Novel</h2>
       <div class="video_grid">
         <div class="video_grid_item_left">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_1-12_traj_1.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_2-12_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_3-12_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_4-12_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_5-12_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_6-12_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_7-12_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item_right">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_8-12_traj_0.mp4"
               type="video/mp4">
             </video>
@@ -883,25 +869,25 @@
       </div>
       <div class="video_grid">
         <div class="video_grid_item_left">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_9-12_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_10-12_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_11-12_traj_0.mp4"
               type="video/mp4">
             </video>
         </div>
         <div class="video_grid_item_right">
-            <video class="grid-video validation" preload="metadata" autoplay muted loop playsinline height="100%">
+            <video class="grid-video validation" autoplay muted loop playsinline height="100%">
               <source src="./static/videos/sim_drawer/val_12-12_traj_0.mp4"
               type="video/mp4">
             </video>
@@ -919,256 +905,168 @@
           We can see that activations for tasks are consistent both across different instances and across time, and relevant to the task at hand. This occurs even with unseen instances. This provides insights into how pre-trained features can help with generalization.
         </p><br>
         <p>
-          We visualize one seen instance (highlighted <strong><span style="color:#7d8ac8">blue</span></strong>), and
-          three unseen instances (highlighted <strong><span style="color:#dc787a">red</span></strong>).
+          We visualize one seen instance on the left, and three unseen instances on the right.
         </p>
       </div>
     </div>
     <div class="container affordance-viz">
       <div class="carousel">
         <div class="item">
-          <div class="img-container">
+          <div class="item-container">
+            <p>
+              <strong>Place Bag</strong>: when grasping the bag, the adapter highlights the handles regardless of color and geometry.
+            </p>
+          </div>
+          <div class="item-container">
             <img class="training" src="./static/images/consistency/bag/black_seen.jpg">
             <img class="validation" src="./static/images/consistency/bag/sg_unseen.jpg">
             <img class="validation" src="./static/images/consistency/bag/tj_unseen.jpg">
             <img class="validation" src="./static/images/consistency/bag/paris_unseen.jpg">
           </div>
-          <div class="caption-container">
-            <p>
-              <strong>Place Bag</strong>: when grasping the bag, the adapter highlights the handle for even bags with differently colored handles
-              and geometrically different handles.
-            </p>
+          <div class="item-container">
+            <div class="training item-label">
+              <p><strong>Training</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+            <div class="item-label">
+              <p><strong>Validation</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
           </div>
         </div>
         <div class="item">
-          <div class="img-container">
+          <div class="item-container">
+            <p>
+              <strong>Place Bag</strong>: when placing the bag, the adapter highlights the base of the bag and the table.
+            </p>
+          </div>
+          <div class="item-container">
             <img class="training" src="./static/images/consistency/bag/black_seen2.jpg">
             <img class="validation" src="./static/images/consistency/bag/sg_unseen2.jpg">
             <img class="validation" src="./static/images/consistency/bag/tj_unseen2.jpg">
             <img class="validation" src="./static/images/consistency/bag/paris_unseen2.jpg">
           </div>
-          <div class="caption-container">
-            <p>
-              <strong>Place Bag</strong>: when placing the bag, the adapter highlights the base of the bag and the table.
-            </p>
+          <div class="item-container">
+            <div class="training item-label">
+              <p><strong>Training</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+            <div class="item-label">
+              <p><strong>Validation</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
           </div>
         </div>
         <div class="item">
-          <div class="img-container">
-            <img class="training" src="./static/images/consistency/hat/navy_seen.jpg">
-            <img class="validation" src="./static/images/consistency/hat/baby_unseen.jpg">
-            <img class="validation" src="./static/images/consistency/hat/green_unseen.jpg">
-            <img class="validation" src="./static/images/consistency/hat/pnp_unseen.jpg">
-          </div>
-          <div class="caption-container">
+          <div class="item-container">
             <p>
               <strong>Hang Hat</strong>: when grasping the hat, the adapter highlights relevant parts of the hat,
               such as the brim and front.
             </p>
           </div>
+          <div class="item-container">
+            <img class="training" src="./static/images/consistency/hat/navy_seen.jpg">
+            <img class="validation" src="./static/images/consistency/hat/baby_unseen.jpg">
+            <img class="validation" src="./static/images/consistency/hat/green_unseen.jpg">
+            <img class="validation" src="./static/images/consistency/hat/pnp_unseen.jpg">
+          </div>
+          <div class="item-container">
+            <div class="training item-label">
+              <p><strong>Training</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+            <div class="item-label">
+              <p><strong>Validation</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+          </div>
         </div>
         <div class="item">
-          <div class="img-container">
-            <img class="training" src="./static/images/consistency/hat/navy_seen2.jpg">
-            <img class="validation" src="./static/images/consistency/hat/baby_unseen2.jpg">
-            <img class="validation" src="./static/images/consistency/hat/green_unseen2.jpg">
-            <img class="validation" src="./static/images/consistency/hat/pnp_unseen2.jpg">
-          </div>
-          <div class="caption-container">
+          <div class="item-container">
             <p>
               <strong>Hang Hat</strong>: when hanging the hat, the adapter highlights relevant parts of the hat,
               such as the back edge.
             </p>
           </div>
+          <div class="item-container">
+            <img class="training" src="./static/images/consistency/hat/navy_seen2.jpg">
+            <img class="validation" src="./static/images/consistency/hat/baby_unseen2.jpg">
+            <img class="validation" src="./static/images/consistency/hat/green_unseen2.jpg">
+            <img class="validation" src="./static/images/consistency/hat/pnp_unseen2.jpg">
+          </div>
+          <div class="item-container">
+            <div class="training item-label">
+              <p><strong>Training</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+            <div class="item-label">
+              <p><strong>Validation</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+          </div>
         </div>
         <div class="item">
-          <div class="img-container">
-            <img class="training" src="./static/images/consistency/drawer/pink_seen.jpg">
-            <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire.jpg">
-            <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire.jpg">
-            <img class="validation" src="./static/images/consistency/drawer/white_unseen_level.jpg">
-          </div>
-          <div class="caption-container">
+          <div class="item-container">
             <p>
               <strong>Tidy Tools</strong>: when grasping the tool, the adapter highlights its handle,
               even with novel drawers in the background.
             </p>
           </div>
+          <div class="item-container">
+            <img class="training" src="./static/images/consistency/drawer/pink_seen.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/white_unseen_level.jpg">
+          </div>
+          <div class="item-container">
+            <div class="training item-label">
+              <p><strong>Training</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+            <div class="item-label">
+              <p><strong>Validation</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+          </div>
         </div>
         <div class="item">
-          <div class="img-container ">
-            <img class="training" src="./static/images/consistency/drawer/pink_seen2.jpg">
-            <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire2.jpg">
-            <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire2.jpg">
-            <img class="validation" src="./static/images/consistency/drawer/white_unseen_level2.jpg">
-          </div>
-          <div class="caption-container">
+          <div class="item-container">
             <p>
               <strong>Tidy Tools</strong>: when placing the tool in the drawer, the adapter highlights the drawer's
               front edge.
             </p>
           </div>
+          <div class="item-container ">
+            <img class="training" src="./static/images/consistency/drawer/pink_seen2.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire2.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire2.jpg">
+            <img class="validation" src="./static/images/consistency/drawer/white_unseen_level2.jpg">
+          </div>
+          <div class="item-container">
+            <div class="training item-label">
+              <p><strong>Training</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+            <div class="item-label">
+              <p><strong>Validation</strong></p>
+            </div>
+            <div class="item-label">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- <br>
-    <div class="columns is-2 is-variable is-multiline">
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/bag/black_seen.jpg">
-          <img class="validation" src="./static/images/consistency/bag/sg_unseen.jpg">
-          <img class="validation" src="./static/images/consistency/bag/tj_unseen.jpg">
-          <img class="validation" src="./static/images/consistency/bag/paris_unseen.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Place Bag</strong>: when grasping the bag, the adapter highlights the handle of the bag.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/bag/black_seen2.jpg">
-          <img class="validation" src="./static/images/consistency/bag/sg_unseen2.jpg">
-          <img class="validation" src="./static/images/consistency/bag/tj_unseen2.jpg">
-          <img class="validation" src="./static/images/consistency/bag/paris_unseen2.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Place Bag</strong>: when placing the bag, the adapter highlights the base of the bag and the table.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/hat/navy_seen.jpg">
-          <img class="validation" src="./static/images/consistency/hat/baby_unseen.jpg">
-          <img class="validation" src="./static/images/consistency/hat/green_unseen.jpg">
-          <img class="validation" src="./static/images/consistency/hat/pnp_unseen.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Hang Hat</strong>: when grasping the hat, the adapter highlights relevant parts of the hat,
-            such as the brim and front.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/hat/navy_seen2.jpg">
-          <img class="validation" src="./static/images/consistency/hat/baby_unseen2.jpg">
-          <img class="validation" src="./static/images/consistency/hat/green_unseen2.jpg">
-          <img class="validation" src="./static/images/consistency/hat/pnp_unseen2.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Hang Hat</strong>: when hanging the hat, the adapter highlights relevant parts of the hat,
-            such as the back edge.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container">
-          <img class="training" src="./static/images/consistency/drawer/pink_seen.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/white_unseen_level.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Tidy Tools</strong>: when grasping the tool, the adapter highlights its handle,
-            even with novel drawers in the background.
-          </p>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="img-container ">
-          <img class="training" src="./static/images/consistency/drawer/pink_seen2.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/mixed_unseen_entire2.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/black_unseen_entire2.jpg">
-          <img class="validation" src="./static/images/consistency/drawer/white_unseen_level2.jpg">
-        </div>
-        <div class="caption-container">
-          <p>
-            <strong>Tidy Tools</strong>: when placing the tool in the drawer, the adapter highlights the drawer's
-            front edge.
-          </p>
-        </div>
-      </div>
-    </div> -->
-    <!-- <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <p>
-          We visualize the spatial features extracted during the Place-Bag task.
-          These features are extracted by 3 adapters, over layers 5, 8, and 11 of the DINO-ViT S/8 pretrained network.
-        </p><br>
-        <p>
-          A single rollout's visualization is a 2x4 grid; the first stacked row is the train instances, and the bottom 2 stacked rows are the hold out instances.
-          The 4 columns are an RGB frame followed by the spatial norms of activated feature maps outputted by the 3 adapter layers.
-          Each rollout's 2x4 grid is separated from the other rollouts by the thick black border.
-        </p><br>
-        <p>
-          Note that the features are consistent across instances.
-          For example, when grasping all bags, the attention focuses on the handle.
-          This occurs in even bags that are unseen during training.
-        </p><br>
-        <p>
-          Visualizations are recorded at 5 FPS, consistent with the policy's control frequency.
-        </p><br>
-        <video preload="metadata" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/final_bags.mp4"
-          type="video/mp4">
-        </video>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <p>
-          Here, we visualize some notable consistencies.
-          Drag the sliders below to visualize the consistency per timestep.
-        </p><br>
-      </div>
-    </div>
-    <div class="columns is-centered interpolation-panel">
-      <div class="column interpolation-video-column">
-        <div id="interpolation-image-wrapper-1">
-          Loading...
-        </div>
-        <input class="slider is-fullwidth is-medium is-info"
-        id="interpolation-slider-1"
-        step="1" min="0" max="100" value="0" type="range">
-      </div>
-    </div>
-    <p>
-      The handle of the bag remains consistent despite changes in its position and geometry.
-    </p><br>
-    <div class="columns is-centered interpolation-panel">
-      <div class="column interpolation-video-column">
-        <div id="interpolation-image-wrapper-2">
-          Loading...
-        </div>
-        <input class="slider is-fullwidth is-medium is-info"
-        id="interpolation-slider-2"
-        step="1" min="0" max="100" value="0" type="range">
-      </div>
-    </div>
-    <p>
-      The screwdriver's activiation remains consistent despite significant changes in the background.
-    </p><br>
-    <div class="columns is-centered interpolation-panel">
-      <div class="column interpolation-video-column">
-        <div id="interpolation-image-wrapper-3">
-          Loading...
-        </div>
-        <input class="slider is-fullwidth is-medium is-info"
-        id="interpolation-slider-3"
-        step="1" min="0" max="100" value="0" type="range">
-      </div>
-    </div>
-    <p>
-      The policy recognizes the geometric shape of the brim, even with different colors.
-    </p><br>
-  </div> -->
   <br>
   <hr>
   <div class="columns is-multiline is-centered">
@@ -1185,7 +1083,7 @@
     </div>
     <div class="column is-3">
       <div class="video-container">
-        <video class="grid-video" preload="metadata" autoplay muted loop playsinline height="100%">
+        <video class="grid-video" autoplay muted loop playsinline height="100%">
           <source src="./static/videos/bags/fail.mp4"
           type="video/mp4">
         </video>
@@ -1193,7 +1091,7 @@
     </div>
     <div class="column is-3">
       <div class="video-container">
-        <video class="grid-video" preload="metadata" autoplay muted loop playsinline height="100%">
+        <video class="grid-video" autoplay muted loop playsinline height="100%">
           <source src="./static/videos/drawers/fail.mp4"
           type="video/mp4">
         </video>
@@ -1201,7 +1099,7 @@
     </div>
     <div class="column is-3">
       <div class="video-container">
-        <video class="grid-video" preload="metadata" autoplay muted loop playsinline height="100%">
+        <video class="grid-video" autoplay muted loop playsinline height="100%">
           <source src="./static/videos/hats/fail.mp4"
           type="video/mp4">
         </video>
@@ -1212,25 +1110,22 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="titile">BibTeX</h2>
-    <pre><code>@inproceedings{lin2023generalize,
-            title={x},
-            author={x},
-            journal={x},
-            year={x}
-          }</code></pre>
+    <pre><code>@misc{lin2023spawnnet,
+      title={SpawnNet: Learning Generalizable Visuomotor Skills from Pre-trained Networks},
+      author={Xingyu Lin and John So and Sashwat Mahalingam and Fangchen Liu and Pieter Abbeel},
+      year={2023},
+      eprint={2307.03567},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+    }</code></pre>
   </div>
 </section>
 
-<footer class="footer">
+<footer class="custom_footer">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p><br>
           <p>
             Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
           </p><br>
