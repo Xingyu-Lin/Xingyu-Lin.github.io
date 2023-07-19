@@ -25,6 +25,11 @@
     <link href="css/grayscale.css" rel="stylesheet">
 
     <style>
+        ul {
+            display:inline-block;
+            margin-bottom: 0;
+            /*font-size: 18px; !* You can adjust the font size to your preference *!*/
+        }
         .pubInfo {
             margin-left: 15px;
             border-left-style: solid;
@@ -151,11 +156,23 @@
         <div class="row">
             <div class="col-lg-12 text-left" >
                 <h4 class="section-heading">Research</h4>
-                <br>
+            </div>
+            <p></p>
+            <div class="col-lg-12 text-left" >
+                <p style="display:inline">
+                    My research lies in robotics, machine learning, and computer vision.
+                    I focus on <b> learning generalizable robot skills </b> from two angles:
+                <ul>
+                    <li> Building structured world models with spatial and temporal inductive biases, such as in the forms of graphs and skills.</li>
+                    <li> Visual and motion pre-training to enable knowledge transfer from Internet-scale vision datasets and simulators.</li>
+                </ul>
                 <p>
-                    My research interest lies in robotics, machine learning, and computer vision. In particular, I develop algorithms for reinforcement learning and data-driven dynamics modeling and apply these algorithms to robotic manipulation, such as manipulating various deformable objects. My long-term goal is to build autonomous robots that can perceive, interact and explore the physical world.
+                    Eventually, I hope to enable robots to work for human in unstructured environments, such as at homes. To that end, many of my works consider tasks in <b>deformable object manipulation</b>.
+                </p>
                 </p>
             </div>
+
+
         </div>
     </div>
     </div>
@@ -175,13 +192,13 @@
                     07/2023
                 </div>
                 <div class="col-md-10 text-muted">
-                    Invited talk at the <a href="https://ai-workshops.github.io/interdisciplinary-exploration-of-gmpl/" target="_blank"> workshohp on Generalizable Manipulation </a> at RSS 2023
+                    Invited talk at RSS 2023 workshop on <a href="https://ai-workshops.github.io/interdisciplinary-exploration-of-gmpl/" target="_blank"> Interdisciplinary Exploration of Generalizable Manipulation Policy Learning</a>
                 </div>
                 <div class="col-md-2 text-muted text-right">
                     06/2023
                 </div>
                 <div class="col-md-10 text-muted">
-                    I am co-organizing the <a href="https://sites.google.com/view/rsspioneers2023/" target="_blank">RSS Pioneer Workshop </a>
+                    I am co-organizing the <a href="https://sites.google.com/view/rsspioneers2023/" target="_blank">RSS 2023 Pioneer Workshop</a>.
                 </div>
                 <div class="col-md-2 text-muted text-right">
                     03/2023
@@ -194,7 +211,7 @@
                     08/2022
                 </div>
                 <div class="col-md-10 text-muted">
-                    Successfully defended my <a href="https://www.ri.cmu.edu/publications/learning-structured-world-model-for-deformable-object-manipulation/" target="_blank">PhD thesis</a>!
+                    I have successfully defended my <a href="https://www.ri.cmu.edu/publications/learning-structured-world-model-for-deformable-object-manipulation/" target="_blank">PhD thesis</a>!
                     A big thanks to my thesis committee: <a href="https://davheld.github.io/" target="_blank">David Held</a>,
                     <a href="http://www.cs.cmu.edu/~abhinavg/" target="_blank">Abhinav Gupta</a>,
                     <a href="https://www.cs.cmu.edu/~dpathak/" target="_blank">Deepak Pathak</a> and
@@ -251,7 +268,7 @@
                 </div>
             </div>
         </div>
-        <br>
+<!--        <br>-->
         <div class="col-md-10" id="show-more-btn">Show More</div>
     </div>
     <script>
