@@ -98,8 +98,8 @@ a:hover {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     -webkit-transition: background 0.1s ease-in-out, padding-top 0.1s ease-in-out, padding-bottom 0.1s;
     -moz-transition: background 0.1s ease-in-out, padding-top 0.1s ease-in-out, padding-bottom 0.1s;
     transition: background 0.1s ease-in-out, padding-top 0.1s ease-in-out, padding-bottom 0.1s;
