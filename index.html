@@ -32,6 +32,24 @@
             border-color: #aaaaaa;
             max-width: 1000px;
         }
+        /*img {*/
+        /*     border: 1px solid black; !* 2px is the border width, you can adjust as needed *!*/
+        /*}*/
+        #show-more-btn {
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            color: grey;
+        }
+        .list-container {
+            all: inherit;
+            max-height: 400px;
+            overflow: hidden;
+        }
+        .inline-heading {
+            display: inline;
+            /* Add any additional styles for the specific heading if needed */
+        }
     </style>
     <script src="js/custom.js"></script>
 </head>
@@ -87,108 +105,168 @@
 
 <div style="height: 80px;">&nbsp;</div>
 
+<script>
+    function toggleDropdown(elementId) {
+        var dropdown = document.getElementById(elementId);
+        if (dropdown.style.display === "none") {
+            dropdown.style.display = "block";
+        } else {
+            dropdown.style.display = "none";
+        }
+    }
+</script>
+
 <section id="about" class="container">
     <br> <br>
     <div class="row">
         <!--<div class="col-lg-12 text-center">-->
-        <!--<h2 class="section-heading">About</h2>-->
+        <!--<h4 class="section-heading">About</h4>-->
         <!--<br> <br>-->
         <!--</div>-->
         <div class="col-md-3 panel">
             <img src="./img/profile_cropped.png" width="100%">
         </div>
         <div class="col-md-9">
-
             <p>
-                I am a Postdoctoral Scholar at the <a href="https://bair.berkeley.edu/">Berkeley Artificial Intelligence Research (BAIR)</a> Lab
-                working with Prof. <a target="_blank" href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a>.
+                I am a postdoc at <a href="https://bair.berkeley.edu/">UC Berkeley AI Research (BAIR) Lab</a>
+                working with <a target="_blank" href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a>.
                 I received my Ph.D. in Robotics from <a target="_blank" href="https://www.ri.cmu.edu/">Carnegie Mellon University</a>,
-                advised by Prof. <a target="_blank" href="http://davheld.github.io">David Held</a> and my B.S. in computer science from <a target='_blank' href="http://english.pku.edu.cn/">Peking University</a>.
+                advised by <a target="_blank" href="http://davheld.github.io">David Held</a> and my B.S. in computer science from <a target='_blank' href="http://english.pku.edu.cn/">Peking University</a>.
             </p>
 
             <p>
-                My research interest lies in robotics, machine learning, and computer vision. In particular, I develop algorithms for reinforcement learning and data-driven dynamics modeling and apply these algorithms to robotic manipulation, such as manipulating various deformable objects. My long-term goal is to build autonomous robots that can perceive, interact and explore the physical world.
-            </p>
-
-            <p>
-                Email: xingyu (at) berkeley.edu <br>
+                <a href="javascript:toggleDropdown('div_email_addr')">Email</a> /
                 <a target="_blank" href="https://scholar.google.com/citations?user=hankD2kAAAAJ&hl=en">Google Scholar</a> /
                 <a target="_blank" href="https://github.com/Xingyu-Lin">Github</a> /
                 <a target="_blank" href="https://twitter.com/Xingyu2017">Twitter</a> /
                 <a target="_blank" href="./files/Xingyu_Lin_CV.pdf">CV (Feb. 2022)</a>
+                <span id="div_email_addr" class="dropdown" style="display:none;color:darkblue;font-size:20px">xingyu (at) berkeley.edu</span>
             </p>
         </div>
+    </div>
+</section>
+<br>
+<section id="research" class="align-content-md-start">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-left" >
+                <h4 class="section-heading">Research</h4>
+                <br>
+                <p>
+                    My research interest lies in robotics, machine learning, and computer vision. In particular, I develop algorithms for reinforcement learning and data-driven dynamics modeling and apply these algorithms to robotic manipulation, such as manipulating various deformable objects. My long-term goal is to build autonomous robots that can perceive, interact and explore the physical world.
+                </p>
+            </div>
+        </div>
+    </div>
     </div>
 </section>
 
 <section id="news" class="align-content-md-start">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-left" >
-                <h2 class="section-heading">News</h2>
-            </div>
-            <div class="col-md-2 text-muted text-right">
-                08/2022
-            </div>
-            <div class="col-md-10 text-muted">
-                Successfully defended my <a href="https://www.ri.cmu.edu/publications/learning-structured-world-model-for-deformable-object-manipulation/" target="_blank">PhD thesis</a>!
-                A big thanks to my thesis committee: <a href="https://davheld.github.io/" target="_blank">David Held</a>,
-                <a href="http://www.cs.cmu.edu/~abhinavg/" target="_blank">Abhinav Gupta</a>,
-                <a href="https://www.cs.cmu.edu/~dpathak/" target="_blank">Deepak Pathak</a> and
-                <a href="https://goldberg.berkeley.edu/" target="_blank">Ken Goldberg</a>.
-            </div>
-            <div class="col-md-2 text-muted text-right">
-                05/2022
-            </div>
-            <div class="col-md-10 text-muted">
-                I am selected as a member of the 2022 cohort of the <a target="_blank" href="https://sites.google.com/view/rsspioneers2022/">RSS Pioneers Workshop</a>.
-            </div>
-<!--            <div class="col-md-2 text-muted text-right">-->
-<!--                03/2022-->
-<!--            </div>-->
-<!--            <div class="col-md-10 text-muted">-->
-<!--                I will join UC Berkeley as a post-doc in Prof. <a target="_blank" href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a>'s group starting in August!-->
-<!--            </div>-->
-            <div class="col-md-2 text-muted text-right">
-                02/2022
-            </div>
-            <div class="col-md-10 text-muted">
-                Invited talks at UC Berkeley, MIT and Stanford.
-            </div>
-            <div class="col-md-2 text-muted text-right">
-                01/2022
-            </div>
-            <div class="col-md-10 text-muted">
-                VCD code released! <a target="_blank" href="https://github.com/Xingyu-Lin/VCD">[Code]</a>
-            </div>
-            <div class="col-md-2 text-muted text-right">
-                01/2022
-            </div>
-            <div class="col-md-10 text-muted">
-                One paper accepted at ICLR 2022! <a target="_blank" href="https://openreview.net/forum?id=Kef8cKdHWpP">[OpenReview]</a>
-            </div>
-<!--            <div class="col-md-2 text-muted text-right">-->
-<!--                10/2021-->
-<!--            </div>-->
-<!--            <div class="col-md-10 text-muted">-->
-<!--                Proposed my PhD thesis. <a target="_blank" href="https://www.ri.cmu.edu/event/beyond-rigid-objects-data-driven-methods-for-manipulation-of-deformable-objects/"> [Link]-->
-<!--            </a>-->
-<!--            </div>-->
-<!--            <div class="col-md-2 text-muted text-right">-->
-<!--                09/2021-->
-<!--            </div>-->
-<!--            <div class="col-md-10 text-muted">-->
-<!--                One paper on cloth manipulation accepted at CoRL 2021! <a target="_blank" href="https://openreview.net/forum?id=n1hDe9iK6ms">[OpenReview]</a>-->
-<!--            </div>-->
-<!--            <div class="col-md-2 text-muted text-right">-->
-<!--                07/2021-->
-<!--            </div>-->
-<!--            <div class="col-md-10 text-muted">-->
-<!--                Invited talk at RSS 2021 workshop on Deformable Object Simulation. (Co-present with David Held) <a target="_blank" href="https://sites.google.com/nvidia.com/do-sim/home?authuser=0">[Link]</a>-->
-<!--            </div>-->
+            <div class="col-lg-10 text-left">
+                <h4 class="section-heading">News
+                </h4>
             </div>
         </div>
+        <div class="list-container">
+            <div class="row">
+                <div class="col-md-2 text-muted text-right">
+                    07/2023
+                </div>
+                <div class="col-md-10 text-muted">
+                    Invited talk at the <a href="https://ai-workshops.github.io/interdisciplinary-exploration-of-gmpl/" target="_blank"> workshohp on Generalizable Manipulation </a> at RSS 2023
+                </div>
+                <div class="col-md-2 text-muted text-right">
+                    06/2023
+                </div>
+                <div class="col-md-10 text-muted">
+                    I am co-organizing the <a href="https://sites.google.com/view/rsspioneers2023/" target="_blank">RSS Pioneer Workshop </a>
+                </div>
+                <div class="col-md-2 text-muted text-right">
+                    03/2023
+                </div>
+                <div class="col-md-10 text-muted">
+                    Two papers accepted at ICRA 2023 and RSS 2023
+                </div>
+                <br>
+                <div class="col-md-2 text-muted text-right">
+                    08/2022
+                </div>
+                <div class="col-md-10 text-muted">
+                    Successfully defended my <a href="https://www.ri.cmu.edu/publications/learning-structured-world-model-for-deformable-object-manipulation/" target="_blank">PhD thesis</a>!
+                    A big thanks to my thesis committee: <a href="https://davheld.github.io/" target="_blank">David Held</a>,
+                    <a href="http://www.cs.cmu.edu/~abhinavg/" target="_blank">Abhinav Gupta</a>,
+                    <a href="https://www.cs.cmu.edu/~dpathak/" target="_blank">Deepak Pathak</a> and
+                    <a href="https://goldberg.berkeley.edu/" target="_blank">Ken Goldberg</a>.
+                </div>
+                <div class="col-md-2 text-muted text-right">
+                    05/2022
+                </div>
+                <div class="col-md-10 text-muted">
+                    I am selected as one of the <a target="_blank" href="https://sites.google.com/view/rsspioneers2022/">RSS Pioneers of 2022</a>.
+                </div>
+    <!--            <div class="col-md-2 text-muted text-right">-->
+    <!--                03/2022-->
+    <!--            </div>-->
+    <!--            <div class="col-md-10 text-muted">-->
+    <!--                I will join UC Berkeley as a post-doc in Prof. <a target="_blank" href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a>'s group starting in August!-->
+    <!--            </div>-->
+                <div class="col-md-2 text-muted text-right">
+                    02/2022
+                </div>
+                <div class="col-md-10 text-muted">
+                    Invited talks at UC Berkeley, MIT and Stanford.
+                </div>
+<!--                <div class="col-md-2 text-muted text-right">-->
+<!--                    01/2022-->
+<!--                </div>-->
+<!--                <div class="col-md-10 text-muted">-->
+<!--                    VCD code released! <a target="_blank" href="https://github.com/Xingyu-Lin/VCD">[Code]</a>-->
+<!--                </div>-->
+                <div class="col-md-2 text-muted text-right">
+                    01/2022
+                </div>
+                <div class="col-md-10 text-muted">
+                    One paper accepted at ICLR 2022! <a target="_blank" href="https://openreview.net/forum?id=Kef8cKdHWpP">[OpenReview]</a>
+                </div>
+                <div class="col-md-2 text-muted text-right">
+                    10/2021
+                </div>
+                <div class="col-md-10 text-muted">
+                    Proposed my PhD thesis. <a target="_blank" href="https://www.ri.cmu.edu/event/beyond-rigid-objects-data-driven-methods-for-manipulation-of-deformable-objects/"> [Link]
+                </a>
+                </div>
+                <div class="col-md-2 text-muted text-right">
+                    09/2021
+                </div>
+                <div class="col-md-10 text-muted">
+                    One paper on cloth manipulation accepted at CoRL 2021! <a target="_blank" href="https://openreview.net/forum?id=n1hDe9iK6ms">[OpenReview]</a>
+                </div>
+                <div class="col-md-2 text-muted text-right">
+                    07/2021
+                </div>
+                <div class="col-md-10 text-muted">
+                    Invited talk at RSS 2021 workshop on Deformable Object Simulation. (Co-present with David Held) <a target="_blank" href="https://sites.google.com/nvidia.com/do-sim/home?authuser=0">[Link]</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-10" id="show-more-btn">Show More</div>
     </div>
+    <script>
+        const showMoreButton = document.getElementById('show-more-btn');
+        const listContainer = document.querySelector('.list-container');
+
+        let showMore = false;
+        listContainer.style.maxHeight = '170px';
+
+        showMoreButton.addEventListener('click', () => {
+            showMore = !showMore;
+            listContainer.style.maxHeight = showMore ? 'none' : '170px';
+            showMoreButton.textContent = showMore ? 'Show Less' : 'Show More';
+        });
+    </script>
 </section>
 
 <!--Experience-->
@@ -197,7 +275,7 @@
 <!--<div class="container">-->
 <!--<div class="row">-->
 <!--<div class="col-lg-12 text-center">-->
-<!--<h2 class="section-heading">Experience</h2>-->
+<!--<h4 class="section-heading">Experience</h4>-->
 <!--<br> <br>-->
 <!--</div>-->
 <!--</div>-->
@@ -210,12 +288,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 text-left">
-                <h2 class="section-heading">Publications
-                    <small><small>
-                    (<a href="" id="select0" onclick="showPubs(0); return false;">show selected</a> /
-                    <a href="" id="select1" onclick="showPubs(1); return false;">show all by date</a>)
-                    </small></small>
-                </h2>
+                <h4 class="inline-heading">Publications</h4>
+                <big>
+                (<a href="" id="select0" onclick="showPubs(0); return false;">show selected</a> /
+                <a href="" id="select1" onclick="showPubs(1); return false;">show all by date</a>)
+                    </big>
             </div>
 <!--      Reference: https://github.com/npuliyang/npuliyang.github.io/blob/8f1382b49c9f1de4852dada717c4613c1fdfdd95/index.html-->
         </div>
@@ -874,19 +951,20 @@
 <!-- <section id="download" class="download-section content-section text-center">
   <div class="container">
     <div class="col-lg-8 mx-auto">
-      <h2>Download Grayscale</h2>
+      <h4>Download Grayscale</h4>
       <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
       <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
     </div>
   </div>
 </section> -->
 
-<!-- Service Section -->
+<br>
+
 <section id="service" class="align-content-md-start">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-left">
-                <h2 class="section-heading">Service</h2>
+                <h4 class="section-heading">Service</h4>
             </div>
             <div class="col-md-12">
                 <li>Conference Reviewer: NeurIPS, ICML, ICLR, RSS, CoRL, ICRA, IROS</li>
@@ -899,19 +977,19 @@
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="align-content-md-start">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-left" >
-                <h2 class="section-heading">Contact</h2>
-            </div>
-            <div class="col-md-12">
-                Newell-Simon Hall, Room 4124, <br>
-                Pittsburgh, PA 15213 <br>
-            </div>
-        </div>
-    </div>
-</section>
+<!--<section id="contact" class="align-content-md-start">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12 text-left" >-->
+<!--                <h4 class="section-heading">Contact</h4>-->
+<!--            </div>-->
+<!--            <div class="col-md-12">-->
+<!--                Newell-Simon Hall, Room 4124, <br>-->
+<!--                Pittsburgh, PA 15213 <br>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
 <!-- Map Section -->
 <!-- <div id="map"></div> -->
