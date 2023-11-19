@@ -1,0 +1,6 @@
+@article{wu2023gello,
+  title={GELLO: A General, Low-Cost, and Intuitive Teleoperation Framework for Robot Manipulators},
+  author={Wu, Philipp and Shentu, Yide and Yi, Zhongke and Lin, Xingyu and Abbeel, Pieter},
+  journal={arXiv preprint arXiv:2309.13037},
+  year={2023}
+}
