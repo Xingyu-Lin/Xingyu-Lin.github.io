@@ -39,7 +39,7 @@
             </span>
             <span class="author-block">
               <a href="https://www.johnrso.xyz/" target="_blank">John So</a><sup>3</sup>*,
-            </span>
+            </span><br>
             <span class="author-block">
               <a href="https://ck-kai.github.io/" target="_blank">Kai Chen</a><sup>6</sup>,
             </span>
@@ -57,17 +57,17 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>UC Berkeley,</span>
             <span class="author-block"><sup>2</sup>IIIS, Tsinghua University,</span>
-            <span class="author-block"><sup>3</sup>Stanford University,</span>
+            <span class="author-block"><sup>3</sup>Stanford University,</span><br>
             <span class="author-block"><sup>4</sup>Shanghai Artificial Intelligence Laboratory,</span>
             <span class="author-block"><sup>5</sup>Shanghai Qi Zhi Institute,</span>
             <span class="author-block"><sup>6</sup>CUHK</span>
           </div>
 
 
-          <!-- <div class="column has-text-centered">
+          <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2307.03567"
+                <a href="https://arxiv.org/abs/2401.00025"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -75,7 +75,7 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="./files/appendix.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -83,8 +83,8 @@
                   </span>
                   <span>Appendix</span>
                   </a>
-              </span>
-              <span class="link-block">
+              </span> -->
+              <!-- <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -92,9 +92,9 @@
                   </span>
                   <span>Code</span>
                   </a>
-              </span>
+              </span> -->
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -132,7 +132,10 @@
   </div>
 </section>
 
-<!-- <section class="section">
+
+
+
+<section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-left">
       <div class="column">
@@ -140,22 +143,37 @@
       </div>
     </div>
     <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <p>
-          show the point tracking scheme here
-        </p>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column is-8">
+      <div class="column is-10">
         <img src="./static/images/system.png" alt="teaser" class="teaser-image">
       </div>
     </div>
     <div class="columns is-centered has-text-justified">
       <div class="column">
-        <p>
-          show track generation arch
+        <!-- <p>
+          While previous work has explored learning world models from videos, these models often perform video prediction, which is computationally expensive and emphasizes aspects irrelevant to control such as appearance. 2D point trajectories are a state representation more directly relevant to control, serving as physically grounded subgoals and enabling action prediction from these proposed subgoals.
         </p>
+        <br> -->
+        <p>
+          <b>ATM</b> proposes to learn a track generator to generate arbitrary 2D point tracks from actionless video datasets; we make no assumptions about depth or camera pose, allowing ATM to potentially scale to diverse datasets in the future. In <b>Stage 1</b>, we
+          <!-- formulate track generation as multi-modal masked reconstruction, and  -->
+          learn a <i>track transformer</i> to reconstruct masked, arbitrary trajectories from their respective initial points, conditioned on the image and text. Our track transformer is less computationally intense, allowing for point tracks to be generated at 50Hz. In <b>Stage 2</b>, we leverage the track transformer to learn a <i>track-guided policy</i> conditioned on the current image observation and proposed future tracks. In this way, ATM leverages the rich information in videos to learn manipulation policies from few demonstrations.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+        <h2 class="title is-5">Trajectory Annotation</h2>
+        <p>
+          We leverage off-the-shelf TAP models trained on synthetic data to generate 2D point tracks from actionless videos. As many points in the video are not relevant to the task, we propose a simple heuristic to select a subset of points that are relevant to the task. We first randomly sample 1000 points from the video. Then, we filter the tracks based on the variance of the point's position across time. We then resample points around these points. This scheme is visualized below.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-7">
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/filtering.mp4"
+                  type="video/mp4">
+        </video>
       </div>
     </div>
     <div class="columns is-centered has-text-left">
@@ -164,12 +182,24 @@
       </div>
     </div>
     <div class="columns is-centered has-text-justified">
-      <div class="column">
+      <div class="column is-12">
         <p>
-          main results
+          We compare ATM to video pre-training policy learning baselines using LIBERO, a simulation benchmark for language-conditioned manipulation featuring over 100 tasks across 5 suites, each emphasizing a different generalization axis. We emphasize learning from few action labelled demonstrations: when applicable, we first pre-train on the entire action-less video dataset for each suite. Then, we perform behavior cloning on 10 demonstrations per task. We report the success metric across tasks in the suite.
         </p>
         <br>
-        <img src="./static/images/results.png" alt="teaser" class="teaser-image"><br>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-10">
+        <img src="./static/images/main_results.png" alt="teaser" class="teaser-image"><br>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-12">
+        <p>
+          ATM outperforms all baselines across all suites, demonstrating the effectiveness of ATM's track subgoals. ATM's performance is comparable to BC with 100% of the training demonstrations, highlighting the benefits of learning fine-grained track subgoals from videos.
+        </p>
+        <br>
       </div>
     </div>
     <div class="columns is-centered has-text-left">
@@ -180,12 +210,12 @@
     <div class="columns is-centered has-text-justified">
       <div class="column">
         <p>
-          design decisions -- length of track, use of tracks in policy head
+          We compare the performance of ATM with varying track lengths. Using longer track lengths improves the performance of ATM on tasks with long horizons, such as LIBERO-Goal and LIBERO-Long. On tasks with short horizons, such as LIBERO-Spatial and LIBERO-Object, ATM performs similarly with varying track lengths. Longer track lengths provide more fine-grained details relevant to each task, but are more susceptible to noise and drift.
         </p>
         <br>
       </div>
       <div class="column is-4">
-        <img src="./static/images/different_nets.png" alt="teaser" class="teaser-image">
+        <img src="./static/images/track_length.png" alt="teaser" class="teaser-image">
       </div>
     </div>
     <div class="columns is-centered has-text-left">
@@ -196,68 +226,190 @@
     <div class="columns is-centered has-text-justified">
       <div class="column">
         <p>
-          Sample
+          We additionally compare the performance of ATM and BC with varying amounts of demonstration data. With as few as 4% of the training demonstrations, ATM performs similarly to BC with 20% of the training demonstrations; with 20% of the training demonstrations, ATM approaches the performance of BC with 100% of the training demonstrations.
+          For the long horizon tasks in LIBERO-Goal, ATM even outperforms BC with 100% of the training demonstrations, highlighting the benefits of learning fine-grained track subgoals from videos.
         </p>
         <br>
       </div>
-      <div class="column is-4">
-        <img src="./static/images/ablation.png" alt="teaser" class="teaser-image">
+      <div class="column is-5">
+        <img src="./static/images/num_demos.png" alt="teaser" class="teaser-image">
       </div>
     </div>
+    <br>
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h2 class="title is-5">Comparison to Image Subgoals</h2>
-      </div>
-      <div class="column has-text-left">
-        <p>
-          comparison to unipi
-        </p>
+        <h2 class="title is-5">Visualizing ATM</h2>
       </div>
     </div>
-    <div class="columns is-multiline">
-      <div class="column is-12">
-        <h2 class="title is-5">Visualizations</h2>
+    <!-- <div class="columns is-multiline">
+      <div class="column is-12 has-text-left">
+          I keep the below <b>images</b> and instead put it in a carousel for different tasks (similar to above) to highlight certain behaviors.
       </div>
-      <div class="column has-text-left">
-        <p>
-          visualize the point tracking with videos. visualize the policy performance with videos. different tasks and spawnnet real exps.
-        </p>
+      <div class="column is-12 has-text-left">
+        <img src="./static/images/track_vis.png" alt="teaser" class="teaser-image">
       </div>
     </div> -->
-  <!-- <div class="columns is-multiline is-centered">
-    <div class="column is-12">
-      <h2 class="title is-5">Failure Modes</h2>
+    <div class="columns is-multiline">
+      <div class="column is-12 has-text-left">
+        <p>
+          We visualize ATM's generated track subgoals at each timestep during policy execution. We observe that the track subgoals provide interpretable and fine-grained details relevant to motor control, making actions such as rotation, sideways translation, and forward/backward translation more easily predictable.
+        </p>
+        <br>
+        <p>
+          Use the buttons and dropdown menu below to switch between tasks across different LIBERO benchmark suites.
+        </p>
+      </div>
     </div>
-    <div class="column is-12">
-      <p>
-      </p>
+    <div class="tabs is-toggle is-fullwidth" id="policyTaskTabs">
+      <ul>
+        <li class="tablinks" id="clickDefault" onclick="switchTab(event, 'spatial')"><a><b>LIBERO-Spatial</b></a></li>
+        <li class="tablinks" onclick="switchTab(event, 'object')"><a><b>LIBERO-Object</b></a></li>
+        <li class="tablinks" onclick="switchTab(event, 'goal')"><a><b>LIBERO-Goal</b></a></li>
+        <li class="tablinks" onclick="switchTab(event, 'long')"><a><b>LIBERO-Long</b></a></li>
+      </ul>
     </div>
-    <div class="column is-3">
-      <div class="video-container">
-        <video class="grid-video" autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/bags/fail.mp4"
-          type="video/mp4">
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-10">
+        <video id="displayed-image" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/libero-spatial/env_0.mp4"
+                  type="video/mp4">
         </video>
       </div>
     </div>
-    <div class="column is-3">
-      <div class="video-container">
-        <video class="grid-video" autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/drawers/fail.mp4"
-          type="video/mp4">
-        </video>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-12">
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <select id="dropdown2" onchange="changeImage()">
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="column is-3">
-      <div class="video-container">
-        <video class="grid-video" autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/hats/fail.mp4"
-          type="video/mp4">
-        </video>
+    <br>
+    <div class="columns is-centered is-multiline">
+      <div class="column is-12">
+        <h2 class="title is-5">Comparison between Track and Image Subgoals</h2>
+      </div>
+      <div class="column is-12 has-text-left">
+        <p>
+          To better understand the advantages of ATM's track subgoals, we compare them qualitatively to image subgoals generated by <b>UniPi (left)</b>. To decouple the advantages of open-loop and closed-loop video generation, we additionally instantiate <b>UniPi-Replan (right)</b>, which proposes new image subgoals every 8 actions.
+        </p>
+        <br>
+        <p>
+          Qualitatively, UniPi suffers from motor control failure caused by a lack of fine-grained details in image subgoals. UniPi-Replan additionally experiences failures in image generation, generating noisy images when out of distribution, or generating images that correspond to a different task.
+        </p>
       </div>
     </div>
+    <div class="container affordance-viz">
+      <div class="carousel">
+        <div class="item">
+          <div class="item-container">
+            <p>
+              <strong>Pick up the alphabet soup and place it in the basket</strong>: UniPi-Replan fails to pick up the soup. It is difficult to determine whether the generated image subgoals reach for the soup can in the back, or the carton in the front.
+            </p>
+          </div>
+          <div class="item-container">
+            <video class="validation" autoplay muted loop playsinline height="100%">
+              <source src="./static/videos/unipi/obj-0-succ.mp4"
+                      type="video/mp4">
+            </video>
+            <video class="validation" autoplay muted loop playsinline height="100%">
+              <source src="./static/videos/unipi-replan/obj-0-generation.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item-container">
+            <div class="item-label">
+              <p><strong>UniPi</strong></p>
+            </div>
+            <div class="item-label">
+              <p><strong>UniPi-Replan</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-container">
+            <p>
+              <strong>Pick up the bbq sauce and place it in the basket</strong>: UniPi fails to pick up the bbq sauce, as image subgoals lack finer details relevant to motor control.
+            </p>
+          </div>
+          <div class="item-container">
+            <video class="validation" autoplay muted loop playsinline height="100%">
+              <source src="./static/videos/unipi/obj-1-motor.mp4"
+                      type="video/mp4">
+            </video>
+            <video class="validation" autoplay muted loop playsinline height="100%">
+              <source src="./static/videos/unipi-replan/obj-1-succ.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item-container">
+            <div class="item-label">
+              <p><strong>UniPi</strong></p>
+            </div>
+            <div class="item-label">
+              <p><strong>UniPi-Replan</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-container">
+            <p>
+              <strong>Open the middle drawer of the cabinet</strong>: UniPi-Replan's diffusion model generates subgoals corresponding to a different task, indicating the increased difficulty of closed-loop video generation.
+            </p>
+          </div>
+          <div class="item-container">
+            <video class="validation" autoplay muted loop playsinline height="100%">
+              <source src="./static/videos/unipi/goal-0-succ.mp4"
+                      type="video/mp4">
+            </video>
+            <video class="validation" autoplay muted loop playsinline height="100%">
+              <source src="./static/videos/unipi-replan/goal-0-wrong-task.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item-container">
+            <div class="item-label">
+              <p><strong>UniPi</strong></p>
+            </div>
+            <div class="item-label">
+              <p><strong>UniPi-Replan</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-container">
+            <p>
+              <strong>Open the top drawer of the cabinet</strong>: Both UniPi and UniPi-Replan experience motor control failure, as it is difficult to tell when to close the gripper from noisy image subgoals.
+            </p>
+          </div>
+          <div class="item-container">
+            <video class="validation" autoplay muted loop playsinline height="100%">
+              <source src="./static/videos/unipi/goal-1-motor.mp4"
+                      type="video/mp4">
+            </video>
+            <video class="validation" autoplay muted loop playsinline height="100%">
+              <source src="./static/videos/unipi-replan/goal-1-motor.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item-container">
+            <div class="item-label">
+              <p><strong>UniPi</strong></p>
+            </div>
+            <div class="item-label">
+              <p><strong>UniPi-Replan</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
   </div>
-</section> -->
+</section>
 <!-- <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="titile">BibTeX</h2>

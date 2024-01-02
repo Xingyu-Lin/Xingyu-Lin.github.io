@@ -1,80 +1,6 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-var INTERP_BASE_1 = "./static/interpolation/stacked";
-var INTERP_BASE_2 = "./static/interpolation/stacked";
-var INTERP_BASE_3 = "./static/interpolation/stacked";
-var NUM_INTERP_FRAMES = 60;
-
-var interp_images_1 = [];
-var interp_images_2 = [];
-var interp_images_3 = [];
-function preloadInterpolationImages() {
-  for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE_1 + '/' + String(i).padStart(6, '0') + '.png';
-    interp_images_1[i] = new Image();
-    interp_images_1[i].src = path;
-
-    path = INTERP_BASE_2 + '/' + String(i).padStart(6, '0') + '.png';
-    interp_images_2[i] = new Image();
-    interp_images_2[i].src = path;
-
-    path = INTERP_BASE_3 + '/' + String(i).padStart(6, '0') + '.png';
-    interp_images_3[i] = new Image();
-    interp_images_3[i].src = path;
-  }
-}
-
-function openTab(evt, tabName) {
-  // Declare all variables
-  var i, tabcontent, tablinks;
-
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" is-active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " is-active";
-}
-
-function setInterpolationImage1(i) {
-  var image = interp_images_1[i];
-  image.ondragstart = function() { return false; };
-  image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper-1').empty().append(image);
-}
-
-function setInterpolationImage2(i) {
-  var image = interp_images_2[i];
-  image.ondragstart = function() { return false; };
-  image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper-2').empty().append(image);
-}
-
-function setInterpolationImage3(i) {
-  var image = interp_images_3[i];
-  image.ondragstart = function() { return false; };
-  image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper-3').empty().append(image);
-}
-
 $(document).ready(function() {
-    // Check for click events on the navbar burger icon
-    $(".navbar-burger").click(function() {
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-      $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active");
-
-    });
-
     var options = {
 			slidesToScroll: 1,
 			slidesToShow: 1,
@@ -104,39 +30,6 @@ $(document).ready(function() {
     	});
     }
 
-    /*var player = document.getElementById('interpolation-video');
-    player.addEventListener('loadedmetadata', function() {
-      $('#interpolation-slider').on('input', function(event) {
-        console.log(this.value, player.duration);
-        player.currentTime = player.duration / 100 * this.value;
-      })
-    }, false);*/
-    preloadInterpolationImages();
-
-    $('#interpolation-slider-1').on('input', function(event) {
-      setInterpolationImage1(this.value);
-    });
-    setInterpolationImage1(0);
-    $('#interpolation-slider-1').prop('max', NUM_INTERP_FRAMES - 1);
-
-    bulmaSlider.attach();
-
-    $('#interpolation-slider-2').on('input', function(event) {
-      setInterpolationImage2(this.value);
-    });
-    setInterpolationImage2(0);
-    $('#interpolation-slider-2').prop('max', NUM_INTERP_FRAMES - 1);
-
-    bulmaSlider.attach();
-
-    $('#interpolation-slider-3').on('input', function(event) {
-      setInterpolationImage3(this.value);
-    });
-    setInterpolationImage3(0);
-    $('#interpolation-slider-3').prop('max', NUM_INTERP_FRAMES - 1);
-
-    bulmaSlider.attach();
-
     $('.card-header-tabs li').click(function() {
       var tab_id = $(this).index();
 
@@ -149,3 +42,127 @@ $(document).ready(function() {
 
     document.getElementById("clickDefault").click();
 })
+
+function changeImage() {
+  const dropdown1 = document.getElementById('dropdown1');
+  const dropdown2 = document.getElementById('dropdown2');
+  const displayedImage = document.getElementById('displayed-image');
+
+  // Check if both dropdowns have a selected value
+  if (dropdown1.value && dropdown2.value) {
+    // Construct the image filepath based on the selected values
+    const imagePath = `./static/videos/${dropdown1.value}/${dropdown2.value}`;
+    displayedImage.src = imagePath;
+    // show the image path for debugging purposes on the window
+    window.alert(imagePath);
+  } else {
+    // Reset the image source if either dropdown is not selected
+    displayedImage.src = '';
+  }
+}
+
+function switchTab(evt, selectedTab) {
+  // window.alert(selectedTab);
+  const tabs = document.getElementById('policyTaskTabs').getElementsByTagName('li');
+  const dropdown2 = document.getElementById('dropdown2');
+  const displayedImage = document.getElementById('displayed-image');
+
+  // Reset options in dropdown2
+  dropdown2.innerHTML = '';
+
+  // Activate the selected tab
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove('is-active');
+  }
+  // document.getElementById(selectedTab).style.display = "block";
+  evt.currentTarget.className += " is-active";
+
+  // Activate the selected tab
+  for (let i = 0; i < tabs.length; i++) {
+      console.log(tabs[i].classList);
+  }
+  // Add options to dropdown2 based on the selected tab
+  if (selectedTab === 'spatial') {
+    addOptionsToDropdown2([
+      { value: 'libero-spatial/env_0.mp4', display: 'pick up the black bowl between the plate and the ramekin and place it on the plate' },
+      { value: 'libero-spatial/env_1.mp4', display: "pick up the black bowl from table center and place it on the plate" },
+      { value: 'libero-spatial/env_2.mp4', display: "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate" },
+      { value: 'libero-spatial/env_3.mp4', display: "pick up the black bowl next to the cookie box and place it on the plate" },
+      { value: 'libero-spatial/env_4.mp4', display: "pick up the black bowl next to the plate and place it on the plate" },
+      { value: 'libero-spatial/env_5.mp4', display: "pick up the black bowl next to the ramekin and place it on the plate" },
+      { value: 'libero-spatial/env_6.mp4', display: "pick up the black bowl on the cookie box and place it on the plate" },
+      { value: 'libero-spatial/env_7.mp4', display: "pick up the black bowl on the ramekin and place it on the plate" },
+      { value: 'libero-spatial/env_8.mp4', display: "pick up the black bowl on the stove and place it on the plate" },
+      { value: 'libero-spatial/env_9.mp4', display: "pick up the black bowl on the wooden cabinet and place it on the plate" }
+    ]);
+  } else if (selectedTab === 'object') {
+    addOptionsToDropdown2([
+      { value: 'libero-object/env_0.mp4', display: 'pick up the alphabet soup and place it in the basket' },
+      { value: 'libero-object/env_1.mp4', display: 'pick up the bbq sauce and place it in the basket' },
+      { value: 'libero-object/env_2.mp4', display: 'pick up the butter and place it in the basket' },
+      { value: 'libero-object/env_3.mp4', display: 'pick up the chocolate pudding and place it in the basket' },
+      { value: 'libero-object/env_4.mp4', display: 'pick up the cream cheese and place it in the basket' },
+      { value: 'libero-object/env_5.mp4', display: 'pick up the ketchup and place it in the basket' },
+      { value: 'libero-object/env_6.mp4', display: 'pick up the milk and place it in the basket' },
+      { value: 'libero-object/env_7.mp4', display: 'pick up the orange juice and place it in the basket' },
+      { value: 'libero-object/env_8.mp4', display: 'pick up the salad dressing and place it in the basket' },
+      { value: 'libero-object/env_9.mp4', display: 'pick up the tomato sauce and place it in the basket' },
+    ]);
+  } else if (selectedTab === 'goal') {
+    addOptionsToDropdown2([
+      { value: 'libero-goal/env_0.mp4', display: 'open the middle drawer of the cabinet' },
+      { value: 'libero-goal/env_1.mp4', display: 'open the top drawer and put the bowl inside' },
+      { value: 'libero-goal/env_2.mp4', display: 'push the plate to the front of the stove' },
+      { value: 'libero-goal/env_3.mp4', display: 'put the bowl on the plate' },
+      { value: 'libero-goal/env_4.mp4', display: 'put the bowl on the stove' },
+      { value: 'libero-goal/env_5.mp4', display: 'put the bowl on top of the cabinet' },
+      { value: 'libero-goal/env_6.mp4', display: 'put the cream cheese in the bowl' },
+      { value: 'libero-goal/env_7.mp4', display: 'put the wine bottle on the rack' },
+      { value: 'libero-goal/env_8.mp4', display: 'put the wine bottle on top of the cabinet' },
+      { value: 'libero-goal/env_9.mp4', display: 'turn on the stove' }
+    ])
+  } else if (selectedTab === 'long') {
+    addOptionsToDropdown2([
+      { value: 'libero-long/env_0.mp4', display: 'turn on the stove and put the moka pot on it' },
+      { value: 'libero-long/env_1.mp4', display: 'put the black bowl in the bottom drawer of the cabinet and close it' },
+      { value: 'libero-long/env_2.mp4', display: 'put the yellow and white mug in the microwave and close it' },
+      { value: 'libero-long/env_3.mp4', display: 'put both moka pots on the stove' },
+      { value: 'libero-long/env_4.mp4', display: 'put both the alphabet soup and the cream cheese box in the basket' },
+      { value: 'libero-long/env_5.mp4', display: 'put both the alphabet soup and the tomato sauce in the basket' },
+      { value: 'libero-long/env_6.mp4', display: 'put both the cream cheese box and the butter in the basket' },
+      { value: 'libero-long/env_7.mp4', display: 'put the white mug on the left plate and put the yellow and white mug on the right plate' },
+      { value: 'libero-long/env_8.mp4', display: 'put the white mug on the plate and put the chocolate pudding to the right of the plate' },
+      { value: 'libero-long/env_9.mp4', display: 'pick up the book and place it in the back compartment of the caddy' }
+    ])
+  }
+  // select the first option in dropdown2
+  dropdown2.selectedIndex = 0;
+  changeImage();
+}
+
+// Helper function to add options to dropdown2
+function addOptionsToDropdown2(options) {
+  const dropdown2 = document.getElementById('dropdown2');
+  options.forEach(option => {
+    const newOption = document.createElement('option');
+    newOption.value = option.value;
+    newOption.textContent = option.display;
+    dropdown2.appendChild(newOption);
+  });
+}
+
+// Function to change the displayed image based on the selected options
+function changeImage() {
+  const dropdown2 = document.getElementById('dropdown2');
+  const displayedImage = document.getElementById('displayed-image');
+
+  // Check if dropdown2 has a selected value
+  if (dropdown2.value) {
+    // Construct the image filepath based on the selected values
+    const imagePath = `./static/videos/${dropdown2.value}`;
+    displayedImage.src = imagePath;
+  } else {
+    // Reset the image source if dropdown2 is not selected
+    displayedImage.src = '';
+  }
+}
