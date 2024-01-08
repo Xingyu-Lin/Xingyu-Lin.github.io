@@ -123,8 +123,8 @@ function switchTab(evt, selectedTab) {
     ])
   } else if (selectedTab === 'long') {
     addOptionsToDropdown2([
-      { value: 'libero-long/env_0.mp4', display: 'turn on the stove and put the moka pot on it' },
       { value: 'libero-long/env_1.mp4', display: 'put the black bowl in the bottom drawer of the cabinet and close it' },
+      { value: 'libero-long/env_0.mp4', display: 'turn on the stove and put the moka pot on it' },
       { value: 'libero-long/env_2.mp4', display: 'put the yellow and white mug in the microwave and close it' },
       { value: 'libero-long/env_3.mp4', display: 'put both moka pots on the stove' },
       { value: 'libero-long/env_4.mp4', display: 'put both the alphabet soup and the cream cheese box in the basket' },

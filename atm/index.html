@@ -29,7 +29,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Any-point Trajectory Modeling for Policy Learning</h1>
+          <h1 class="title is-2 publication-title">Any-point Trajectory Modeling for Policy Learning</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://alvinwen428.github.io/" target="_blank">Chuan Wen</a><sup>1,2</sup>*,
@@ -84,15 +84,15 @@
                   <span>Appendix</span>
                   </a>
               </span> -->
-              <!-- <span class="link-block">
+              <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (Coming soon)</span>
                   </a>
-              </span> -->
+              </span>
             </div>
           </div>
         </div>
@@ -124,7 +124,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Learning from demonstrations is an effective method for teaching robots new skills, often resulting in more robust policies with an increased number of demonstrations. However, the significant cost associated with collecting demonstration data presents a major bottleneck. Videos, a rich data source, encompass knowledge of behaviors, physics, and semantics.  Although video data is abundant, extracting control-specific information from then remains challenging due to the absence of action labels. In this work, we introduce a novel framework <b>A</b>ny-point <b>T</b>rajectory <b>M</b>odeling (ATM) to utilize video demonstrations by pre-training a trajectory model that predicts future trajectories of arbitrary points within a video frame. Once trained, these predicted trajectories provide detailed guidance to control, enabling us to learn robust visuomotor policies from a minimal amount of action-labeled data. The effectiveness of our method is demonstrated across a benchmark of 40 simulation tasks, focusing on language-conditioned manipulation tasks.
+            Learning from demonstration is a powerful method for teaching robots new skills, and more demonstration data often improves policy learning. However, the high cost of collecting demonstration data is a significant bottleneck. Videos, as a rich data source, contain knowledge of behaviors, physics, and semantics, but extracting control-specific information from them is challenging due to the lack of action labels. In this work, we introduce a novel framework, Any-point Trajectory Modeling (ATM), that utilizes video demonstrations by pre-training a trajectory model to predict future trajectories of arbitrary points within a video frame. Once trained, these trajectories provide detailed control guidance, enabling the learning of robust visuomotor policies with minimal action-labeled data. Across the 130 language-conditioned tasks we evaluated in simulation, ATM outperforms strong baselines by 80% in average.
           </p><br>
         </div>
       </div>
@@ -137,108 +137,11 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-left">
-      <div class="column">
-        <h2 class="title is-3">Method Overview</h2>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column is-10">
-        <img src="./static/images/system.png" alt="teaser" class="teaser-image">
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <!-- <p>
-          While previous work has explored learning world models from videos, these models often perform video prediction, which is computationally expensive and emphasizes aspects irrelevant to control such as appearance. 2D point trajectories are a state representation more directly relevant to control, serving as physically grounded subgoals and enabling action prediction from these proposed subgoals.
-        </p>
-        <br> -->
-        <p>
-          <b>ATM</b> proposes to learn a track generator to generate arbitrary 2D point tracks from actionless video datasets; we make no assumptions about depth or camera pose, allowing ATM to potentially scale to diverse datasets in the future. In <b>Stage 1</b>, we
-          <!-- formulate track generation as multi-modal masked reconstruction, and  -->
-          learn a <i>track transformer</i> to reconstruct masked, arbitrary trajectories from their respective initial points, conditioned on the image and text. Our track transformer is less computationally intense, allowing for point tracks to be generated at 50Hz. In <b>Stage 2</b>, we leverage the track transformer to learn a <i>track-guided policy</i> conditioned on the current image observation and proposed future tracks. In this way, ATM leverages the rich information in videos to learn manipulation policies from few demonstrations.
-        </p>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <h2 class="title is-5">Trajectory Annotation</h2>
-        <p>
-          We leverage off-the-shelf TAP models trained on synthetic data to generate 2D point tracks from actionless videos. As many points in the video are not relevant to the task, we propose a simple heuristic to select a subset of points that are relevant to the task. We first randomly sample 1000 points from the video. Then, we filter the tracks based on the variance of the point's position across time. We then resample points around these points. This scheme is visualized below.
-        </p>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column is-7">
-        <video id="teaser" autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/filtering.mp4"
-                  type="video/mp4">
-        </video>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-left">
-      <div class="column">
-        <h2 class="title is-3">Results</h2>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column is-12">
-        <p>
-          We compare ATM to video pre-training policy learning baselines using LIBERO, a simulation benchmark for language-conditioned manipulation featuring over 100 tasks across 5 suites, each emphasizing a different generalization axis. We emphasize learning from few action labelled demonstrations: when applicable, we first pre-train on the entire action-less video dataset for each suite. Then, we perform behavior cloning on 10 demonstrations per task. We report the success metric across tasks in the suite.
-        </p>
-        <br>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column is-10">
-        <img src="./static/images/main_results.png" alt="teaser" class="teaser-image"><br>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column is-12">
-        <p>
-          ATM outperforms all baselines across all suites, demonstrating the effectiveness of ATM's track subgoals. ATM's performance is comparable to BC with 100% of the training demonstrations, highlighting the benefits of learning fine-grained track subgoals from videos.
-        </p>
-        <br>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-left">
-      <div class="column">
-        <h2 class="title is-5">Tracks as Grounded Subgoals</h2>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <p>
-          We compare the performance of ATM with varying track lengths. Using longer track lengths improves the performance of ATM on tasks with long horizons, such as LIBERO-Goal and LIBERO-Long. On tasks with short horizons, such as LIBERO-Spatial and LIBERO-Object, ATM performs similarly with varying track lengths. Longer track lengths provide more fine-grained details relevant to each task, but are more susceptible to noise and drift.
-        </p>
-        <br>
-      </div>
-      <div class="column is-4">
-        <img src="./static/images/track_length.png" alt="teaser" class="teaser-image">
-      </div>
-    </div>
-    <div class="columns is-centered has-text-left">
-      <div class="column">
-        <h2 class="title is-5">Tracks for Sample Efficiency</h2>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column">
-        <p>
-          We additionally compare the performance of ATM and BC with varying amounts of demonstration data. With as few as 4% of the training demonstrations, ATM performs similarly to BC with 20% of the training demonstrations; with 20% of the training demonstrations, ATM approaches the performance of BC with 100% of the training demonstrations.
-          For the long horizon tasks in LIBERO-Goal, ATM even outperforms BC with 100% of the training demonstrations, highlighting the benefits of learning fine-grained track subgoals from videos.
-        </p>
-        <br>
-      </div>
-      <div class="column is-5">
-        <img src="./static/images/num_demos.png" alt="teaser" class="teaser-image">
-      </div>
-    </div>
-    <br>
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h2 class="title is-5">Visualizing ATM</h2>
+
+
+        <h2 class="title is-4">Visualization of Policy Rollout</h2>
       </div>
     </div>
     <!-- <div class="columns is-multiline">
@@ -252,29 +155,22 @@
     <div class="columns is-multiline">
       <div class="column is-12 has-text-left">
         <p>
-          We visualize ATM's generated track subgoals at each timestep during policy execution. We observe that the track subgoals provide interpretable and fine-grained details relevant to motor control, making actions such as rotation, sideways translation, and forward/backward translation more easily predictable.
+          Below, we show the track-guided manipulation policy. After we pre-train a track prediction model on video data, we can train policies by learning from limited human demonstration (e.g. 10 demonstrations per task). During policy learning, we sample a fixed set of 64 points across the thrid-person camera view and the wrist view. You can see the predicted tracks indicated by the colored curves. The curves indicate the locations (in the camera frame) that the points should go to in future time steps.
+          With dense supervision from the predicted tracks, our trained policies are able to perform long-horizon tasks, reasoning on objects, spatial locations and language instructions.
         </p>
         <br>
         <p>
-          Use the buttons and dropdown menu below to switch between tasks across different LIBERO benchmark suites.
+          Use the tabs and the dropdown menu to select the task suite in the benchmark the language instruction.
         </p>
       </div>
     </div>
     <div class="tabs is-toggle is-fullwidth" id="policyTaskTabs">
       <ul>
-        <li class="tablinks" id="clickDefault" onclick="switchTab(event, 'spatial')"><a><b>LIBERO-Spatial</b></a></li>
+        <li class="tablinks" id="clickDefault" onclick="switchTab(event, 'long')"><a><b>LIBERO-Long</b></a></li>
+        <li class="tablinks" onclick="switchTab(event, 'spatial')"><a><b>LIBERO-Spatial</b></a></li>
         <li class="tablinks" onclick="switchTab(event, 'object')"><a><b>LIBERO-Object</b></a></li>
         <li class="tablinks" onclick="switchTab(event, 'goal')"><a><b>LIBERO-Goal</b></a></li>
-        <li class="tablinks" onclick="switchTab(event, 'long')"><a><b>LIBERO-Long</b></a></li>
       </ul>
-    </div>
-    <div class="columns is-centered has-text-justified">
-      <div class="column is-10">
-        <video id="displayed-image" autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/libero-spatial/env_0.mp4"
-                  type="video/mp4">
-        </video>
-      </div>
     </div>
     <div class="columns is-centered has-text-centered">
       <div class="column is-12">
@@ -288,10 +184,39 @@
         </div>
       </div>
     </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-10">
+        <video id="displayed-image" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/libero-spatial/env_0.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+    </div>
     <br>
+
+
+    <div class="columns is-centered has-text-left">
+      <div class="column">
+        <h2 class="title is-4">Quantitative Results</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-12">
+        <p>
+<!--          We compare ATM to video pre-training policy learning baselines using LIBERO, a simulation benchmark for language-conditioned manipulation featuring over 100 tasks across 5 suites, each emphasizing a different generalization axis. We emphasize learning from few action labelled demonstrations: when applicable, we first pre-train on the entire action-less video dataset for each suite. Then, we perform behavior cloning on 10 demonstrations per task. We report the success metric across tasks in the suite.-->
+          We evaluate our method on a challenging simulation benchmark comprising 130 language-conditioned manipulation tasks. Our experiments demonstrate that trajectory-guided policies significantly surpass various strong baselines in video pre-training, achieving an average success rate of 63% compared to the highest success rate of 37% by previous methods, marking an improvement of over 80%. ATM's performance is also comparable to BC with 5x more training demonstrations (the BC-Full-Trainset indicated by the black dashed line).
+        </p>
+        <br>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-10">
+        <img src="./static/images/main_results.png" alt="teaser" class="teaser-image"><br>
+      </div>
+    </div>
     <div class="columns is-centered is-multiline">
       <div class="column is-12">
-        <h2 class="title is-5">Comparison between Track and Image Subgoals</h2>
+        <h2 class="title is-5">Which is better for video pre-training? Generative Video Model vs. Trajectory Model </h2>
       </div>
       <div class="column is-12 has-text-left">
         <p>
