@@ -64,7 +64,15 @@ function switchTabAny(evt, selectedTab) {
       console.log(tabs[i].classList);
   }
   // Add options to dropdown2 based on the selected tab
-  if (selectedTab === 'spatial') {
+  if (selectedTab === 'bag') {
+    addOptionsToDropdown([
+      { value:'anypoint/bag-train/env_2_overlay.mp4', display: 'pick up the black bag and place it on the shelf' },
+      { value:'anypoint/bag-train/env_5_overlay.mp4', display: 'pick up the brown bag and place it on the shelf' },
+      { value:'anypoint/bag-train/env_6_overlay.mp4', display: 'pick up the red bag and place it on the shelf' },
+      { value:'anypoint/bag-val-l1/env_0_overlay.mp4', display: 'pick up the blue bag and place it on the shelf' },
+      { value:'anypoint/bag-val-l1/env_1_overlay.mp4', display: 'pick up the green bag and place it on the shelf' },
+    ], dropdown2);
+  } else if (selectedTab === 'spatial') {
     addOptionsToDropdown([
       { value: 'anypoint/libero-spatial/env_0_overlay.mp4', display: 'pick up the black bowl between the plate and the ramekin and place it on the plate' },
       { value: 'anypoint/libero-spatial/env_1_overlay.mp4', display: "pick up the black bowl from table center and place it on the plate" },

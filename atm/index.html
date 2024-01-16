@@ -117,7 +117,8 @@
     </div> -->
     <div class="tabs is-toggle is-fullwidth" id="anyTaskTabs">
       <ul>
-        <li class="tablinks" id="clickDefaultAny" onclick="switchTabAny(event, 'long')"><a><b>LIBERO-Long</b></a></li>
+        <li class="tablinks" id="clickDefaultAny" onclick="switchTabAny(event, 'bag')"><a><b>Place Bag</b></a></li>
+        <li class="tablinks" onclick="switchTabAny(event, 'long')"><a><b>LIBERO-Long</b></a></li>
         <li class="tablinks" onclick="switchTabAny(event, 'spatial')"><a><b>LIBERO-Spatial</b></a></li>
         <li class="tablinks" onclick="switchTabAny(event, 'object')"><a><b>LIBERO-Object</b></a></li>
         <li class="tablinks" onclick="switchTabAny(event, 'goal')"><a><b>LIBERO-Goal</b></a></li>
@@ -147,7 +148,7 @@
     <div class="columns is-centered has-text-left">
       <div class="column">
         <h2 class="subtitle has-text-centered">
-          ATM learns arbitrary 2D point track proposals from large actionless video datasets to learn policies from few demonstrations.
+          ATM learns point track proposals for arbitrary 2D points across arbitrary views from large actionless video datasets for sample efficient policy learning. We visualize the relevant points' predicted tracks (beginning from the blue points)  across the robot's base and wrist views.
         </h2>
       </div>
     </div>
