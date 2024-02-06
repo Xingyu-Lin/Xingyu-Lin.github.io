@@ -1,0 +1,6 @@
+@article{wen2023any,
+  title={Any-point trajectory modeling for policy learning},
+  author={Wen*, Chuan and Lin*, Xingyu and So*, John and Chen, Kai and Dou, Qi and Gao, Yang and Abbeel, Pieter},
+  journal={arXiv preprint arXiv:2401.00025},
+  year={2023}
+}
