@@ -260,7 +260,7 @@ body {
 
 .pt {
   background-color: #f5f5f5;
-  border-radius: 4pt;
+  border-radius: 2px;
   padding-top: 4pt;
   padding-bottom: 4pt;
 }
@@ -268,7 +268,7 @@ body {
 .pl {
   /* a periwinkle color: */
   background-color: #e6f0fb;
-  border-radius: 4pt;
+  border-radius: 2px;
   padding-top: 4pt;
   padding-bottom: 4pt;
 }
@@ -286,4 +286,9 @@ body {
 .lib-video {
   width: 100%;
   margin: auto;
+}
+
+video {
+  border-radius: 2px;
+  border: #000 1px solid;
 }

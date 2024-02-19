@@ -74,16 +74,16 @@ function switchTabAny(evt, selectedTab) {
     ], dropdown2);
   } else if (selectedTab === 'spatial') {
     addOptionsToDropdown([
-      { value: 'anypoint/real/env_0_overlay.mp4', display: 'pick up the black bowl between the plate and the ramekin and place it on the plate' },
-      { value: 'anypoint/real/env_1_overlay.mp4', display: "pick up the black bowl from table center and place it on the plate" },
-      { value: 'anypoint/real/env_2_overlay.mp4', display: "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate" },
-      { value: 'anypoint/real/env_3_overlay.mp4', display: "pick up the black bowl next to the cookie box and place it on the plate" },
-      { value: 'anypoint/real/env_4_overlay.mp4', display: "pick up the black bowl next to the plate and place it on the plate" },
-      { value: 'anypoint/real/env_5_overlay.mp4', display: "pick up the black bowl next to the ramekin and place it on the plate" },
-      { value: 'anypoint/real/env_6_overlay.mp4', display: "pick up the black bowl on the cookie box and place it on the plate" },
-      { value: 'anypoint/real/env_7_overlay.mp4', display: "pick up the black bowl on the ramekin and place it on the plate" },
-      { value: 'anypoint/real/env_8_overlay.mp4', display: "pick up the black bowl on the stove and place it on the plate" },
-      { value: 'anypoint/real/env_9_overlay.mp4', display: "pick up the black bowl on the wooden cabinet and place it on the plate" }
+      { value: 'anypoint/libero-spatial/env_0_overlay.mp4', display: 'pick up the black bowl between the plate and the ramekin and place it on the plate' },
+      { value: 'anypoint/libero-spatial/env_1_overlay.mp4', display: "pick up the black bowl from table center and place it on the plate" },
+      { value: 'anypoint/libero-spatial/env_2_overlay.mp4', display: "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate" },
+      { value: 'anypoint/libero-spatial/env_3_overlay.mp4', display: "pick up the black bowl next to the cookie box and place it on the plate" },
+      { value: 'anypoint/libero-spatial/env_4_overlay.mp4', display: "pick up the black bowl next to the plate and place it on the plate" },
+      { value: 'anypoint/libero-spatial/env_5_overlay.mp4', display: "pick up the black bowl next to the ramekin and place it on the plate" },
+      { value: 'anypoint/libero-spatial/env_6_overlay.mp4', display: "pick up the black bowl on the cookie box and place it on the plate" },
+      { value: 'anypoint/libero-spatial/env_7_overlay.mp4', display: "pick up the black bowl on the ramekin and place it on the plate" },
+      { value: 'anypoint/libero-spatial/env_8_overlay.mp4', display: "pick up the black bowl on the stove and place it on the plate" },
+      { value: 'anypoint/libero-spatial/env_9_overlay.mp4', display: "pick up the black bowl on the wooden cabinet and place it on the plate" }
     ], dropdown2);
   } else if (selectedTab === 'object') {
     addOptionsToDropdown([
@@ -152,11 +152,11 @@ function switchTab(evt, selectedTab) {
   // Add options to dropdown2 based on the selected tab
   if (selectedTab === 'real') {
     addOptionsToDropdown([
-      { value: 'real/env_0.mp4', display: 'squeeze the mustard on the carrot' },
-      { value: 'real/env_1.mp4', display: "put the carrot into the basket" },
-      { value: 'real/env_2.mp4', display: "pout the cup into the bin" },
-      { value: 'real/env_3.mp4', display: "put the spoon into the bowl" },
-      { value: 'real/env_4.mp4', display: "put the tomato into the bowl" },
+      { value: 'real/env_0_combined.mp4', display: 'squeeze the mustard on the carrot' },
+      { value: 'real/env_1_combined.mp4', display: "put the carrot into the basket" },
+      { value: 'real/env_2_combined.mp4', display: "pout the cup into the bin" },
+      { value: 'real/env_3_combined.mp4', display: "put the spoon into the bowl" },
+      { value: 'real/env_4_combined.mp4', display: "put the tomato into the bowl" },
     ], dropdown2);
   } else if (selectedTab === 'spatial') {
     addOptionsToDropdown([
@@ -241,16 +241,16 @@ function changeImage() {
     // Reset the image source if dropdown2 is not selected
     displayedImage.src = '';
   }
-  if (dropdown.value.includes('real')) {
-    console.log('real');
-    // add a class called "real-video" to the displayed image
-    displayedImage.classList.remove('lib-video');
-    displayedImage.classList.add('real-video');
-  } else {
-    console.log('not real');
-    displayedImage.classList.remove('real-video');
-    displayedImage.classList.add('lib-video');
-  }
+  // if (dropdown.value.includes('real')) {
+  //   console.log('real');
+  //   // add a class called "real-video" to the displayed image
+  //   displayedImage.classList.remove('lib-video');
+  //   displayedImage.classList.add('real-video');
+  // } else {
+  //   console.log('not real');
+  //   displayedImage.classList.remove('real-video');
+  //   displayedImage.classList.add('lib-video');
+  // }
 }
 
 function changeImageAny() {
