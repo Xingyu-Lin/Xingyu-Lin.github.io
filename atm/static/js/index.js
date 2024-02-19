@@ -41,7 +41,7 @@ $(document).ready(function() {
     });
 
     document.getElementById("clickDefault").click();
-    document.getElementById("clickDefaultAny").click();
+    // document.getElementById("clickDefaultAny").click();
 })
 
 function switchTabAny(evt, selectedTab) {
@@ -154,7 +154,7 @@ function switchTab(evt, selectedTab) {
     addOptionsToDropdown([
       { value: 'real/env_0_combined.mp4', display: 'squeeze the mustard on the carrot' },
       { value: 'real/env_1_combined.mp4', display: "put the carrot into the basket" },
-      { value: 'real/env_2_combined.mp4', display: "pout the cup into the bin" },
+      { value: 'real/env_2_combined.mp4', display: "pour the cup into the bin" },
       { value: 'real/env_3_combined.mp4', display: "put the spoon into the bowl" },
       { value: 'real/env_4_combined.mp4', display: "put the tomato into the bowl" },
     ], dropdown2);
