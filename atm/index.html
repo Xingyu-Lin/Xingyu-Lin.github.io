@@ -158,7 +158,7 @@
                 type="video/mp4"></video>
         <br>
         <p class="has-text-centered">
-          <strong>ATM</strong> learns point track proposals for arbitrary 2D points across arbitrary views from actionless video datasets, enabling sample-efficient multi-task policy learning and cross-embodiment transfer. We visualize the predicted tracks (beginning from the blue points) of a set of points above.
+          <strong>ATM</strong> learns point track proposals for arbitrary 2D points from actionless video datasets, enabling sample-efficient multi-task policy learning and cross-embodiment transfer. We visualize the predicted tracks, beginning from the set of blue points.
         </p>
       </div>
     </div>
@@ -193,7 +193,7 @@
     <div class="columns is-centered has-text-justified">
       <div class="column is-12">
         <p>
-          Prior work in policy learning from video reasons about images, which is computationally expensive and prone to hallucination. We take inspiration from particle-based simulation, and leverage a point representation. Compared to image generation, points naturally capture inductive biases such as object permanence, and decouples relevant motion of objects from lighting and texture.
+          Prior work in policy learning from video reasons about images, which is computationally expensive and prone to hallucination. We take inspiration from particle-based approaches and leverage a point representation. Compared to image generation, points naturally capture inductive biases such as object permanence, and decouples relevant motion of objects from lighting and texture.
           ATM first pre-trains a language-conditioned track prediction model on video data to predict future trajectories of arbitrary points within a video frame. Using these learned track proposals, we can then train policies by learning from limited human demonstration (e.g. 10 demonstrations per task), using a simple fixed set of 64 points across the third-person camera view and the wrist view.
         </p>
       </div>
@@ -230,8 +230,7 @@
     <div class="columns is-centered has-text-justified">
       <div class="column is-12">
         <p>
-          We evaluate our method on a challenging simulation benchmark (LIBERO) comprising 130 language-conditioned manipulation tasks, and on 5 tasks in a real-world UR5 Kitchen environment. Our experiments demonstrate that trajectory-guided policies significantly surpass various strong baselines in video pre-training, achieving an average success rate of 63% compared to the highest success rate of 37% by previous methods, marking an improvement of over 80%.
-          With dense supervision from the predicted tracks, our trained policies are able to perform long-horizon tasks, and reason about objects, spatial locations, and language instructions.
+          We evaluate our method on a challenging simulation benchmark (LIBERO) comprised of 130 language-conditioned manipulation tasks, and on 5 tasks in a real-world UR5 Kitchen environment. Our experiments demonstrate that trajectory-guided policies significantly surpass various strong baselines in video pre-training. With dense supervision from the predicted tracks, our trained policies are able to perform long-horizon tasks, and reason about objects, spatial locations, and language instructions.
           <!-- in both a large scale simulated benchmark (LIBERO), and a real-world kitchen environment.  -->
           We visualize policy rollouts on all 130 of the LIBERO tasks below:
         </p>
