@@ -41,7 +41,7 @@ $(document).ready(function() {
     });
 
     document.getElementById("clickDefault").click();
-    document.getElementById("clickDefaultAny").click();
+    // document.getElementById("clickDefaultAny").click();
 })
 
 function switchTabAny(evt, selectedTab) {
@@ -150,7 +150,15 @@ function switchTab(evt, selectedTab) {
       console.log(tabs[i].classList);
   }
   // Add options to dropdown2 based on the selected tab
-  if (selectedTab === 'spatial') {
+  if (selectedTab === 'real') {
+    addOptionsToDropdown([
+      { value: 'real/env_0_combined.mp4', display: 'squeeze the mustard on the carrot' },
+      { value: 'real/env_1_combined.mp4', display: "put the carrot into the basket" },
+      { value: 'real/env_2_combined.mp4', display: "pour the cup into the bin" },
+      { value: 'real/env_3_combined.mp4', display: "put the spoon into the bowl" },
+      { value: 'real/env_4_combined.mp4', display: "put the tomato into the bowl" },
+    ], dropdown2);
+  } else if (selectedTab === 'spatial') {
     addOptionsToDropdown([
       { value: 'libero-spatial/env_0.mp4', display: 'pick up the black bowl between the plate and the ramekin and place it on the plate' },
       { value: 'libero-spatial/env_1.mp4', display: "pick up the black bowl from table center and place it on the plate" },
@@ -233,6 +241,16 @@ function changeImage() {
     // Reset the image source if dropdown2 is not selected
     displayedImage.src = '';
   }
+  // if (dropdown.value.includes('real')) {
+  //   console.log('real');
+  //   // add a class called "real-video" to the displayed image
+  //   displayedImage.classList.remove('lib-video');
+  //   displayedImage.classList.add('real-video');
+  // } else {
+  //   console.log('not real');
+  //   displayedImage.classList.remove('real-video');
+  //   displayedImage.classList.add('lib-video');
+  // }
 }
 
 function changeImageAny() {
