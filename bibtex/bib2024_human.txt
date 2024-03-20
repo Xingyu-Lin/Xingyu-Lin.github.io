@@ -1,0 +1,5 @@
+@misc{sferrazza2024humanoidbench,
+    title={HumanoidBench: Simulated Humanoid Benchmark for Whole-Body Locomotion and Manipulation},
+    author={Carmelo Sferrazza and Dun-Ming Huang and Xingyu Lin and Youngwoon Lee and Pieter Abbeel},
+    year={2024},
+}
