@@ -1,0 +1,6 @@
+@article{qi2024toolgen,
+  title={Learning Generalizable Tool-use Skills through Trajectory Generation},
+  author={Qi*, Carl and Wu*, Yilin and Yu, Lifan and Liu, Haoyue and Jiang, Bowen and Lin*, Xingyu and Held*, David}
+  journal={IROS},
+  year={2024}
+}
