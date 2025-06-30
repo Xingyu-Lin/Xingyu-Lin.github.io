@@ -1,46 +1,15 @@
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  line-height: 1.6;
-  color: #333;
+.post-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 2em;
 }
 
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.3em;
-}
-
-h2 {
-  font-size: 1.8em;
-  margin-top: 1.5em;
+.post-list li {
+  margin-bottom: 0.75em;
 }
 
 .date {
-  color: #777;
-  margin-bottom: 2em;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-  margin: 1em auto;
-}
-
-pre {
-  background: #f5f5f5;
-  padding: 1em;
-  overflow-x: auto;
-}
-
-code {
-  font-family: 'Menlo', monospace;
-  background: #f5f5f5;
-  padding: 2px 4px;
-  border-radius: 4px;
-}
-
-section {
-  margin-bottom: 2em;
+  margin-left: 0.5em;
+  color: #666;
+  font-size: 0.9em;
 }

@@ -1,45 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <script src="https://distill.pub/template.v2.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sample Post</title>
   <link rel="stylesheet" href="blog.css">
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
 </head>
 <body>
-<article>
-  <h1>Sample Post</h1>
-  <div class="date">Written on 2024-05-08</div>
-
-  <section>
-    <h2>Introduction</h2>
-    <p>This is a demonstration of a blog post using a distill-like format. The template supports equations like $e^{i\pi} + 1 = 0$ and inline code such as <code>print(&quot;hello&quot;)</code>.</p>
-  </section>
-
-  <section>
-    <h2>Code Example</h2>
-    <pre><code class="language-python">def hello(name):
+  <d-front-matter>
+    <script type="text/json" id="distill-front-matter">
+    {
+      "title": "Sample Post",
+      "published": "2024-05-08",
+      "authors": [{"author": "Xingyu Lin"}]
+    }
+    </script>
+  </d-front-matter>
+  <d-title>
+    <h1>Sample Post</h1>
+  </d-title>
+  <d-byline></d-byline>
+  <d-article>
+    <section>
+      <h2>Introduction</h2>
+      <p>This is a demonstration of a blog post using a distill-like format. The template supports equations like <d-math>e^{i\pi} + 1 = 0</d-math> and inline code such as <d-code language="python">print("hello")</d-code>.</p>
+    </section>
+    <section>
+      <h2>Code Example</h2>
+      <d-code block language="python">def hello(name):
     print(f"Hello, {name}")
-</code></pre>
-  </section>
-
-  <section>
-    <h2>Equation</h2>
-    <p>We can write equations using LaTeX syntax:</p>
-    <p>$$
-      \nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
-      $$</p>
-  </section>
-
-  <section>
-    <h2>Image</h2>
-    <p>Images are centered and scaled:</p>
-    <img src="../img/profile.png" alt="Sample image">
-  </section>
-</article>
+</d-code>
+    </section>
+    <section>
+      <h2>Equation</h2>
+      <p>We can write equations using LaTeX syntax:</p>
+      <d-math block>
+        \nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
+      </d-math>
+    </section>
+    <section>
+      <h2>Image</h2>
+      <p>Images are centered and scaled:</p>
+      <figure><img src="../img/profile.png" alt="Sample image"></figure>
+    </section>
+  </d-article>
+  <distill-footer></distill-footer>
 </body>
 </html>
