@@ -22,7 +22,7 @@
     <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/grayscale.css?v=2" rel="stylesheet">
 
     <style>
         ul {
@@ -44,7 +44,10 @@
             display: block;
             text-align: center;
             cursor: pointer;
-            color: grey;
+            color: #666;
+            background: transparent;
+            border: 0;
+            font: inherit;
         }
         .list-container {
             all: inherit;
@@ -56,7 +59,8 @@
             /* Add any additional styles for the specific heading if needed */
         }
     </style>
-    <script src="js/custom.js"></script>
+    <script src="js/custom.js?v=2"></script>
+    <script src="blog/blog.js?v=4" defer></script>
 </head>
 
 <body id="page-top">
@@ -132,7 +136,7 @@
         <!--<br> <br>-->
         <!--</div>-->
         <div class="col-md-3 panel">
-            <img src="./img/profile_cropped.png" width="100%">
+            <img src="./img/profile_cropped.png" width="100%" alt="Xingyu Lin">
         </div>
         <div class="col-md-9">
             <h3>Xingyu Lin</h3>
@@ -146,7 +150,7 @@
             </p>
 <!--            <br> <br>-->
 
-            <p class="inline-heading">
+            <p class="inline-heading" id="contact">
 <!--                <a href="javascript:toggleDropdown('div_email_addr')">Email</a> /-->
                 <a target="_blank" href="https://scholar.google.com/citations?user=hankD2kAAAAJ&hl=en">Google Scholar</a> /
                 <a target="_blank" href="https://github.com/Xingyu-Lin">Github</a> /
@@ -193,7 +197,7 @@
                 </h4>
             </div>
         </div>
-        <div class="list-container">
+        <div class="list-container" id="news-list">
             <div class="row">
                 <div class="col-md-2 text-muted text-right">
                     08/2024
@@ -294,7 +298,7 @@
             </div>
         </div>
 <!--        <br>-->
-        <div class="col-md-10" id="show-more-btn">Show More</div>
+        <button type="button" class="col-md-10" id="show-more-btn" aria-expanded="false" aria-controls="news-list">Show More</button>
     </div>
     <script>
         const showMoreButton = document.getElementById('show-more-btn');
@@ -305,6 +309,7 @@
 
         showMoreButton.addEventListener('click', () => {
             showMore = !showMore;
+            showMoreButton.setAttribute('aria-expanded', String(showMore));
             listContainer.style.maxHeight = showMore ? 'none' : '170px';
             showMoreButton.textContent = showMore ? 'Show Less' : 'Show More';
         });
@@ -370,7 +375,7 @@
 <!--            </div>-->
 <!--        </div>-->
 <!--        <hr>-->
-        <script id="pubs_selected" language="text">
+        <script id="pubs_selected" type="text/html">
             <div class="row">
                 <div class="col-md-3">
                     <img class="img-fluid img-rounded" src="img/thumbnail_pub/2024_atm.gif" alt="">
@@ -631,15 +636,16 @@
                     <a target="_blank" href="https://www.youtube.com/watch?v=Uxt4oK1XgTs">Video</a> /
                     <!--                <a target="_blank" >Project Page</a> /-->
                     <!--                <a target="_blank" >Code</a>-->
-                    <a href="javascript:copy(div2019_icra, bib2019_icra)">Bibtex</a>
-                    <div id="bib2019_icra" style="display:none">
-                        <div><object data="bibtex/bib2019_icra.txt" type="text/plain" width="100%"> </object></div>
+                    <a href="javascript:copy(div2019_indicator, bib2019_indicator)">Bibtex</a>
+                    <div id="bib2019_indicator" style="display:none">
+                        <div><object data="bibtex/bib2019_indicator.txt" type="text/plain" width="100%"> </object></div>
                     </div>
-                    <div id="div2019_icra" class="pubInfo"></div>
+                    <div id="div2019_indicator" class="pubInfo"></div>
                 </div>
             </div>
             <hr>
-        <script id="pubs_all_by_date" language="text">
+        </script>
+        <script id="pubs_all_by_date" type="text/html">
             <div class="row">
                 <div class="col-md-3">
                     <img class="img-fluid img-rounded" src="img/thumbnail_pub/2023_gello_floss.gif" alt="">
@@ -1106,11 +1112,11 @@
                     <a target="_blank" href="https://www.youtube.com/watch?v=Uxt4oK1XgTs">Video</a> /
                     <!--                <a target="_blank" >Project Page</a> /-->
                     <!--                <a target="_blank" >Code</a>-->
-                    <a href="javascript:copy(div2019_icra, bib2019_icra)">Bibtex</a>
-                    <div id="bib2019_icra" style="display:none">
-                        <div><object data="bibtex/bib2019_icra.txt" type="text/plain" width="100%"> </object></div>
+                    <a href="javascript:copy(div2019_indicator, bib2019_indicator)">Bibtex</a>
+                    <div id="bib2019_indicator" style="display:none">
+                        <div><object data="bibtex/bib2019_indicator.txt" type="text/plain" width="100%"> </object></div>
                     </div>
-                    <div id="div2019_icra" class="pubInfo"></div>
+                    <div id="div2019_indicator" class="pubInfo"></div>
                 </div>
             </div>
             <hr>
@@ -1167,22 +1173,6 @@
 </section> -->
 
 <br>
-
-<section id="service" class="align-content-md-start">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-left">
-                <h4 class="section-heading">Service</h4>
-            </div>
-            <div class="col-md-12">
-                <li>Conference Reviewer: NeurIPS, ICML, ICLR, RSS, CoRL, ICRA, IROS</li>
-                <li>Journal Reviewer: IEEE RA-L, AURO, T-RO </li>
-            </div>
-
-        </div>
-        <br><br>
-    </div>
-</section>
 
 <!-- Contact Section -->
 <!--<section id="contact" class="align-content-md-start">-->

@@ -1,0 +1,94 @@
+.admin-page { background: #fff; }
+.admin-page button, .admin-page select, .admin-page input, .admin-page textarea { font: inherit; }
+.admin-page button, .admin-page select { font-size: 13px; border: 1px solid transparent; border-radius: 4px; padding: 7px 11px; background: transparent; color: #555; cursor: pointer; }
+.admin-page button:hover, .admin-page select:hover { background: #f3f3f3; color: #222; }
+.admin-page button:disabled { opacity: .5; cursor: wait; }
+.admin-page button.primary { background: #04349c; color: #fff; border-color: #04349c; }
+.admin-page button.primary:hover { background: #062c80; }
+.admin-page :focus-visible { outline: 2px solid #04349c; outline-offset: 3px; }
+.login-page { max-width: 380px; padding: 135px 24px 60px; margin: auto; }
+.login-page h1 { font-size: 30px; letter-spacing: -.5px; margin: 0 0 12px; }
+.login-page p { font-size: 14px; color: #777; margin-bottom: 30px; }
+.login-page label { font-size: 13px; }
+.login-page input { width: 100%; border: 1px solid #ccc; border-radius: 4px; padding: 10px 12px; margin: 0 0 20px; font-size: 16px; }
+.login-page .primary { width: 100%; }
+#login-message { margin-top: 20px; color: #a32c2c; }
+.admin-blog { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 40px; max-width: 1060px; margin: 0 auto; padding: 124px 24px 80px; }
+.post-sidebar { align-self: start; position: sticky; top: 100px; }
+#post-folders { display: flex; flex-direction: column; gap: 5px; }
+#post-folders button { text-align: left; font-size: 14px; padding: 9px 12px; }
+#post-folders button[aria-pressed='true'] { background: #f3f3f3; color: #222; }
+#logout { margin: 26px 0 0; color: #888; }
+.workspace-main { min-width: 0; }
+.library-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 26px; }
+.library-header h1 { font-size: 32px; font-weight: 600; letter-spacing: -.5px; margin: 0; }
+#post-library { list-style: none; padding: 0; margin: 0; }
+.library-row { display: flex; align-items: baseline; gap: 18px; padding: 12px 0; }
+.admin-page .post-open { flex: 1; min-width: 0; padding: 0; border: 0; border-radius: 0; color: #04349c; font-size: 17px; line-height: 1.5; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.admin-page .post-open:hover { background: none; text-decoration: underline; text-underline-offset: 3px; }
+.library-row time { flex-shrink: 0; font-size: 13px; color: #777; white-space: nowrap; }
+.admin-page .row-action { padding: 3px 6px; color: #888; font-size: 12px; }
+.writing-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 50px; }
+.writing-bar > div { display: flex; align-items: center; gap: 4px; }
+#save-state { color: #8a8a8a; font-size: 12px; margin-right: 10px; }
+#action-message { font-size: 13px; margin: 0 0 18px; color: #777; }
+#action-message:empty { display: none; }
+#action-message.error { color: #a32c2c; }
+.document-editor { max-width: 772px; margin: 42px auto 0; }
+#post-title { display: block; width: 100%; resize: none; overflow: hidden; border: 0; background: transparent; padding: 0; margin: 0; font-size: 42px; line-height: 1.25; font-weight: 700; letter-spacing: -.8px; color: #292929; }
+#post-title::placeholder { color: #b6b6b4; }
+#post-title:focus, .tiptap:focus { outline: none; }
+#post-body { margin-top: 30px; }
+.tiptap { min-height: 420px; font-size: 17px; line-height: 1.7; overflow-wrap: anywhere; padding-bottom: 80px; }
+.tiptap p { font-size: inherit; line-height: inherit; margin: 0 0 12px; }
+.tiptap p.is-editor-empty:first-child::before { content: attr(data-placeholder); float: left; color: #b0b0ad; pointer-events: none; height: 0; }
+.tiptap h1, .tiptap h2, .tiptap h3, .tiptap h4 { font-family: inherit; font-weight: 600; letter-spacing: -.2px; line-height: 1.4; text-transform: none; margin: 28px 0 12px; }
+.tiptap h1 { font-size: 30px; }.tiptap h2 { font-size: 26px; }.tiptap h3 { font-size: 21px; }.tiptap h4 { font-size: 18px; }
+.tiptap ul, .tiptap ol { padding-left: 27px; margin: 10px 0 16px; }
+.tiptap li { padding-left: 3px; margin: 4px 0; }.tiptap li p { margin: 0; }
+.tiptap li ul, .tiptap li ol { margin: 4px 0; }
+.tiptap blockquote { border-left: 3px solid #bbb; padding-left: 18px; margin: 20px 0; }
+.tiptap pre { background: #f7f7f5; border-radius: 4px; padding: 18px; overflow-x: auto; font: 13px/1.7 'SFMono-Regular', Consolas, monospace; }
+.tiptap code { color: #444; background: #f4f4f2; font-size: .85em; padding: 2px 4px; border-radius: 3px; }
+.tiptap pre code { padding: 0; background: none; font-size: inherit; }
+.tiptap img { max-width: 100%; height: auto; }
+.tiptap a { text-decoration: underline; }
+.tiptap .tableWrapper { overflow-x: auto; }.tiptap table { border-collapse: collapse; width: 100%; margin: 20px 0; }.tiptap td, .tiptap th { border: 1px solid #ddd; padding: 8px 12px; min-width: 70px; }.tiptap th { background: #fafafa; }
+.tiptap ul[data-type='taskList'] { list-style: none; padding-left: 0; }.tiptap ul[data-type='taskList'] li { display: flex; align-items: baseline; gap: 10px; }
+.tiptap .ProseMirror-selectednode { outline: 2px solid #91b0e6; }
+.editor-math { cursor: pointer; }.block-math { overflow-x: auto; margin: 22px 0; }.footnote-definition { font-size: 14px; color: #666; margin-top: 12px; }
+@media (max-width: 700px) {
+  .admin-blog { grid-template-columns: minmax(0, 1fr); gap: 26px; padding: 95px 20px 50px; }
+  .post-sidebar { position: static; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  #post-folders { flex-direction: row; gap: 2px; }#post-folders button { font-size: 13px; padding: 8px; }#logout { margin: 0; font-size: 12px; padding: 8px; }
+  .library-header { margin-bottom: 20px; }.library-header h1 { font-size: 28px; }
+  .library-row { gap: 10px; }.admin-page .post-open { font-size: 16px; }.library-row time { font-size: 11px; }.admin-page .row-action { padding: 3px 0; font-size: 11px; }
+  .writing-bar { flex-wrap: wrap; gap: 4px; }.writing-bar > div { gap: 0; }#save-state { font-size: 11px; margin-right: 4px; }
+  .document-editor { margin-top: 28px; }#post-title { font-size: 34px; }.tiptap { font-size: 16px; }.admin-page .writing-bar button { padding: 7px 8px; font-size: 12px; }
+}
+
+.slash-menu { position: fixed; z-index: 1080; width: 290px; max-width: calc(100vw - 24px); background: #fff; border: 1px solid #e4e4e4; border-radius: 9px; box-shadow: 0 8px 28px #0002; padding: 7px; font-size: 14px; }
+.slash-heading { color: #888; font-size: 12px; font-weight: 600; padding: 9px 9px 8px; }
+#slash-options { overflow-y: auto; max-height: min(310px, calc(100vh - 190px)); overscroll-behavior: contain; }
+#slash-options button { display: flex; align-items: center; gap: 12px; width: 100%; padding: 9px; text-align: left; font-size: 14px; color: #333; }
+#slash-options button[aria-selected='true'] { background: #f3f3f3; }
+.slash-icon { flex: 0 0 24px; text-align: center; font-size: 17px; color: #666; }
+#slash-options small { margin-left: auto; color: #999; font-size: 12px; }
+#slash-options p { padding: 10px; font-size: 13px; margin: 0; color: #888; }
+.slash-footer { padding: 8px 9px 3px; border-top: 1px solid #eee; margin-top: 5px; font-size: 11px; color: #999; }
+#insert-dialog, #publish-dialog { width: min(420px, calc(100vw - 32px)); border: 1px solid #ddd; border-radius: 8px; padding: 24px; color: #333; }
+#insert-dialog::backdrop, #publish-dialog::backdrop { background: #0003; }
+#insert-dialog header, #publish-dialog header { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 20px; }
+#insert-dialog h2, #publish-dialog h2 { font-size: 20px; margin: 0; }
+#insert-fields label { display: block; font-size: 13px; margin-bottom: 16px; }
+#insert-fields input, #insert-fields select { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; margin-top: 6px; font-size: 16px; }
+#insert-error { color: #a32c2c; font-size: 13px; margin: 0 0 15px; }
+
+#publish-dialog fieldset { border: 0; padding: 0; margin: 0; }
+.publish-choice { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; margin: 0; font-size: 15px; cursor: pointer; }
+.publish-choice input { margin-top: 5px; accent-color: #04349c; }
+.publish-choice small { display: block; font-size: 13px; color: #777; margin-top: 3px; }
+.publish-note { font-size: 13px; color: #777; margin: 18px 0; }
+#publish-error { font-size: 13px; color: #a32c2c; }
+#publish-error:empty { display: none; }
+.read-only .editor-math { cursor: default; }

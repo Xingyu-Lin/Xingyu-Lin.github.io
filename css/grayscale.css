@@ -271,7 +271,7 @@ footer p {
 
 
 .row {
-  margin-left: 15px;
+  margin-left: -15px;
 }
 /*::-moz-selection {*/
   /*background: #fcfcfc;*/
@@ -295,4 +295,31 @@ footer p {
 
 pubInfo {
 
+}
+/* Keep anchored content clear of the fixed navigation. */
+section[id], #contact {
+  scroll-margin-top: 90px;
+}
+
+/* A visible keyboard focus without changing normal link styling. */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #04349c;
+  outline-offset: 3px;
+}
+
+#mainNav a:focus-visible,
+#mainNav button:focus-visible {
+  outline-color: white;
+}
+
+@media (max-width: 767px) {
+  #about .panel img {
+    max-width: 240px;
+  }
+
+  #about .panel,
+  #pub .row > .col-md-3 {
+    margin-bottom: 16px;
+  }
 }

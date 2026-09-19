@@ -28,3 +28,10 @@ function showPubs(id) {
         // document.getElementById('select1').style = '';
     }
 }
+// Close the mobile menu when following a link on the current page.
+document.addEventListener('click', function (event) {
+    var link = event.target.closest('#mainNav a[href^="#"]');
+    if (link && window.jQuery) {
+        window.jQuery('#navbarResponsive').collapse('hide');
+    }
+});

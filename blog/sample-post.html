@@ -1,77 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sample Post - Xingyu Lin</title>
-    <script src="https://distill.pub/template.v2.js"></script>
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/font-1.css" rel="stylesheet" type="text/css">
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
-    <link href="../css/grayscale.css" rel="stylesheet">
-    <link rel="stylesheet" href="blog.css">
-</head>
-<body id="page-top">
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="../#page-top">Xingyu Lin</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../#page-top">Home</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../#pub">Publication</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../#contact">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="./">Blog</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div style="height:80px;">&nbsp;</div>
-<d-front-matter>
-<script type="text/json" id="distill-front-matter">
-{
-  "title": "Sample Post",
-  "published": "2024-05-08",
-  "authors": [{"author": "Xingyu Lin"}]
-}
-</script>
-</d-front-matter>
-<d-title>
-  <h1>Sample Post</h1>
-</d-title>
-<d-byline></d-byline>
-<d-article class="container">
-  <section>
-    <h2>Introduction</h2>
-    <p>This is a demonstration of a blog post using a distill-like format. The template supports equations like <d-math>e^{i\pi} + 1 = 0</d-math> and inline code such as <d-code language="python">print("hello")</d-code>.</p>
-  </section>
-  <section>
-    <h2>Code Example</h2>
-    <d-code block language="python">def hello(name):
-    print(f"Hello, {name}")
-</d-code>
-  </section>
-  <section>
-    <h2>Equation</h2>
-    <p>We can write equations using LaTeX syntax:</p>
-    <d-math block>
-      \nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
-    </d-math>
-  </section>
-  <section>
-    <h2>Image</h2>
-    <p>Images are centered and scaled:</p>
-    <figure><img src="../img/profile.png" alt="Sample image"></figure>
-  </section>
-</d-article>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Sample Post — Xingyu Lin</title>
+<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-1.css" rel="stylesheet">
+<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cabin:700" rel="stylesheet">
+<link href="../css/grayscale.css?v=2" rel="stylesheet">
+<link href="assets/katex/katex.min.css" rel="stylesheet">
+<link href="blog.css?v=4" rel="stylesheet">
+
+<script src="blog.js?v=4" defer></script>
+
+</head><body id="page-top" class="blog-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" aria-label="Main navigation"><div class="container">
+    <a class="navbar-brand" href="../#page-top">Xingyu Lin</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fa fa-bars" aria-hidden="true"></i></button>
+    <div class="collapse navbar-collapse" id="navbarResponsive"><ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="../#page-top">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="../#pub">Publication</a></li>
+      <li class="nav-item"><a class="nav-link" href="../#contact">Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="./" aria-current="page">Blog</a></li>
+    </ul></div>
+  </div></nav>
+<main id="main" class="post-page"><article>
+  <header class="article-header"><h1>Sample Post</h1><time datetime="2024-05-08">May 8, 2024</time></header>
+  <div class="article-body"><h2 id="introduction">Introduction</h2>
+<p>This is a demonstration post, showing the formatting available for technical writeups. Posts are written in Markdown, with support for equations like <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">e^{i\pi} + 1 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.908em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">iπ</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></eq> and inline code such as <code>print(&quot;hello&quot;)</code>.</p>
+<h2 id="code-example">Code example</h2>
+<p>Code blocks preserve indentation and highlight the language you specify:</p>
+<div class="code-block"><div class="code-toolbar"><span>python</span><button type="button" class="copy-code" hidden>Copy code</button></div><pre><code class="hljs"><span class="hljs-keyword">def</span> <span class="hljs-title function_">hello</span>(<span class="hljs-params">name</span>):
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Hello, <span class="hljs-subst">{name}</span>&quot;</span>)
+</code></pre></div>
+<h2 id="equations">Equations</h2>
+<p>Display equations have their own line:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">∇</mi><mo>⋅</mo><mi mathvariant="bold">E</mi><mo>=</mo><mfrac><mi>ρ</mi><msub><mi>ε</mi><mn>0</mn></msub></mfrac></mrow><annotation encoding="application/x-tex">
+\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">∇</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6861em;"></span><span class="mord mathbf">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.9436em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">ε</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">ρ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></eqn></section><p>Long equations can scroll horizontally on a small screen.</p>
+<h2 id="tables-and-references">Tables and references</h2>
+<p>Tables are useful for organizing comparisons or recording results.</p>
+<div class="table-scroll" role="region" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align:left">Element</th>
+<th style="text-align:left">Markdown syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Section heading</td>
+<td style="text-align:left"><code>## Heading</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Inline code</td>
+<td style="text-align:left">A word between backticks</td>
+</tr>
+<tr>
+<td style="text-align:left">Display equation</td>
+<td style="text-align:left">LaTeX between <code>$$</code> delimiters</td>
+</tr>
+<tr>
+<td style="text-align:left">Footnote</td>
+<td style="text-align:left"><code>[^note]</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Footnotes keep supporting details close to the text without interrupting the explanation.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<h2 id="images">Images</h2>
+<p>Images scale to fit the reading column. Give each image descriptive alternative text.</p>
+<p><img src="../img/profile.png" alt="Portrait of Xingyu Lin" loading="lazy" decoding="async"></p>
+<p><em>An example image and caption.</em></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Use footnotes for citations, asides, or links to further reading. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</div>
+</article><p class="sr-only" id="copy-status" role="status" aria-live="polite"></p></main>
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="../js/blog-distill.js"></script>
-</body>
-</html>
+</body></html>

@@ -1,0 +1,19 @@
+import { layout } from './templates.mjs';
+export const loginPage = () => layout({ title: 'Admin', admin: true, script: '/admin-assets/login.js', content: `<main id="main" class="login-page">
+<h1 id="login-heading">Admin</h1><p id="login-description">Sign in to write.</p>
+<form id="login-form"><label for="password">Password</label><input type="password" id="password" autocomplete="current-password" required maxlength="512"><button class="primary" id="login-button" type="submit">Sign in</button></form>
+<p id="login-message" role="status"></p>
+</main>` });
+export const adminBlogPage = () => layout({ title: 'Blog', admin: true, math: true, script: '/admin-assets/editor.bundle.js', content: `<main id="main" class="admin-blog">
+<aside class="post-sidebar"><nav id="post-folders" aria-label="Post folders"><button type="button" data-folder="live" aria-pressed="true">Live</button><button type="button" data-folder="drafts" aria-pressed="false">Drafts</button><button type="button" data-folder="archived" aria-pressed="false">Archived</button></nav><button id="logout" type="button">Sign out</button></aside>
+<div class="workspace-main"><p id="action-message" role="status"></p>
+<section id="library-view" aria-labelledby="library-heading"><header class="library-header"><h1 id="library-heading" tabindex="-1">Blog</h1><button id="new-post" type="button" class="primary">Write</button></header><ul id="post-library" aria-label="Live posts" aria-busy="true"><li class="empty-posts">Loading…</li></ul></section>
+<section id="editor-view" hidden aria-label="Post editor"><div class="writing-bar"><button id="back-to-posts" type="button">← Posts</button><div><span id="save-state" role="status"></span><button id="archive-post" type="button" hidden>Archive</button><button id="restore-post" type="button" hidden>Restore</button><button id="publish-post" type="button" class="primary">Publish</button></div></div>
+<div class="document-editor">
+<label class="sr-only" for="post-title">Title</label><textarea rows="1" id="post-title" placeholder="Untitled" maxlength="300" autocomplete="off"></textarea>
+<div id="post-body"></div>
+<div id="slash-menu" class="slash-menu" hidden><div class="slash-heading">Basic blocks</div><div id="slash-options" role="listbox" aria-label="Writing commands"></div><div class="slash-footer">Esc to close</div></div>
+</div></section>
+</div></main>
+<dialog id="publish-dialog" aria-labelledby="publish-heading"><form id="publish-form"><header><h2 id="publish-heading">Publish post</h2><button type="button" id="cancel-publish">Cancel</button></header><fieldset><legend class="sr-only">Who can read this post?</legend><label class="publish-choice"><input type="radio" name="visibility" value="public" checked><span>Public<small>Visible to everyone.</small></span></label><label class="publish-choice"><input type="radio" name="visibility" value="private"><span>Private<small>Only you can read it.</small></span></label></fieldset><p class="publish-note">Published posts cannot be edited.</p><p id="publish-error" role="status"></p><button type="submit" id="confirm-publish" class="primary">Publish</button></form></dialog>
+<dialog id="insert-dialog" aria-labelledby="insert-heading"><form id="insert-form"><header><h2 id="insert-heading">Insert link</h2><button type="button" id="cancel-insert" aria-label="Cancel">Cancel</button></header><div id="insert-fields"></div><p id="insert-error" role="status"></p><button type="submit" class="primary">Insert</button></form></dialog>` });
