@@ -34,6 +34,8 @@
 #action-message { font-size: 13px; margin: 0 0 18px; color: #777; }
 #action-message:empty { display: none; }
 #action-message.error { color: #a32c2c; }
+#deployment-message { font-size: 13px; line-height: 1.6; color: #a32c2c; margin-bottom: 20px; }
+#retry-publish { text-decoration: underline; }
 .document-editor { max-width: 772px; margin: 42px auto 0; }
 #post-title { display: block; width: 100%; resize: none; overflow: hidden; border: 0; background: transparent; padding: 0; margin: 0; font-size: 42px; line-height: 1.25; font-weight: 700; letter-spacing: -.8px; color: #292929; }
 #post-title::placeholder { color: #b6b6b4; }

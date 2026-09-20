@@ -9,6 +9,8 @@
     "build": "node scripts/build.mjs && node scripts/bundle.mjs",
     "start": "node scripts/writer.mjs",
     "write": "node scripts/writer.mjs",
+    "open": "node scripts/launch.mjs",
+    "install-launcher": "node scripts/install-launcher.mjs",
     "test": "node --test scripts/*.test.mjs"
   },
   "dependencies": {

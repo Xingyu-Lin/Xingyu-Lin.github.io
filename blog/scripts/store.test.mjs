@@ -8,8 +8,10 @@ import { createStore } from './store.mjs';
 test('publication sets an automatic date and locks the post; incomplete equations can be drafted', async () => {
   const directory = await mkdtemp(path.join(os.tmpdir(), 'xingyu-store-test-'));
   const publicDirectory = path.join(directory, 'source'); await mkdir(publicDirectory);
+  await writeFile(path.join(publicDirectory, 'private.md'), '---\ntitle: Private\nslug: private\ndate: "2026-09-01"\nvisibility: private\n---\nNever export this.');
   let date = new Date('2026-09-18T12:00:00Z');
   const store = createStore({ directory: path.join(directory, 'library'), publicDirectory, now: () => date });
+  assert.equal((await store.published()).length, 0);
   let post = await store.save({ title: 'Date test', body: 'A draft.' });
   assert.equal(post.date, undefined);
   assert.equal(post.createdAt, '2026-09-18T12:00:00.000Z');

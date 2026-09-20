@@ -43,7 +43,7 @@ export function createStore({ directory, publicDirectory, now = () => new Date()
   }
   async function published() {
     const hidden = new Set((await archived()).map(post => post.slug));
-    const posts = new Map((await read(publicDirectory)).filter(post => !post.draft).map(post => [post.slug, { ...post, visibility: 'public' }]));
+    const posts = new Map((await read(publicDirectory)).filter(post => !post.draft && post.visibility !== 'private').map(post => [post.slug, { ...post, visibility: 'public' }]));
     for (const post of await read(path.join(directory, 'posts'))) posts.set(post.slug, post);
     return [...posts.values()].filter(post => !hidden.has(post.slug));
   }

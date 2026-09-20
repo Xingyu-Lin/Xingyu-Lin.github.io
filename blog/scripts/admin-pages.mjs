@@ -6,7 +6,7 @@ export const loginPage = () => layout({ title: 'Admin', admin: true, script: '/a
 </main>` });
 export const adminBlogPage = () => layout({ title: 'Blog', admin: true, math: true, script: '/admin-assets/editor.bundle.js', content: `<main id="main" class="admin-blog">
 <aside class="post-sidebar"><nav id="post-folders" aria-label="Post folders"><button type="button" data-folder="live" aria-pressed="true">Live</button><button type="button" data-folder="drafts" aria-pressed="false">Drafts</button><button type="button" data-folder="archived" aria-pressed="false">Archived</button></nav><button id="logout" type="button">Sign out</button></aside>
-<div class="workspace-main"><p id="action-message" role="status"></p>
+<div class="workspace-main"><p id="action-message" role="status"></p><div id="deployment-message" role="status" hidden><span></span> <button id="retry-publish" type="button">Retry</button></div>
 <section id="library-view" aria-labelledby="library-heading"><header class="library-header"><h1 id="library-heading" tabindex="-1">Blog</h1><button id="new-post" type="button" class="primary">Write</button></header><ul id="post-library" aria-label="Live posts" aria-busy="true"><li class="empty-posts">Loading…</li></ul></section>
 <section id="editor-view" hidden aria-label="Post editor"><div class="writing-bar"><button id="back-to-posts" type="button">← Posts</button><div><span id="save-state" role="status"></span><button id="archive-post" type="button" hidden>Archive</button><button id="restore-post" type="button" hidden>Restore</button><button id="publish-post" type="button" class="primary">Publish</button></div></div>
 <div class="document-editor">

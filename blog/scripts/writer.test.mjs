@@ -10,13 +10,14 @@ import { blogRoot } from './build.mjs';
 test('same-site admin authenticates, protects drafts and private posts, publishes immutable posts, and archives deletions', async t => {
   const directory = await mkdtemp(path.join(os.tmpdir(), 'xingyu-admin-test-'));
   const port = 19000 + Math.floor(Math.random() * 1000);
-  const server = spawn(process.execPath, [path.join(blogRoot, 'scripts/writer.mjs')], { env: { ...process.env, BLOG_LIBRARY_DIR: directory, BLOG_WRITER_PORT: String(port) }, stdio: ['ignore', 'pipe', 'pipe'] });
+  const server = spawn(process.execPath, [path.join(blogRoot, 'scripts/writer.mjs')], { env: { ...process.env, BLOG_LIBRARY_DIR: directory, BLOG_WRITER_PORT: String(port), BLOG_PUBLISH_GIT: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
   t.after(() => server.kill());
   await Promise.race([once(server.stdout, 'data'), once(server, 'exit').then(() => { throw new Error('Server exited before listening.'); }), new Promise((_, reject) => { const timeout = setTimeout(() => reject(new Error('Startup timed out.')), 5000); timeout.unref(); })]);
   const origin = `http://127.0.0.1:${port}`;
   const anonymous = await fetch(`${origin}/write`, { redirect: 'manual' });
   assert.equal(anonymous.status, 303); assert.equal(anonymous.headers.get('location'), '/admin');
   assert.equal((await fetch(`${origin}/api/posts`)).status, 401);
+  assert.equal((await fetch(`${origin}/api/deployment`)).status, 401);
   assert.equal((await fetch(`${origin}/api/auth`)).headers.get('set-cookie'), null);
   const challenge = await fetch(`${origin}/api/auth?login=1`);
   const session = await challenge.json(); assert.equal(session.setup, true);
@@ -41,6 +42,8 @@ test('same-site admin authenticates, protects drafts and private posts, publishe
   const publicIndex = await fetch(`${origin}/blog/`).then(r => r.text());
   assert.doesNotMatch(publicIndex, /post-folders|post-body|new-post|publish-dialog/);
   const send = async (route, value, extra = {}) => fetch(`${origin}/api/${route}`, { method: 'POST', headers: { ...headers, ...extra }, body: JSON.stringify(value) });
+  assert.equal((await send('sync', {}, { 'X-Writing-Token': 'wrong' })).status, 403);
+  assert.equal((await send('sync', {}).then(r => r.json())).state, 'disabled');
   const post = { title: 'Private test', body: '## Notes\n\nSecret text.' };
   assert.equal((await send('save', post, { Origin: 'https://example.com' })).status, 403);
   assert.equal((await send('save', post, { 'X-Writing-Token': 'wrong' })).status, 403);

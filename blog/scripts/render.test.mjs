@@ -43,6 +43,7 @@ test('public build excludes drafts and removes withdrawn generated pages without
   await mkdir(path.join(root, '_content'));
   await mkdir(path.join(root, 'drafts'));
   await writeFile(path.join(root, '_content/example.md'), input());
+  await writeFile(path.join(root, '_content/private.md'), input('visibility: private\n').replace('slug: example', 'slug: private'));
   await writeFile(path.join(root, 'drafts/private.md'), input().replace('slug: example', 'slug: private'));
   await writeFile(path.join(root, 'handwritten.html'), 'Keep me');
   const published = await build({ root });

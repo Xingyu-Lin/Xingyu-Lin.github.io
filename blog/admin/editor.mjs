@@ -18,6 +18,12 @@ const editor = new Editor({
   onSelectionUpdate: () => slash?.update()
 });
 function status(text, error = false) { message.textContent = text; message.classList.toggle('error', error); }
+function deploymentStatus(deployment) {
+  if (!deployment) return;
+  const pending = deployment.state === 'pending';
+  $('#deployment-message').hidden = !pending;
+  $('#deployment-message span').textContent = pending ? deployment.message : '';
+}
 async function api(route, data) {
   const response = await fetch(`/api/${route}`, { method: data ? 'POST' : 'GET', headers: { 'Content-Type': 'application/json', 'X-Writing-Token': token }, body: data ? JSON.stringify(data) : undefined });
   const result = await response.json();
@@ -50,7 +56,7 @@ function syncControls() {
   $('#archive-post').hidden = !current || current.archived;
   $('#restore-post').hidden = !current?.archived;
   $('#publish-post').hidden = locked;
-  document.querySelectorAll('#post-folders button, #logout, #new-post, .writing-bar button, .post-open, .row-action, #publish-form button, #publish-form input').forEach(control => { control.disabled = busy || !token; });
+  document.querySelectorAll('#post-folders button, #logout, #new-post, #retry-publish, .writing-bar button, .post-open, .row-action, #publish-form button, #publish-form input').forEach(control => { control.disabled = busy || !token; });
 }
 function populate(post) {
   clearTimeout(timer); slash?.close(true); current = post; originalBody = post?.body || ''; bodyChanged = false;
@@ -90,7 +96,9 @@ async function save(visibility = null) {
       status('');
       if (publish) {
         populate(current);
-        folder = 'live'; selectFolder(); status('Published.');
+        folder = 'live'; selectFolder();
+        deploymentStatus(result.deployment);
+        status(result.deployment?.state === 'sent' ? result.deployment.message : result.deployment?.state === 'pending' ? '' : 'Published.');
         const link = document.createElement('a'); link.href = result.url; link.target = '_blank'; link.rel = 'noopener'; link.textContent = ' View post'; message.append(link);
       }
       return true;
@@ -173,13 +181,27 @@ async function movePost(post, restore) {
     if (!post || !await leave()) return;
     // Autosave may have advanced the open draft's revision before this action.
     const latest = current?.slug === post.slug ? current : post;
-    await api(restore ? 'restore' : 'archive', { slug: latest.slug, revision: latest.revision });
+    status(restore ? 'Restoring…' : 'Archiving…');
+    const result = await api(restore ? 'restore' : 'archive', { slug: latest.slug, revision: latest.revision });
     await showLibrary(folder, true);
-    status(restore ? `Restored to ${post.visibility === 'draft' ? 'Drafts' : 'Live'}.` : 'Moved to Archived.');
+    deploymentStatus(result.deployment);
+    status((restore ? `Restored to ${post.visibility === 'draft' ? 'Drafts' : 'Live'}.` : 'Moved to Archived.') + (post.visibility === 'public' && result.deployment?.state === 'sent' ? ' The live site will update shortly.' : ''));
   });
 }
 $('#archive-post').addEventListener('click', () => movePost(current, false));
 $('#restore-post').addEventListener('click', () => movePost(current, true));
+$('#retry-publish').addEventListener('click', () => action(async () => {
+  if (!await leave()) return;
+  $('#deployment-message span').textContent = 'Publishing…';
+  try {
+    const result = await api('sync', {});
+    deploymentStatus(result);
+    if (result.state === 'sent') status(result.message);
+  } catch (error) {
+    $('#deployment-message span').textContent = 'The website has not updated. Retry when the local server is available.';
+    throw error;
+  }
+}));
 $('#logout').addEventListener('click', () => action(async () => {
   if (!await leave()) return;
   await api('logout', {}); location.assign('/blog/');
@@ -247,5 +269,5 @@ document.addEventListener('visibilitychange', () => { if (document.hidden && dir
 syncControls();
 fetch('/api/auth').then(response => response.json()).then(session => {
   if (!session.authenticated) location.replace('/admin');
-  else { token = session.token; return action(() => showLibrary()); }
+  else { token = session.token; return action(async () => { await showLibrary(); deploymentStatus(await api('deployment')); }); }
 }).catch(() => status('Unable to connect. Your writing is still in this window. Reload after reconnecting.', true));

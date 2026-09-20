@@ -17,7 +17,7 @@ export async function build({ root = blogRoot, drafts = false } = {}) {
     for (const filename of entries.filter(name => name.endsWith('.md')).sort()) {
       const post = parsePost(await readFile(path.join(directory, filename), 'utf8'), `${folder}/${filename}`);
       if (folder === 'drafts') post.draft = true;
-      if (post.draft && !drafts) continue;
+      if (post.visibility === 'private' || post.draft && !drafts) continue;
       if (posts.some(other => other.slug === post.slug)) throw new Error(`Duplicate post slug: ${post.slug}`);
       posts.push(post);
     }
