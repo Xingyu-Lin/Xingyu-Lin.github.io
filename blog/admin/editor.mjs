@@ -56,7 +56,7 @@ function syncControls() {
   $('#archive-post').hidden = !current || current.archived;
   $('#restore-post').hidden = !current?.archived;
   $('#publish-post').hidden = locked;
-  document.querySelectorAll('#post-folders button, #logout, #new-post, #retry-publish, .writing-bar button, .post-open, .row-action, #publish-form button, #publish-form input').forEach(control => { control.disabled = busy || !token; });
+  document.querySelectorAll('#post-folders button, #new-post, #retry-publish, .writing-bar button, .post-open, .row-action, #publish-form button, #publish-form input').forEach(control => { control.disabled = busy || !token; });
 }
 function populate(post) {
   clearTimeout(timer); slash?.close(true); current = post; originalBody = post?.body || ''; bodyChanged = false;
@@ -202,10 +202,6 @@ $('#retry-publish').addEventListener('click', () => action(async () => {
     throw error;
   }
 }));
-$('#logout').addEventListener('click', () => action(async () => {
-  if (!await leave()) return;
-  await api('logout', {}); location.assign('/blog/');
-}));
 $('#publish-post').addEventListener('click', () => action(async () => {
   if (!await leave()) return;
   if (!title.value.trim() || !body().trim()) { status('Add a title and some writing before publishing.', true); return; }
@@ -267,7 +263,7 @@ window.addEventListener('online', () => { if (dirty) save(); });
 window.addEventListener('beforeunload', event => { if (dirty || inFlight) { event.preventDefault(); event.returnValue = ''; } });
 document.addEventListener('visibilitychange', () => { if (document.hidden && dirty) save(); });
 syncControls();
-fetch('/api/auth').then(response => response.json()).then(session => {
-  if (!session.authenticated) location.replace('/admin');
-  else { token = session.token; return action(async () => { await showLibrary(); deploymentStatus(await api('deployment')); }); }
+api('session').then(session => {
+  token = session.token;
+  return action(async () => { await showLibrary(); deploymentStatus(await api('deployment')); });
 }).catch(() => status('Unable to connect. Your writing is still in this window. Reload after reconnecting.', true));

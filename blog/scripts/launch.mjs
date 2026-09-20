@@ -19,7 +19,7 @@ export async function ensureServer({ port = Number(process.env.BLOG_WRITER_PORT 
     if (!response.ok || health?.application !== application || health.workspace !== workspaceId) {
       throw new Error(`Port ${port} is being used by another app or an older blog server. Close that server and open Write Blog again.`);
     }
-    return { url: `${origin}/admin`, pid: health.pid };
+    return { url: `${origin}/blog/`, pid: health.pid };
   }
   const existing = await probe();
   if (existing) return { ...existing, started: false };

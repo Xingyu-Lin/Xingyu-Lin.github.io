@@ -1,11 +1,11 @@
 import http from 'node:http';
+import { randomBytes } from 'node:crypto';
 import { readFile, stat, realpath } from 'node:fs/promises';
 import path from 'node:path';
 import { blogRoot } from './build.mjs';
-import { articlePage, indexPage } from './templates.mjs';
+import { articlePage } from './templates.mjs';
 import { renderMarkdown } from './render.mjs';
-import { loginPage, adminBlogPage } from './admin-pages.mjs';
-import { createAuth } from './auth.mjs';
+import { adminBlogPage } from './admin-pages.mjs';
 import { createStore } from './store.mjs';
 import { createPublisher } from './publisher.mjs';
 import { application, repoRoot, workspaceId, libraryDirectory } from './local-config.mjs';
@@ -13,12 +13,12 @@ import { application, repoRoot, workspaceId, libraryDirectory } from './local-co
 const directory = libraryDirectory();
 const port = Number(process.env.PORT || process.env.BLOG_WRITER_PORT || 8080);
 const origin = new URL(process.env.BLOG_ORIGIN || `http://127.0.0.1:${port}`);
-const secure = origin.protocol === 'https:';
-const local = ['127.0.0.1', 'localhost'].includes(origin.hostname);
-if (!local && !secure) throw new Error('The online admin requires an HTTPS BLOG_ORIGIN.');
-const auth = createAuth({ directory, secure, allowSetup: local, configuredHash: process.env.ADMIN_PASSWORD_HASH });
+if (origin.protocol !== 'http:' || !['127.0.0.1', 'localhost'].includes(origin.hostname)) throw new Error('Write Blog runs only on this computer. Use a local HTTP BLOG_ORIGIN.');
+// No password is needed on this local-only server. A per-process token and
+// browser origin checks still prevent other websites from changing posts.
+const writingToken = randomBytes(32).toString('hex');
 const store = createStore({ directory, publicDirectory: path.join(blogRoot, '_content') });
-const publisher = createPublisher({ repoRoot, directory, store, enabled: local && process.env.BLOG_PUBLISH_GIT !== '0' });
+const publisher = createPublisher({ repoRoot, directory, store, enabled: process.env.BLOG_PUBLISH_GIT !== '0' });
 let writing = false;
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.pdf': 'application/pdf', '.mp4': 'video/mp4', '.bib': 'text/plain' };
 function json(res, status, value) { res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' }); res.end(JSON.stringify(value)); }
@@ -34,27 +34,24 @@ const server = http.createServer(async (req, res) => {
   res.setHeader('Referrer-Policy', 'same-origin');
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('Cache-Control', 'no-store');
-  if (req.headers.host !== origin.host || req.headers.origin && req.headers.origin !== origin.origin) return json(res, 403, { error: 'Use this website’s own address.' });
+  const fetchSite = req.headers['sec-fetch-site'];
+  if (req.headers.host !== origin.host || req.headers.origin && req.headers.origin !== origin.origin || fetchSite && !['same-origin', 'none'].includes(fetchSite)) return json(res, 403, { error: 'Open Write Blog directly on this computer.' });
   try {
     const url = new URL(req.url, origin);
     const route = path.posix.normalize(decodeURIComponent(url.pathname));
-    const session = auth.session(req);
-    if (route.startsWith('/admin') || route.startsWith('/write') || route.startsWith('/private') || session && ['/blog', '/blog/', '/blog/index.html'].includes(route.toLowerCase())) {
+    if (route.startsWith('/admin') || route.startsWith('/write') || route.startsWith('/private') || ['/blog', '/blog/', '/blog/index.html'].includes(route.toLowerCase())) {
       res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'");
       res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     }
     if (route.startsWith('/api/')) {
       if (route === '/api/health' && req.method === 'GET') return json(res, 200, { application, workspace: workspaceId, pid: process.pid });
-      if (route === '/api/auth' && req.method === 'GET') return json(res, 200, await auth.info(req, res, url.searchParams.get('login') === '1'));
-      if (route === '/api/login' && req.method === 'POST') return json(res, 200, await auth.login(req, res, await body(req)));
-      if (!session) return json(res, 401, { error: 'Sign in to continue. Your unsaved writing is still in this window.' });
+      if (route === '/api/session' && req.method === 'GET') return json(res, 200, { token: writingToken });
       if (route === '/api/posts' && req.method === 'GET') return json(res, 200, await store.list());
       if (route === '/api/archive' && req.method === 'GET') return json(res, 200, await store.archived());
       if (route === '/api/deployment' && req.method === 'GET') return json(res, 200, await publisher.status());
-      if (req.method !== 'POST') return json(res, 405, { error: 'Unsupported request.' });
-      if (req.headers['x-writing-token'] !== session.token) return json(res, 403, { error: 'Reload to reconnect securely.' });
-      if (route === '/api/logout') { auth.logout(req, res); return json(res, 200, { ok: true }); }
       if (!['/api/save', '/api/publish', '/api/archive', '/api/restore', '/api/sync'].includes(route)) return json(res, 404, { error: 'Not found.' });
+      if (req.method !== 'POST') return json(res, 405, { error: 'Unsupported request.' });
+      if (req.headers['x-writing-token'] !== writingToken) return json(res, 403, { error: 'Reload to reconnect securely.' });
       if (writing) return json(res, 503, { error: 'Another save or publication is running. Retrying…' });
       writing = true;
       try {
@@ -73,10 +70,8 @@ const server = http.createServer(async (req, res) => {
       } finally { writing = false; }
     }
     if (!['GET', 'HEAD'].includes(req.method)) return json(res, 405, { error: 'Unsupported request.' });
-    if (['/admin', '/admin/','/blog/admin', '/blog/admin/'].includes(route)) return session ? redirect(res, '/blog/') : html(res, loginPage());
-    if (['/write', '/write/'].includes(route)) return redirect(res, session ? '/blog/' : '/admin');
+    if (['/admin', '/admin/', '/blog/admin', '/blog/admin/', '/write', '/write/'].includes(route)) return redirect(res, '/blog/');
     if (route.startsWith('/private/')) {
-      if (!session) return redirect(res, '/admin');
       const post = (await store.published()).find(post => post.slug === route.slice(9) && post.visibility === 'private');
       if (!post) return json(res, 404, { error: 'Not found.' });
       res.setHeader('X-Robots-Tag', 'noindex, nofollow');
@@ -84,9 +79,7 @@ const server = http.createServer(async (req, res) => {
     }
     if (['/blog', '/blog/', '/blog/index.html'].includes(route.toLowerCase())) {
       if (route === '/blog') return redirect(res, '/blog/');
-      if (session) return html(res, adminBlogPage());
-      const posts = (await store.published()).filter(post => post.visibility === 'public').sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
-      return html(res, indexPage(posts));
+      return html(res, adminBlogPage());
     }
     const match = route.toLowerCase().match(/^\/blog\/([a-z0-9-]+)\.html$/);
     if (match) {
@@ -97,7 +90,7 @@ const server = http.createServer(async (req, res) => {
     let filename;
     if (route.startsWith('/admin-assets/')) {
       const name = route.slice(14);
-      if (!['editor.css', 'editor.bundle.js', 'login.js'].includes(name)) return json(res, 404, { error: 'Not found.' });
+      if (!['editor.css', 'editor.bundle.js'].includes(name)) return json(res, 404, { error: 'Not found.' });
       filename = path.join(blogRoot, 'admin', name);
     } else {
       if (route.split('/').some(part => part.startsWith('.') || ['node_modules', 'drafts', '_preview', '_content', 'scripts', 'templates', 'editor', 'admin'].includes(part))) return json(res, 404, { error: 'Not found.' });
@@ -112,4 +105,4 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': type }); res.end(req.method === 'HEAD' ? undefined : content);
   } catch (error) { json(res, error.status || (error.code === 'ENOENT' ? 404 : 400), { error: error.code === 'ENOENT' ? 'Not found.' : error.message }); }
 });
-server.listen(port, local ? '127.0.0.1' : '0.0.0.0', () => console.log(`Website: ${origin.origin}/\nAdmin: ${origin.origin}/admin\nPrivate data: ${directory}`));
+server.listen(port, '127.0.0.1', () => console.log(`Website: ${origin.origin}/\nWrite Blog: ${origin.origin}/blog/\nPrivate data: ${directory}`));
